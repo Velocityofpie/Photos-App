@@ -21,63 +21,33 @@ import helper.User;
 import helper.Album;
 
 public class LoginController {
-//    @FXML
-//    private Button loginButton;
-//    @FXML
-//    private TextField usernameField;
-//    ArrayList<User> users;
-//    private final String path = "data/data.dat";
-//    Boolean validUser = false;
-//
-//    public void start(Stage stage) {
-//    }
-//
-//    public void handleLoginButton(ActionEvent event) {
-//
-//        String username = usernameField.getText();
-//
-//        // Check for valid file. If file doesn't exist, create it and add admin
-//        // and stock users
-//        File data = new File(path);
-//
-//
-//
-//        // File exists, proceed to read it
-//        try {
-//            FileInputStream fileInputStream = new FileInputStream(path);
-//            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-//            users = (ArrayList<User>) objectInputStream.readObject();
-//            objectInputStream.close();
-//            fileInputStream.close();
-//
-//            User user = null;
-//
-//            for (User currentUser : users) {
-//                if (currentUser.getUsername().equals(username)) {
-//                    user = currentUser;
-//
-//                }
-//            }
-//
-//            if (username.equals("admin") || user != null) {
-//                FXMLLoader loader;
-//                Parent parent;
-//
-//                if (username.equals("admin")) {
-//
-//                } else {
-//
-//                }
-//            } else {
-//                Alert alert = new Alert(AlertType.ERROR);
-//                alert.setTitle("Login Error");
-//                alert.setHeaderText("User not found.");
-//                alert.setContentText("This user does not exist.");
-//
-//                alert.showAndWait();
-//            }
-//        } catch (Exception exception) {
-//            exception.printStackTrace();
-//        }
-//    }
+    @FXML
+    private Button loginButton;
+    @FXML
+    private TextField usernameTextField;
+
+    private final String path = "data/data.dat";
+    Boolean validUser = false;
+
+    public void start(Stage stage) {
+
+    }
+
+    public void handleLoginButton(ActionEvent event) {
+
+        //String username = usernameField.getText();
+
+        // Check for valid file. If file doesn't exist, create it and add admin
+        // and stock users
+        File data = new File(path);
+
+
+
+        // File exists, proceed to read it
+        try {
+
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+    }
 }
