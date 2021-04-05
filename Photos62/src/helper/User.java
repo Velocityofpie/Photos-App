@@ -1,10 +1,10 @@
 package helper;
 import java.io.Serializable;
 import java.util.ArrayList;
-public class User implements Serializable {
+public class User {
 
 
-    private static final long serialVersionUID = 8177923271139908648L;
+    //private static final long serialVersionUID = 8177923271139908648L;
     private String username;
     private ArrayList<Album> albums;
 

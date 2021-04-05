@@ -26,24 +26,18 @@ public class LoginController {
     @FXML
     private TextField usernameTextField;
 
-    private final String path = "data/data.dat";
+    private final String path = "data/data.txt";
     Boolean validUser = false;
 
     public void start(Stage stage) {
 
     }
 
-    public void handleLoginButton(ActionEvent event) {
+    public void LoginButton(ActionEvent event) {
 
-        //String username = usernameField.getText();
-
-        // Check for valid file. If file doesn't exist, create it and add admin
-        // and stock users
+        String username = usernameTextField.getText();
         File data = new File(path);
 
-
-
-        // File exists, proceed to read it
         try {
 
         } catch (Exception exception) {
