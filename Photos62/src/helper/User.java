@@ -35,10 +35,8 @@ public class User {
     public boolean equals(User other) {
         return this.username.equals(other.username);
     }
-    public String AdmintoString() {
-        return this.Songname + ":\n" + this.Artist;
-    }
-    public String fileString() {
+
+    public String AFileString() {
         return this.username + "\n" + this.password + "\n" ;
     }
 }
