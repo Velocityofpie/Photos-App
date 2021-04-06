@@ -63,14 +63,14 @@ public class LoginController {
                 FXMLLoader loader;
                 Parent parent;
                 if ( (username.equals("admin")) || ( password.equals("admin")) ) {
-                    loader = new FXMLLoader(getClass().getResource("/view/Admin.fxml"));
-                    parent = (Parent) loader.load();
-                    AdminController controller = loader.<AdminController>getController();
-                    Scene scene = new Scene(parent);
-                    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                    controller.start(users);
-                    stage.setScene(scene);
-                    stage.show();
+//                    loader = new FXMLLoader(getClass().getResource("/view/Admin.fxml"));
+//                    parent = (Parent) loader.load();
+//                    AdminController controller = loader.<AdminController>getController();
+//                    Scene scene = new Scene(parent);
+//                    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+//                    controller.start(users);
+//                    stage.setScene(scene);
+//                    stage.show();
                 }else {
                     loader = new FXMLLoader(getClass().getResource("/view/interface.fxml"));
                     parent = (Parent) loader.load();
