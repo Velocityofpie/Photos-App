@@ -17,9 +17,11 @@ import javafx.stage.Stage;
 import model.User;
 
 
+
+
 public class LoginController {
 
-    @FXML private Button loginButton , signupButton ;
+    @FXML private Button loginButton, signupButton ;
     @FXML private TextField usernameTextField, passwordTextField;
 
 
@@ -30,9 +32,9 @@ public class LoginController {
     public void start(Stage stage) {
 
     }
-
-
-    public void LoginButton(ActionEvent event) throws IOException {
+    @SuppressWarnings("unchecked")
+    @FXML
+    public void handleLoginButton (ActionEvent event) throws IOException {
         String username = usernameTextField.getText();
         String password = passwordTextField.getText();
 
@@ -72,7 +74,7 @@ public class LoginController {
 //                    stage.setScene(scene);
 //                    stage.show();
                 }else {
-                    loader = new FXMLLoader(getClass().getResource("/view/interface.fxml"));
+                    loader = new FXMLLoader(getClass().getResource("/view/Interface.fxml"));
                     parent = (Parent) loader.load();
                     UserController controller = loader.<UserController>getController();
                     Scene scene = new Scene(parent);

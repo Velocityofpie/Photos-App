@@ -6,6 +6,8 @@ import javafx.event.ActionEvent;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.layout.AnchorPane;
@@ -18,14 +20,17 @@ public class Photos extends Application {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/view/Login.fxml"));
+
             AnchorPane root = (AnchorPane) loader.load();
-            Scene scene = new Scene(root);
-            primaryStage.setScene(scene);
             primaryStage.setResizable(false);
-            primaryStage.setTitle("Photos");
-            primaryStage.show();
+            primaryStage.setTitle("Song Library");
+
             LoginController controller = loader.getController();
             controller.start(primaryStage);
+
+            Scene scene = new Scene(root);
+            primaryStage.setScene(scene);
+            primaryStage.show();
 
         } catch(Exception e) {
             e.printStackTrace();
@@ -34,7 +39,6 @@ public class Photos extends Application {
     }
 
     public static void main(String[] args) {
-
         launch(args);
     }
 }
