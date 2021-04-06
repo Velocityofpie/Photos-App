@@ -14,10 +14,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import javafx.scene.image.Image;
-import javafx.stage.Stage;
-import helper.User;
-import helper.Album;
+import model.User;
 
 
 public class LoginController {

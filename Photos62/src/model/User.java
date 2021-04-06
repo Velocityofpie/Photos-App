@@ -1,5 +1,4 @@
-package helper;
-import java.io.Serializable;
+package model;
 import java.util.ArrayList;
 public class User {
 

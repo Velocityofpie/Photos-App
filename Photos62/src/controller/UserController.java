@@ -1,6 +1,6 @@
 package controller;
 
-import helper.User;
+import model.User;
 
 import java.util.ArrayList;
 
