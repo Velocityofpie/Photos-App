@@ -27,8 +27,6 @@ public class Photos extends Application {
             LoginController controller = loader.getController();
             controller.start(primaryStage);
 
-
-
         } catch(Exception e) {
             e.printStackTrace();
         }

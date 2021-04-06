@@ -2,33 +2,41 @@ package helper;
 import java.io.Serializable;
 
 public class Tag implements Serializable {
-    private static final long serialVersionUID = 1L;
+    private String tagName;
+
+    private String tagValue;
 
 
-    private String name, value;
+    public Tag(String tagName, String tagValue) {
 
+        this.tagName = tagName;
+        this.tagValue = tagValue;
+    }
 
-    public Tag(String name, String value) {
-        this.name = name;
-        this.value = value;
+    public String getTag() {
+
+        return "(" + this.tagName + ", " + this.tagValue + ")";
     }
 
 
-    public String getName() {
-        return name;
+    public String getTagName() {
+
+        return this.tagName;
+    }
+
+    public String getTagValue() {
+
+        return this.tagValue;
+    }
+
+    public void setTagName(String tagName) {
+
+        this.tagName = tagName;
     }
 
 
-    public String getValue() {
-        return value;
-    }
+    public void setTagValue(String tagValue) {
 
-
-    public boolean equals(Tag other) {
-        return name.equals(other.name) && value.equals(other.value);
-    }
-
-    public String toString() {
-        return name + " - " + value;
+        this.tagValue = tagValue;
     }
 }
