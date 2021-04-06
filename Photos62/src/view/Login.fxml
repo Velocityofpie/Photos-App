@@ -21,7 +21,7 @@
 
          </children>
       </AnchorPane>
-      <Button fx:id="loginButton" layoutX="442.0" layoutY="334.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="149.0" style="-fx-background-color: #212121;" text="Login" textFill="WHITE" />
+      <Button fx:id="loginButton" layoutX="442.0" layoutY="334.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="149.0" style="-fx-background-color: #212121;"  text="Login" textFill="WHITE" />
       <TextField fx:id="usernameTextField" layoutX="443.0" layoutY="250.0" promptText="User Name" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 0pc 0px 2px 0px;" />
       <PasswordField fx:id="passwordTextField" layoutX="443.0" layoutY="291.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 0px 0px 2px 0px;" />
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
@@ -32,6 +32,6 @@
       </Text>
 
       <Label layoutX="473.0" layoutY="386.0" prefHeight="17.0" prefWidth="61.0" text="New User?" />
-      <Button fx:id="signupButton" layoutX="534.0" layoutY="382.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Sign Up" />
+      <Button fx:id="signupButton" layoutX="534.0" layoutY="382.0" mnemonicParsing="false"  style="-fx-background-color: transparent;" text="SignUp" />
    </children>
 </AnchorPane>
