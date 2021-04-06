@@ -1,5 +1,6 @@
 package controller;
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Calendar;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -22,7 +23,7 @@ public class LoginController {
     @FXML private TextField usernameTextField;
     @FXML private TextField passwordTextField;
 
-
+    ArrayList<User> users;
     private final String path = "data/data.txt";
     Boolean validUser = false;
 
@@ -33,6 +34,7 @@ public class LoginController {
 
     public void LoginButton(ActionEvent event) throws IOException {
         String username = usernameTextField.getText();
+        String password = passwordTextField.getText();
 
         // Check for valid file. If file doesn't exist, create it and add admin
         // and stock users
@@ -49,11 +51,37 @@ public class LoginController {
             fileInputStream.close();
 
             User user = null;
+            for (User currentUser : users) {
+                if (currentUser.getUsername().equals(username)) {
+                    user = currentUser;
+
+                }
+            }
 
 
+            if (username.equals("admin") || user != null   ) {
+                FXMLLoader loader;
+                Parent parent;
+                if ( (username.equals("admin")) || ( password.equals("admin")) ) {
+                    loader = new FXMLLoader(getClass().getResource("/view/Admin.fxml"));
+                    parent = (Parent) loader.load();
+                    AdminController controller = loader.<AdminController>getController();
+                    Scene scene = new Scene(parent);
+                    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    controller.start(users);
+                    stage.setScene(scene);
+                    stage.show();
+                }else {
+                    loader = new FXMLLoader(getClass().getResource("/view/interface.fxml"));
+                    parent = (Parent) loader.load();
+                    UserController controller = loader.<UserController>getController();
+                    Scene scene = new Scene(parent);
+                    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    controller.start(user, users);
+                    stage.setScene(scene);
+                    stage.show();
+                }
 
-            if (username.equals("admin") || user != null) {
-                int sss;
             }
             else {
                 Alert alert = new Alert(AlertType.ERROR);
@@ -63,8 +91,10 @@ public class LoginController {
 
                 alert.showAndWait();
             }
+
         } catch (Exception exception) {
             exception.printStackTrace();
         }
+
     }
 }

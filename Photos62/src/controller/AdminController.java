@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Calendar;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -101,7 +102,7 @@ public class AdminController {
 
 
 
-    public void start (Stage primaryStage) throws IOException {
+    public void start (ArrayList<User> primaryStage) throws IOException {
 
         Songsloader();
 
