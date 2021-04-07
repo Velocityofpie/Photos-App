@@ -1,9 +1,10 @@
 package model;
+import java.io.Serializable;
 import java.util.ArrayList;
-public class User {
+public class User implements Serializable {
 
 
-    //private static final long serialVersionUID = 8177923271139908648L;
+    private static final long serialVersionUID = 1L;
     private String username;
     private String password;
     private ArrayList<Album> albums;
@@ -35,7 +36,7 @@ public class User {
         return this.username.equals(other.username);
     }
 
-    public String AFileString() {
-        return this.username + "\n" + this.password + "\n" ;
+    public String FileString() {
+        return "UserNamer:"+this.username + "\n" + "Password:" +this.password + "\n" ;
     }
 }
