@@ -26,14 +26,13 @@ public class LoginController {
 
 
     ArrayList<User> users;
-    private final String path = "/data/data.txt";
+    private final String path = "Photos62/src/data/data.txt";
     Boolean validUser = false;
 
     public void start(Stage stage) {
 
     }
-    @SuppressWarnings("unchecked")
-    @FXML
+
     public void handleLoginButton (ActionEvent event) throws IOException {
         String username = usernameTextField.getText();
         String password = passwordTextField.getText();
@@ -46,11 +45,13 @@ public class LoginController {
 
         // File exists, proceed to read it
         try {
-            FileInputStream fileInputStream = new FileInputStream(path);
-            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+            FileInputStream inputfile = new FileInputStream(path);
+            ObjectInputStream objectInputStream = new ObjectInputStream(inputfile);
             users = (ArrayList<User>) objectInputStream.readObject();
             objectInputStream.close();
-            fileInputStream.close();
+            inputfile.close();
+
+
 
             User user = null;
             for (User currentUser : users) {
