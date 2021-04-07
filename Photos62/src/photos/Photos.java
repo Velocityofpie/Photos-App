@@ -20,14 +20,11 @@ public class Photos extends Application {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/view/Login.fxml"));
-
             AnchorPane root = (AnchorPane) loader.load();
             primaryStage.setResizable(false);
-            primaryStage.setTitle("Song Library");
-
+            primaryStage.setTitle("Photos");
             LoginController controller = loader.getController();
             controller.start(primaryStage);
-
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
             primaryStage.show();

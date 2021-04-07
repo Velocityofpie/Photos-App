@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.io.File;
 import java.io.FileInputStream;
 import javafx.event.ActionEvent;
+import java.io.ObjectInputStream;
+import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -12,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.User;
@@ -21,42 +24,38 @@ import model.User;
 
 public class LoginController {
 
-    @FXML private Button loginButton, signupButton ;
-    @FXML private TextField usernameTextField, passwordTextField;
+    @FXML private Button loginButton,signupButton ;
+    @FXML private TextField usernameTextField;
+    @FXML private PasswordField passwordTextField;
 
 
     ArrayList<User> users;
-    private final String path = "/data/data.txt";
     Boolean validUser = false;
 
     public void start(Stage stage) {
 
     }
-    @SuppressWarnings("unchecked")
-    @FXML
+
     public void handleLoginButton (ActionEvent event) throws IOException {
+//        testing inputs
+//        System.out.println(loginButton.getText());
+//        System.out.println(signupButton.getText());
+//        System.out.println(usernameTextField.getText());
+//        System.out.println(passwordTextField.getText());
         String username = usernameTextField.getText();
         String password = passwordTextField.getText();
-
-        // Check for valid file. If file doesn't exist, create it and add admin
-        // and stock users
-        File data = new File(path);
-
-
-
-        // File exists, proceed to read it
         try {
-            FileInputStream fileInputStream = new FileInputStream(path);
-            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-            users = (ArrayList<User>) objectInputStream.readObject();
-            objectInputStream.close();
-            fileInputStream.close();
+
+            FileInputStream fis = new FileInputStream("Photos62/data/data.txt");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            users = (ArrayList<User>) ois.readObject();
+            ois.close();
+            fis.close();
 
             User user = null;
             for (User currentUser : users) {
                 if (currentUser.getUsername().equals(username)) {
                     user = currentUser;
-
                 }
             }
 
@@ -64,15 +63,15 @@ public class LoginController {
             if (username.equals("admin") || user != null   ) {
                 FXMLLoader loader;
                 Parent parent;
-                if ( (username.equals("admin")) || ( password.equals("admin")) ) {
-//                    loader = new FXMLLoader(getClass().getResource("/view/Admin.fxml"));
-//                    parent = (Parent) loader.load();
-//                    AdminController controller = loader.<AdminController>getController();
-//                    Scene scene = new Scene(parent);
-//                    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//                    controller.start(users);
-//                    stage.setScene(scene);
-//                    stage.show();
+                if ( (username.equals("admin")) ) {
+                    loader = new FXMLLoader(getClass().getResource("/view/Admin.fxml"));
+                    parent = (Parent) loader.load();
+                    AdminController controller = loader.<AdminController>getController();
+                    Scene scene = new Scene(parent);
+                    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    controller.start(users);
+                    stage.setScene(scene);
+                    stage.show();
                 }else {
                     loader = new FXMLLoader(getClass().getResource("/view/Interface.fxml"));
                     parent = (Parent) loader.load();
@@ -90,13 +89,11 @@ public class LoginController {
                 alert.setTitle("Login Error");
                 alert.setHeaderText("User not found.");
                 alert.setContentText("This user does not exist.");
-
                 alert.showAndWait();
             }
 
-        } catch (Exception exception) {
-            exception.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-
     }
 }
