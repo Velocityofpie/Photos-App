@@ -37,6 +37,6 @@ public class User implements Serializable {
     }
 
     public String FileString() {
-        return "UserNamer:"+this.username + "\n" + "Password:" +this.password + "\n" ;
+        return "UserName:"+this.username + "\n" + "Password:" +this.password + "\n" ;
     }
 }
