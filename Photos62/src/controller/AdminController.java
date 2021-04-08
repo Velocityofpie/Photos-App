@@ -5,9 +5,11 @@ import java.util.ArrayList;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import model.User;
 
@@ -17,7 +19,7 @@ public class AdminController {
     @FXML
     Button btnAdd, btnEdit, btnDelete;
     @FXML
-    Text txtUsername;
+    TextField txtUsername;
 
     @FXML
     ListView<User> lvUsers; //list of users
@@ -29,6 +31,73 @@ public class AdminController {
         obsList = FXCollections.observableArrayList(users);
         lvUsers.setItems(obsList);
     }
+
+    public void convert (ActionEvent e) {
+
+        Button b = (Button) e.getSource();
+        if (b == btnAdd) {
+            String addUsername = txtUsername.getText();
+            User addThisUser = new User(addUsername, "");
+            obsList.add(addThisUser);
+            lvUsers.setItems(obsList);
+        }
+    }
+    //    public void convert(ActionEvent e) {
+//
+//        Button b = (Button)e.getSource();
+//        if (b == btnAdd) {
+//            String songname = tfName.getText();
+//            String artist = tfArtist.getText();
+//            String album = tfAlbum.getText();
+//            String year = tfYear.getText();
+//
+//
+//            Songs addThisSong = new Songs(songname, artist, album, year);
+//
+//            Alert alert = new Alert(AlertType.CONFIRMATION);
+//            alert.setTitle("Confirmation Dialog");
+//            alert.setHeaderText("Need Confirmation");
+//            alert.setContentText("Are you ok with this?");
+//
+//            Optional<ButtonType> result = alert.showAndWait();
+//            if (result.get() == ButtonType.OK){
+//                add(addThisSong);
+//            } else {
+//                // ... user chose CANCEL or closed the dialog
+//            }
+//
+//
+//        } else if (b == btnEdit){
+//            Alert alert = new Alert(AlertType.CONFIRMATION);
+//            alert.setTitle("Confirmation Dialog");
+//            alert.setHeaderText("Need Confirmation");
+//            alert.setContentText("Are you ok with this?");
+//
+//            Optional<ButtonType> result = alert.showAndWait();
+//            if (result.get() == ButtonType.OK){
+//                edit();
+//            } else {
+//                // ... user chose CANCEL or closed the dialog
+//            }
+//
+//        } else if (b == btnDelete){
+//            Alert alert = new Alert(AlertType.CONFIRMATION);
+//            alert.setTitle("Confirmation Dialog");
+//            alert.setHeaderText("Need Confirmation");
+//            alert.setContentText("Are you ok with this?");
+//
+//            Optional<ButtonType> result = alert.showAndWait();
+//            if (result.get() == ButtonType.OK){
+//                delete();
+//            } else {
+//                // ... user chose CANCEL or closed the dialog
+//            }
+//
+//        }
+//    }
+
+
+
 //    public ArrayList<Songs> newSongList;
 //
 //    public ArrayList<Songs> Filesloder(String file) throws IOException {
@@ -116,59 +185,7 @@ public class AdminController {
 //
 //    }
 //
-//    public void convert(ActionEvent e) {
-//
-//        Button b = (Button)e.getSource();
-//        if (b == btnAdd) {
-//            String songname = tfName.getText();
-//            String artist = tfArtist.getText();
-//            String album = tfAlbum.getText();
-//            String year = tfYear.getText();
-//
-//
-//            Songs addThisSong = new Songs(songname, artist, album, year);
-//
-//            Alert alert = new Alert(AlertType.CONFIRMATION);
-//            alert.setTitle("Confirmation Dialog");
-//            alert.setHeaderText("Need Confirmation");
-//            alert.setContentText("Are you ok with this?");
-//
-//            Optional<ButtonType> result = alert.showAndWait();
-//            if (result.get() == ButtonType.OK){
-//                add(addThisSong);
-//            } else {
-//                // ... user chose CANCEL or closed the dialog
-//            }
-//
-//
-//        } else if (b == btnEdit){
-//            Alert alert = new Alert(AlertType.CONFIRMATION);
-//            alert.setTitle("Confirmation Dialog");
-//            alert.setHeaderText("Need Confirmation");
-//            alert.setContentText("Are you ok with this?");
-//
-//            Optional<ButtonType> result = alert.showAndWait();
-//            if (result.get() == ButtonType.OK){
-//                edit();
-//            } else {
-//                // ... user chose CANCEL or closed the dialog
-//            }
-//
-//        } else if (b == btnDelete){
-//            Alert alert = new Alert(AlertType.CONFIRMATION);
-//            alert.setTitle("Confirmation Dialog");
-//            alert.setHeaderText("Need Confirmation");
-//            alert.setContentText("Are you ok with this?");
-//
-//            Optional<ButtonType> result = alert.showAndWait();
-//            if (result.get() == ButtonType.OK){
-//                delete();
-//            } else {
-//                // ... user chose CANCEL or closed the dialog
-//            }
-//
-//        }
-//    }
+
 //
 //
 //
