@@ -28,31 +28,34 @@ public class LoginController {
     public void start(Stage stage) {
 
         try {
-            writeUsers(ulist, 0);
+            writeUsers(null, 0);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void writeUsers (UserList u, int i) throws IOException {
+    public void writeUsers (User u, int i) throws IOException {
         FileOutputStream file = new FileOutputStream("Photos62/data/data.txt");
         ObjectOutputStream output = new ObjectOutputStream(file);
         if (i == 0) {
             User a = new User("admin", "admin");
-            u.users.add(a);
+            output.writeObject(a);
+        } else {
+            output.writeObject(u);
         }
-        output.writeObject(u);
+
+
 
         output.close();
         file.close();
     }
 
-    public UserList readUsers() throws IOException, ClassNotFoundException {
-        UserList w = new UserList();
+    public User readUsers() throws IOException, ClassNotFoundException {
+
         FileInputStream fis = new FileInputStream("Photos62/data/data.txt");
         ObjectInputStream ois = new ObjectInputStream(fis);
 
-        w = (UserList) ois.readObject();
+        User w = (User) ois.readObject();
 
         return w;
     }
@@ -67,12 +70,13 @@ public class LoginController {
         String username = usernameTextField.getText();
         String password = passwordTextField.getText();
 
+        User x = null;
         try {
-            ulist = readUsers();
+            x = readUsers();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        System.out.println(ulist);
+        System.out.println(x);
 
 
         try {
