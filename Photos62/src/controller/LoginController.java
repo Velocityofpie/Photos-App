@@ -7,6 +7,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -34,14 +39,17 @@ public class LoginController {
         }
     }
 
-    public void writeUsers (User u, int i) throws IOException {
+    public void writeUsers (ArrayList<User> u, int i) throws IOException {
         FileOutputStream file = new FileOutputStream("Photos62/data/data.txt");
         ObjectOutputStream output = new ObjectOutputStream(file);
         if (i == 0) {
             User a = new User("admin", "admin");
             output.writeObject(a);
+            output.writeObject(new User("stock", "stock"));
         } else {
-            output.writeObject(u);
+            for (User curr: u) {
+                output.writeObject(curr);
+            }
         }
 
 
@@ -50,14 +58,30 @@ public class LoginController {
         file.close();
     }
 
-    public User readUsers() throws IOException, ClassNotFoundException {
+    public ArrayList<User> readUsers() throws IOException, ClassNotFoundException {
 
+        ArrayList<User> out = new ArrayList<User>();
         FileInputStream fis = new FileInputStream("Photos62/data/data.txt");
         ObjectInputStream ois = new ObjectInputStream(fis);
 
-        User w = (User) ois.readObject();
+        boolean cont = true;
+        while (cont) {
+            try {
+                User curr = (User) ois.readObject();
+                if (curr != null) {
+                    out.add(curr);
+                } else {
+                    cont = false;
+                }
 
-        return w;
+            } catch (Exception e) {
+                break;
+            }
+        }
+
+        ois.close();
+        fis.close();
+        return out;
     }
 
 
@@ -70,32 +94,19 @@ public class LoginController {
         String username = usernameTextField.getText();
         String password = passwordTextField.getText();
 
-        User x = null;
+
         try {
-            x = readUsers();
+            users = readUsers();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        System.out.println(x);
+        for (User curr: users) {
+            System.out.println(curr);
+        }
+
 
 
         try {
-
-
-
-            /*
-            boolean cont = true;
-            while (cont) {
-                User u = (User) ois.readObject();
-                if (u != null) {
-                    users.add(u);
-                } else {
-                    cont = false;
-                }
-            }
-
-            ois.close();
-            fis.close();
 
             User user = null;
             for (User currentUser : users) {
@@ -130,14 +141,14 @@ public class LoginController {
 
             }
             else {
-                Alert alert = new Alert(AlertType.ERROR);
+                Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Login Error");
                 alert.setHeaderText("User not found.");
                 alert.setContentText("This user does not exist.");
                 alert.showAndWait();
             }
 
-             */
+
 
         } catch (Exception e) {
             e.printStackTrace();
