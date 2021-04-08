@@ -1,24 +1,33 @@
 package controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
+import javafx.scene.text.Text;
 import model.User;
 
 
 public class AdminController {
+
+    @FXML
+    Button btnAdd, btnEdit, btnDelete;
+    @FXML
+    Text txtUsername;
+
+    @FXML
+    ListView<User> lvUsers; //list of users
+    private ObservableList<User> obsList; //observable list that stores strings for everything in listview
+
     public void start(ArrayList<User> users) {
+
+        obsList = FXCollections.observableArrayList(users);
+        lvUsers.setItems(obsList);
     }
-//    @FXML
-//    Button btnAdd, btnEdit, btnDelete, btnCancel, btnSave;
-//    @FXML
-//    Text tName, tArtist, tAlbum, tYear;
-//    @FXML
-//    Button mEdit, mAdd, mDelete, mSave, mcancel;
-//    @FXML
-//    TextField tfName, tfArtist, tfAlbum, tfYear;
-//
-//    @FXML ListView<Songs> lvSongs; //list of strings ("song name" by artist)
-//    private ObservableList<Songs> obsList; //observable list that stores strings for everthing in listview
 //    public ArrayList<Songs> newSongList;
 //
 //    public ArrayList<Songs> Filesloder(String file) throws IOException {
@@ -89,18 +98,7 @@ public class AdminController {
 //
 //
 //
-//    public void start (ArrayList<User> primaryStage) throws IOException {
-//
-//        Songsloader();
-//
-//        obsList = FXCollections.observableArrayList(obsList);
-//        lvSongs.setItems(obsList);
-//
-//        lvSongs.getSelectionModel().selectedIndexProperty().addListener((obsList, oldVal, newVal) -> showItem(primaryStage));
-//
-//
-//
-//    }
+
 //
 //    //puts the values of the selected item into the textfields
 //    private void showItem(Stage primaryStage) {
