@@ -125,7 +125,6 @@ public class LoginController {
                     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                     controller.start(users);
                     stage.setScene(scene);
-                    stage.centerOnScreen();
                     stage.show();
                 }else {
                     loader = new FXMLLoader(getClass().getResource("/view/Interface.fxml"));
@@ -135,7 +134,6 @@ public class LoginController {
                     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                     controller.start(user, users);
                     stage.setScene(scene);
-                    stage.centerOnScreen();
                     stage.show();
                 }
 
