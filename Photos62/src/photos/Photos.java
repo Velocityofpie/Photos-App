@@ -27,7 +27,7 @@ public class Photos extends Application {
             controller.start(primaryStage);
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
-
+            primaryStage.centerOnScreen();
             primaryStage.show();
 
         } catch(Exception e) {
