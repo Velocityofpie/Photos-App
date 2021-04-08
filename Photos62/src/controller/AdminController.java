@@ -1,6 +1,8 @@
 package controller;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -23,10 +25,11 @@ public class AdminController {
     @FXML
     ListView<User> lvUsers; //list of users
     private ObservableList<User> obsList; //observable list that stores strings for everything in listview
+    private ArrayList<User> alUser;
 
     public void start(ArrayList<User> users) {
 
-
+        alUser = users;
         obsList = FXCollections.observableArrayList(users);
         lvUsers.setItems(obsList);
 
@@ -46,7 +49,7 @@ public class AdminController {
 
     }
 
-    public void convert (ActionEvent e) {
+    public void convert (ActionEvent e) throws IOException {
 
         Button b = (Button) e.getSource();
         if (b == btnAdd) {
@@ -80,12 +83,37 @@ public class AdminController {
         }
     }
 
-    private void add(User u) {
-        obsList.add(u);
-        lvUsers.setItems(obsList);
+    public void storeUsers (ArrayList<User> u, int i) throws IOException {
+        FileOutputStream file = new FileOutputStream("Photos62/data/data.txt");
+        ObjectOutputStream output = new ObjectOutputStream(file);
+        if (i == 0) {
+            User a = new User("admin", "admin");
+            output.writeObject(a);
+            output.writeObject(new User("stock", "stock"));
+        } else {
+            for (User curr: u) {
+                output.writeObject(curr);
+            }
+        }
+
+
+
+        output.close();
+        file.close();
     }
 
-    private void edit() {
+
+
+    private void add(User u) throws IOException {
+        obsList.add(u);
+        alUser.add(u);
+        lvUsers.setItems(obsList);
+
+        //store data
+        storeUsers(alUser, 1);
+    }
+
+    private void edit() throws IOException {
         int index = lvUsers.getSelectionModel().getSelectedIndex();
         User selectedUser = lvUsers.getSelectionModel().getSelectedItem();
         User editedUser = new User(txtUsername.getText(), "");
@@ -97,9 +125,10 @@ public class AdminController {
 
     }
 
-    private void delete() {
+    private void delete() throws IOException {
         int index = lvUsers.getSelectionModel().getSelectedIndex();
         obsList.remove(index);
+        alUser.remove(index);
 
         int n = obsList.size();
 
@@ -113,6 +142,8 @@ public class AdminController {
         } else {
             lvUsers.getSelectionModel().select(index);
         }
+        //store data
+        storeUsers(alUser, 1);
     }
 
 
