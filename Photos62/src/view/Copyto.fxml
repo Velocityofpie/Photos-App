@@ -10,8 +10,8 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="580.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ScrollPane fx:id="ListView" hbarPolicy="NEVER" layoutX="35.0" layoutY="110.0" prefHeight="419.0" prefWidth="516.0" vbarPolicy="ALWAYS" />
-      <Text layoutX="35.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Move to ">
+      <ScrollPane fx:id="Listview" hbarPolicy="NEVER" layoutX="35.0" layoutY="102.0" prefHeight="419.0" prefWidth="516.0" vbarPolicy="ALWAYS" />
+      <Text layoutX="35.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Copy to ">
          <font>
             <Font size="20.0" />
          </font>
@@ -21,8 +21,8 @@
             <Font size="15.0" />
          </font>
       </Text>
-      <TextField fx:id="NameTextfield" layoutX="144.0" layoutY="54.0" promptText="Enter Name" />
+      <TextField fx:id="NameTextField" layoutX="144.0" layoutY="54.0" prefHeight="25.0" prefWidth="253.0" promptText="Enter Name" />
       <ButtonBar layoutX="219.0" layoutY="663.0" prefHeight="36.0" prefWidth="335.0" />
-      <Button fx:id="UpdateButton" layoutX="486.0" layoutY="544.0" mnemonicParsing="false" text="Update" />
+      <Button fx:id="UpdateButton" layoutX="496.0" layoutY="533.0" mnemonicParsing="false" text="Update" />
    </children>
 </AnchorPane>
