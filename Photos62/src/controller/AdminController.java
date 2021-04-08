@@ -52,8 +52,7 @@ public class AdminController {
         if (b == btnAdd) {
             String addUsername = txtUsername.getText();
             User addThisUser = new User(addUsername, "");
-            obsList.add(addThisUser);
-            lvUsers.setItems(obsList);
+            add(addThisUser);
         } else if (b == btnDelete) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Confirmation Dialog");
@@ -66,7 +65,36 @@ public class AdminController {
             } else {
                 // ... user chose CANCEL or closed the dialog
             }
+        } else if (b == btnEdit) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirmation Dialog");
+            alert.setHeaderText("Need Confirmation");
+            alert.setContentText("Are you ok with this?");
+
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK){
+                edit();
+            } else {
+                // ... user chose CANCEL or closed the dialog
+            }
         }
+    }
+
+    private void add(User u) {
+        obsList.add(u);
+        lvUsers.setItems(obsList);
+    }
+
+    private void edit() {
+        int index = lvUsers.getSelectionModel().getSelectedIndex();
+        User selectedUser = lvUsers.getSelectionModel().getSelectedItem();
+        User editedUser = new User(txtUsername.getText(), "");
+        //findspot
+        //if it returns -1 then that user already exists
+
+        delete();
+        add(editedUser);
+
     }
 
     private void delete() {
