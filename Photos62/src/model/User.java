@@ -1,4 +1,6 @@
 package model;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 public class User implements Serializable {
@@ -16,6 +18,9 @@ public class User implements Serializable {
         albums = new ArrayList<Album>();
     }
 
+    public void readObject(ObjectInputStream test) throws IOException, ClassNotFoundException {
+        test.defaultReadObject();
+    }
 
     public String getUsername() {
         return username;

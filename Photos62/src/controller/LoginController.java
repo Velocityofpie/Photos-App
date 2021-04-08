@@ -1,25 +1,17 @@
 package controller;
 import java.io.*;
-import java.util.ArrayList;
-import java.io.File;
 import java.io.FileInputStream;
 import javafx.event.ActionEvent;
 import java.io.ObjectInputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.User;
-
-
 
 
 public class LoginController {
@@ -32,9 +24,39 @@ public class LoginController {
     ArrayList<User> users;
     Boolean validUser = false;
 
+
     public void start(Stage stage) {
 
+        try {
+            writeUsers(ulist, 0);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
+    public void writeUsers (UserList u, int i) throws IOException {
+        FileOutputStream file = new FileOutputStream("Photos62/data/data.txt");
+        ObjectOutputStream output = new ObjectOutputStream(file);
+        if (i == 0) {
+            User a = new User("admin", "admin");
+            u.users.add(a);
+        }
+        output.writeObject(u);
+
+        output.close();
+        file.close();
+    }
+
+    public UserList readUsers() throws IOException, ClassNotFoundException {
+        UserList w = new UserList();
+        FileInputStream fis = new FileInputStream("Photos62/data/data.txt");
+        ObjectInputStream ois = new ObjectInputStream(fis);
+
+        w = (UserList) ois.readObject();
+
+        return w;
+    }
+
 
     public void handleLoginButton (ActionEvent event) throws IOException {
 //        testing inputs
@@ -44,11 +66,30 @@ public class LoginController {
 //        System.out.println(passwordTextField.getText());
         String username = usernameTextField.getText();
         String password = passwordTextField.getText();
+
+        try {
+            ulist = readUsers();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        System.out.println(ulist);
+
+
         try {
 
-            FileInputStream fis = new FileInputStream("Photos62/data/data.txt");
-            ObjectInputStream ois = new ObjectInputStream(fis);
-            users = (ArrayList<User>) ois.readObject();
+
+
+            /*
+            boolean cont = true;
+            while (cont) {
+                User u = (User) ois.readObject();
+                if (u != null) {
+                    users.add(u);
+                } else {
+                    cont = false;
+                }
+            }
+
             ois.close();
             fis.close();
 
@@ -91,6 +132,8 @@ public class LoginController {
                 alert.setContentText("This user does not exist.");
                 alert.showAndWait();
             }
+
+             */
 
         } catch (Exception e) {
             e.printStackTrace();
