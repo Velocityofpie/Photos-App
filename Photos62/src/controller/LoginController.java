@@ -23,7 +23,6 @@ public class LoginController {
 
     @FXML private Button loginButton,signupButton ;
     @FXML private TextField usernameTextField;
-    @FXML private PasswordField passwordTextField;
 
 
     ArrayList<User> users;
@@ -92,7 +91,6 @@ public class LoginController {
 //        System.out.println(usernameTextField.getText());
 //        System.out.println(passwordTextField.getText());
         String username = usernameTextField.getText();
-        String password = passwordTextField.getText();
 
 
         try {
