@@ -41,7 +41,7 @@ public class User implements Serializable {
         return this.username.equals(other.username);
     }
 
-    public String FileString() {
-        return "UserName:"+this.username + "\n" + "Password:" +this.password + "\n" ;
+    public String AFileString() {
+        return this.username + "\n" + this.password + "\n" ;
     }
 }

@@ -1,20 +1,19 @@
 package model;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import javafx.scene.image.Image;
 
-public class Photo implements Serializable {
+public class Photo implements java.io.Serializable {
 
 
     private static final long serialVersionUID = 1L;
     private ArrayList<Tag> tags;
     private String name, caption;
-    private SerializableImage image;
+    private Serializable image;
     private Calendar date;
 
 
-    public Photo(String name, SerializableImage image, Calendar date) {
+    public Photo(String name, Serializable image, Calendar date) {
         this.name = name;
         this.caption = "";
         this.image = image;
