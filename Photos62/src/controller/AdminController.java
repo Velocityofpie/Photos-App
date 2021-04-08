@@ -1,15 +1,16 @@
 package controller;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Optional;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.text.Text;
 import model.User;
 
@@ -24,24 +25,128 @@ public class AdminController {
     @FXML
     ListView<User> lvUsers; //list of users
     private ObservableList<User> obsList; //observable list that stores strings for everything in listview
+    private ArrayList<User> alUser;
 
     public void start(ArrayList<User> users) {
 
-
+        alUser = users;
         obsList = FXCollections.observableArrayList(users);
         lvUsers.setItems(obsList);
+
+        // set listener for the items
+        lvUsers.getSelectionModel().selectedIndexProperty().addListener((obsList, oldVal, newVal) -> showItem());
     }
 
-    public void convert (ActionEvent e) {
+    //puts the values of the selected item into the textfields
+    private void showItem() {
+
+        //get the song from the obsList
+        int index = lvUsers.getSelectionModel().getSelectedIndex();
+        User s = obsList.get(index);
+
+        //put necessary values in the text field
+        txtUsername.setText(s.getUsername());
+
+    }
+
+    public void convert (ActionEvent e) throws IOException {
 
         Button b = (Button) e.getSource();
         if (b == btnAdd) {
             String addUsername = txtUsername.getText();
             User addThisUser = new User(addUsername, "");
-            obsList.add(addThisUser);
-            lvUsers.setItems(obsList);
+            add(addThisUser);
+        } else if (b == btnDelete) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirmation Dialog");
+            alert.setHeaderText("Need Confirmation");
+            alert.setContentText("Are you ok with this?");
+
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK){
+                delete();
+            } else {
+                // ... user chose CANCEL or closed the dialog
+            }
+        } else if (b == btnEdit) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirmation Dialog");
+            alert.setHeaderText("Need Confirmation");
+            alert.setContentText("Are you ok with this?");
+
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK){
+                edit();
+            } else {
+                // ... user chose CANCEL or closed the dialog
+            }
         }
     }
+
+    public void storeUsers (ArrayList<User> u, int i) throws IOException {
+        FileOutputStream file = new FileOutputStream("Photos62/data/data.txt");
+        ObjectOutputStream output = new ObjectOutputStream(file);
+        if (i == 0) {
+            User a = new User("admin", "admin");
+            output.writeObject(a);
+            output.writeObject(new User("stock", "stock"));
+        } else {
+            for (User curr: u) {
+                output.writeObject(curr);
+            }
+        }
+
+
+
+        output.close();
+        file.close();
+    }
+
+
+
+    private void add(User u) throws IOException {
+        obsList.add(u);
+        alUser.add(u);
+        lvUsers.setItems(obsList);
+
+        //store data
+        storeUsers(alUser, 1);
+    }
+
+    private void edit() throws IOException {
+        int index = lvUsers.getSelectionModel().getSelectedIndex();
+        User selectedUser = lvUsers.getSelectionModel().getSelectedItem();
+        User editedUser = new User(txtUsername.getText(), "");
+        //findspot
+        //if it returns -1 then that user already exists
+
+        delete();
+        add(editedUser);
+
+    }
+
+    private void delete() throws IOException {
+        int index = lvUsers.getSelectionModel().getSelectedIndex();
+        obsList.remove(index);
+        alUser.remove(index);
+
+        int n = obsList.size();
+
+        //if we deleted the last item, make sure the new last item is selected
+        //if not, make sure the next item is selected, which is now at the removed index anyways
+        if (index == n) {
+            lvUsers.getSelectionModel().select(index-1);
+
+        } else if (obsList.isEmpty()) {
+            //don't select anything since the list is empty. wait for a new add to select
+        } else {
+            lvUsers.getSelectionModel().select(index);
+        }
+        //store data
+        storeUsers(alUser, 1);
+    }
+
+
     //    public void convert(ActionEvent e) {
 //
 //        Button b = (Button)e.getSource();

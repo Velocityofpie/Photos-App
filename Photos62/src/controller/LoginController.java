@@ -30,12 +30,28 @@ public class LoginController {
 
 
     public void start(Stage stage) {
-
+/*
         try {
             writeUsers(null, 0);
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+
+ */
+
+    }
+
+    private void populate() {
+        User a = new User("admin", "admin");
+        User b = new User("stock", "stock");
+        try {
+            users.add(a);
+            users.add(b);
+        } catch (Exception e) {
+
+        }
+
     }
 
     public void writeUsers (ArrayList<User> u, int i) throws IOException {
@@ -60,7 +76,8 @@ public class LoginController {
     public ArrayList<User> readUsers() throws IOException, ClassNotFoundException {
 
         ArrayList<User> out = new ArrayList<User>();
-        FileInputStream fis = new FileInputStream("Photos62/data/data.txt");
+        File file = new File("Photos62/data/data.txt");
+        FileInputStream fis = new FileInputStream(file);
         ObjectInputStream ois = new ObjectInputStream(fis);
 
         boolean cont = true;
@@ -77,6 +94,7 @@ public class LoginController {
                 break;
             }
         }
+
 
         ois.close();
         fis.close();
