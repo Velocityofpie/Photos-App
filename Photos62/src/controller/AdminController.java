@@ -105,6 +105,19 @@ public class AdminController {
 
 
     private void add(User u) throws IOException {
+
+        String name = txtUsername.getText();
+        int n = obsList.size();
+        for (int i = 0; i < n; i++) {
+            User curr = obsList.get(i);
+            String currUsername = curr.getUsername();
+            if (currUsername.equals(name)) {
+                duplicateUserAlert();
+                return;
+            }
+
+        }
+
         obsList.add(u);
         alUser.add(u);
         lvUsers.setItems(obsList);
@@ -144,6 +157,18 @@ public class AdminController {
         }
         //store data
         storeUsers(alUser, 1);
+    }
+
+    private void duplicateUserAlert() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Error");
+        alert.setHeaderText(
+                "That user is already in the library.");
+
+        String content = "Please change the name of the user";
+
+        alert.setContentText(content);
+        alert.showAndWait();
     }
 
 
