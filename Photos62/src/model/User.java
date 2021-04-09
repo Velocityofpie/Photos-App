@@ -1,6 +1,8 @@
 package model;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 public class User implements Serializable {
@@ -26,22 +28,69 @@ public class User implements Serializable {
         return username;
     }
 
+    public String getPassword() {
+        return password;
+
+    }
+    public void changePassword(String password) {
+        this.password = password;
+    }
 
     public ArrayList<Album> getAlbums() {
         return albums;
     }
-
 
     public String toString() {
         return this.username;
     }
 
 
-    public boolean equals(User other) {
+    public void addAlbum(String albumName) {
+        albums.add(new Album(albumName));
+    }
+    public void addAlbum(Album a) {
+        albums.add(a);
+    }
+    public void addPhotoToAlbum(Photo p, int albumIndex) {
+        albums.get(albumIndex).addPhoto(p);
+    }
+    public boolean albumNameExists(String albumName) {
+        for (Album a: albums)
+            if (a.getName().toLowerCase().equals(albumName.trim().toLowerCase()))
+                return true;
+
+        return false;
+    }
+
+    public int getAlbumIndexByAlbum(Album a) {
+        for (int i = 0; i < albums.size(); i++)
+            if (albums.get(i).getName().equals(a.getName()))
+                return i;
+        return -1;
+    }
+
+
+    public Album getAlbumByName(String name) {
+        for(Album a : albums)
+        {
+            if(a.getName().equals(name))
+                return a;
+        }
+        return null;
+    }
+
+
+    public void removeAlbum(Album album)
+    {
+        albums.remove(album);
+    }
+
+        public boolean equals(User other) {
         return this.username.equals(other.username);
     }
 
     public String AFileString() {
         return this.username + "\n" + this.password + "\n" ;
     }
+
 }
