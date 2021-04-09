@@ -30,7 +30,7 @@
          </font>
       </Text>
 
-      <Label layoutX="473.0" layoutY="386.0" prefHeight="17.0" prefWidth="61.0" text="New User?" />
-      <Button fx:id="signupButton" layoutX="534.0" layoutY="382.0" mnemonicParsing="false" onAction="#handleLoginButton" style="-fx-background-color: transparent;" text="SignUp" />
+      <!--Label layoutX="473.0" layoutY="386.0" prefHeight="17.0" prefWidth="61.0" text="New User?" / -->
+      <!--Button fx:id="signupButton" layoutX="534.0" layoutY="382.0" mnemonicParsing="false" onAction="#handleLoginButton" style="-fx-background-color: transparent;" text="SignUp" /-->
    </children>
 </AnchorPane>
