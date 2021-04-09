@@ -14,14 +14,16 @@ public class ImagesSerial {
 
 
     public void setImage(Image image) {
-        width = ((int) image.getWidth());
         height = ((int) image.getHeight());
+        width = ((int) image.getWidth());
         pixels = new int[width][height];
 
         PixelReader r = image.getPixelReader();
-        for (int i = 0; i < width; i++)
-            for (int j = 0; j < height; j++)
+        for (int i = 0; i < width; i++) {
+            for (int j = 0; j < height; j++){
                 pixels[i][j] = r.getArgb(i, j);
+            }
+        }
     }
 
 
@@ -36,18 +38,17 @@ public class ImagesSerial {
         return image;
     }
 
+    public int[][] getPixels() {
+        return pixels;
+    }
+    public int getHeight() {
+        return height;
+    }
 
     public int getWidth() {
         return width;
     }
 
-    public int getHeight() {
-        return height;
-    }
-
-    public int[][] getPixels() {
-        return pixels;
-    }
 
 
     public boolean equals(ImagesSerial si) {
