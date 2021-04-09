@@ -13,7 +13,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.User;
@@ -145,7 +144,7 @@ public class LoginController {
                     stage.setScene(scene);
                     stage.show();
                 }else {
-                    loader = new FXMLLoader(getClass().getResource("/view/Interface.fxml"));
+                    loader = new FXMLLoader(getClass().getResource("/view/UserInterface.fxml"));
                     parent = (Parent) loader.load();
                     UserController controller = loader.<UserController>getController();
                     Scene scene = new Scene(parent);
