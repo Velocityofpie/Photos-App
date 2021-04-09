@@ -73,6 +73,10 @@ public class UserController {
     }
 
     public void start(User user, ArrayList<User> users) {
+//        this.user = user;
+//        this.users = users;
+//        albums.setItems(FXCollections.observableArrayList(user.getAlbums()));
+//        albums.getSelectionModel().select(0);
 
 
     }
