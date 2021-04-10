@@ -75,7 +75,7 @@
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button fx:id="LogoutButtton" mnemonicParsing="false" onAction="#handleLogOutButton" prefHeight="120.0" prefWidth="460.0" style="-fx-background-color: transparent;" text="Logout" textFill="WHITE">
+            <Button fx:id="LogoutButtton" mnemonicParsing="false" onAction="#convertLogOutButton" prefHeight="120.0" prefWidth="460.0" style="-fx-background-color: transparent;" text="Logout" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>

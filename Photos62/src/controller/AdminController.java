@@ -53,7 +53,7 @@ public class AdminController {
         txtUsername.setText(s.getUsername());
 
     }
-    public void handleLogOutButton(ActionEvent event) {
+    public void convertLogOutButton(ActionEvent event) {
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Login.fxml"));

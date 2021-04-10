@@ -4,19 +4,20 @@ import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import model.Photo;
+import model.Tag;
 import model.User;
 import model.Album;
 import photos.Listener;
 import javafx.scene.input.MouseEvent;
+import model.photoloader;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -36,17 +37,20 @@ public class UserController {
 
     @FXML
     private Button AblumButton,LogoutButton, QuitButton;
+
     @FXML
-    private ListView<Album> albums;
+    private ListView<Album> AlbumListview;
+
+    ListView<Photo> photos;
     private ArrayList<User> users;
     private User user;
+    private Album selectedAlbum;
 
-    private List<Photo> selectedphoto = new ArrayList<>();
+    private ListView<Photo> SelectedPhoto;
     private Image image;
     private Listener myListener;
     private Label Username;
-
-
+    private ListView<Tag> tags;
 
 
     private void click(MouseEvent mouseEvent) {
@@ -56,7 +60,7 @@ public class UserController {
         public void setData(Album photo, Listener Listener) {
 
     }
-    public void handleLogOutButton(ActionEvent event) {
+    public void convertLogOutButton(ActionEvent event) {
 
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Login.fxml"));
@@ -72,11 +76,32 @@ public class UserController {
 
     }
 
-    public void start(User user, ArrayList<User> users) {
-//        this.user = user;
-//        this.users = users;
-//        albums.setItems(FXCollections.observableArrayList(user.getAlbums()));
-//        albums.getSelectionModel().select(0);
+    public void start( ArrayList<User> users, User user,Album selectedAlbum) {
+        this.users = users;
+        this.user = user;
+        this.selectedAlbum = selectedAlbum;
+
+
+        photos.setCellFactory(new Callback<ListView<Photo>, ListCell<Photo>>() {
+            @Override
+            public ListCell<Photo> call(ListView<Photo> photoList) {
+                return new photoloader();
+            }
+        });
+
+        photos.setItems(FXCollections.observableArrayList(selectedAlbum.getPhotos()));
+        photos.getSelectionModel().select(0);
+
+
+        ArrayList<String> albumnames = new ArrayList<String>();
+        albumnames.add(0, " ");
+        ArrayList<Album> allalbums = user.getAlbums();
+        for (Album curralbum : allalbums) {
+            albumnames.add(curralbum.getName());
+        }
+
+
+
 
 
     }

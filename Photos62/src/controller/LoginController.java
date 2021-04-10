@@ -1,6 +1,8 @@
 package controller;
 import java.io.*;
 import java.io.FileInputStream;
+
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import java.io.ObjectInputStream;
 import java.io.IOException;
@@ -13,8 +15,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import model.Album;
 import model.User;
 
 
@@ -22,7 +26,7 @@ public class LoginController {
 
     @FXML private Button loginButton,signupButton ;
     @FXML private TextField usernameTextField;
-
+    private ListView<Album> albums;
 
     ArrayList<User> users;
     Boolean validUser = false;
@@ -129,8 +133,8 @@ public class LoginController {
                     user = currentUser;
                 }
             }
-
-
+            albums.setItems(FXCollections.observableArrayList(user.getAlbums()));
+            Album selectedAlbum = albums.getSelectionModel().getSelectedItem();
             if (username.equals("admin") || user != null   ) {
                 FXMLLoader loader;
                 Parent parent;
@@ -149,7 +153,7 @@ public class LoginController {
                     UserController controller = loader.<UserController>getController();
                     Scene scene = new Scene(parent);
                     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                    controller.start(user, users);
+                    controller.start(users, user,selectedAlbum );
                     stage.setScene(scene);
                     stage.show();
                 }
