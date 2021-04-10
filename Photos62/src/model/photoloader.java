@@ -59,24 +59,5 @@ public class photoloader  extends ListCell<Photo> {
         setGraphic(anchorPane);
     }
 
-    @Override
 
-    public void updateItem(Photo photo, boolean empty) {
-        super.updateItem(photo, empty);
-        setText(null);
-        if (photo == null) {
-            imageView.setImage(null);
-            nameLabel.setText("");
-            nameText.setText("");
-            captionLabel.setText("");
-            captionText.setText("");
-        }
-        if (photo != null) {
-            imageView.setImage(photo.getImage());
-            nameLabel.setText("Name: ");
-            nameText.setText(photo.getName());
-            captionLabel.setText("Caption: ");
-            captionText.setText(photo.getCaption());
-        }
-    }
 }
