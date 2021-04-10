@@ -16,9 +16,7 @@ public class photoloader  extends ListCell<Photo> {
     ImageView imageView = new ImageView();
     Label captionLabel = new Label(), captionText = new Label(), nameLabel = new Label(), nameText = new Label();
 
-    /**
-     * Constructor
-     */
+
     public photoloader() {
         super();
 
