@@ -60,9 +60,7 @@ public class photoloader  extends ListCell<Photo> {
     }
 
     @Override
-    /**
-     * Updates item
-     */
+
     public void updateItem(Photo photo, boolean empty) {
         super.updateItem(photo, empty);
         setText(null);
