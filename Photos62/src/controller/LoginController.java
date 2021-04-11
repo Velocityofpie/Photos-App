@@ -20,6 +20,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.Album;
 import model.User;
+import javafx.scene.control.ScrollPane;
 
 
 public class LoginController {
@@ -133,8 +134,7 @@ public class LoginController {
                     user = currentUser;
                 }
             }
-            //albums.setItems(FXCollections.observableArrayList(user.getAlbums()));
-            //Album selectedAlbum = albums.getSelectionModel().getSelectedItem();
+
             if (username.equals("admin") || user != null   ) {
                 FXMLLoader loader;
                 Parent parent;
@@ -142,18 +142,23 @@ public class LoginController {
                     loader = new FXMLLoader(getClass().getResource("/view/Admin.fxml"));
                     parent = (Parent) loader.load();
                     AdminController controller = loader.<AdminController>getController();
-                    Scene scene = new Scene(parent);
+                    ScrollPane scroll = new ScrollPane(parent);
+                    Scene scene = new Scene(scroll);
                     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                     controller.start(users);
                     stage.setScene(scene);
                     stage.show();
                 }else {
+                    albums.setItems(FXCollections.observableArrayList(user.getAlbums()));
+                    Album selectedAlbum = albums.getSelectionModel().getSelectedItem();
                     loader = new FXMLLoader(getClass().getResource("/view/UserInterface.fxml"));
                     parent = (Parent) loader.load();
                     UserController controller = loader.<UserController>getController();
-                    Scene scene = new Scene(parent);
+                    ScrollPane scroll = new ScrollPane(parent);
+
+                    Scene scene = new Scene(scroll);
                     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                    controller.start(users, user );
+                    controller.start(users, user,selectedAlbum );
                     stage.setScene(scene);
                     stage.show();
                 }
