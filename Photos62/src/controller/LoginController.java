@@ -149,8 +149,17 @@ public class LoginController {
                     stage.setScene(scene);
                     stage.show();
                 }else {
-                    albums.setItems(FXCollections.observableArrayList(user.getAlbums()));
-                    Album selectedAlbum = albums.getSelectionModel().getSelectedItem();
+
+                    if (username.equals("stock")) {
+                        if (!(user.albumNameExists("stock"))) {
+                            user.addAlbum("stock");
+                            System.out.println("added stock");
+                            //populate the stock album
+                        }
+                    }
+
+                    //albums.setItems(FXCollections.observableArrayList(user.getAlbums()));
+                    //Album selectedAlbum = albums.getSelectionModel().getSelectedItem();
                     loader = new FXMLLoader(getClass().getResource("/view/UserInterface.fxml"));
                     parent = (Parent) loader.load();
                     UserController controller = loader.<UserController>getController();
@@ -158,7 +167,7 @@ public class LoginController {
 
                     Scene scene = new Scene(scroll);
                     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                    controller.start(users, user,selectedAlbum );
+                    controller.start(user);
                     stage.setScene(scene);
                     stage.show();
                 }

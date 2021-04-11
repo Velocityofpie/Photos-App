@@ -76,11 +76,12 @@ public class UserController {
 
     }
 
-    public void start( ArrayList<User> users, User user,Album selectedAlbum) {
-        this.users = users;
+    public void start( User user) {
+        System.out.println("UserController opened");
         this.user = user;
-        this.selectedAlbum = selectedAlbum;
 
+        AlbumListview.setItems(FXCollections.observableArrayList(user.getAlbums()));
+        Album selectedAlbum = AlbumListview.getSelectionModel().getSelectedItem();
 
         photos.setCellFactory(new Callback<ListView<Photo>, ListCell<Photo>>() {
             @Override
