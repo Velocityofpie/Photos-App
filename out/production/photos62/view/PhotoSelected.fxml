@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox layoutX="-8.0" prefHeight="900.0" prefWidth="399.0" style="-fx-background-color: #212121;">
+         <children>
+            <Pane prefHeight="200.0" prefWidth="200.0">
+               <children>
+
+                  <Text fill="WHITE" layoutX="164.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Photos">
+                     <font>
+                        <Font size="38.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+            <Button fx:id="AddPhotoButton" mnemonicParsing="false" prefHeight="120.0" prefWidth="460.0" style="-fx-background-color: transparent;" text="Add Photo" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="DeletePhotoButton" mnemonicParsing="false" prefHeight="120.0" prefWidth="460.0" style="-fx-background-color: transparent;" text="Delete Photo" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="HomeButton" mnemonicParsing="false" prefHeight="120.0" prefWidth="460.0" style="-fx-background-color: transparent;" text="Home" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="BacktoAlbumButton" mnemonicParsing="false" prefHeight="120.0" prefWidth="460.0" style="-fx-background-color: transparent;" text="Back to Album" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="120.0" prefWidth="460.0" style="-fx-background-color: transparent;" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="LogoutButton" mnemonicParsing="false" prefHeight="120.0" prefWidth="460.0" style="-fx-background-color: transparent;" text="Logout" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </VBox>
+      <ButtonBar prefHeight="40.0" prefWidth="200.0" />
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="569.0" layoutY="427.0" pickOnBounds="true" preserveRatio="true" />
+      <HBox layoutX="1141.0" layoutY="20.0" prefHeight="40.0" prefWidth="245.0">
+         <children>
+
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Username" wrappingWidth="140.13671875">
+               <font>
+                  <Font size="28.0" />
+               </font>
+            </Text>
+            <Button fx:id="QuitButton" mnemonicParsing="false" prefHeight="37.0" prefWidth="61.0" style="-fx-background-color: #212121;" text="quit" textFill="WHITE" />
+         </children>
+      </HBox>
+      <HBox layoutX="493.0" layoutY="91.0" prefHeight="471.0" prefWidth="813.0">
+         <children>
+            <ImageView fitHeight="429.0" fitWidth="808.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@" />
+               </image>
+            </ImageView>
+         </children>
+      </HBox>
+      <Text layoutX="480.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image Viewer">
+         <font>
+            <Font size="37.0" />
+         </font>
+      </Text>
+      <TextArea fx:id="CaptionTextArea" layoutX="994.0" layoutY="641.0" prefHeight="227.0" prefWidth="255.0" />
+      <Text fx:id="DateText" layoutX="492.0" layoutY="569.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date: April 2, 2021" wrappingWidth="153.3193359375">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text fx:id="TimeText" layoutX="679.0" layoutY="569.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time: 1:00 Pm" wrappingWidth="127.3193359375">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="994.0" layoutY="627.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Caption" wrappingWidth="93.85714340209961">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Text>
+      <ListView fx:id="ListoftagsListview" layoutX="480.0" layoutY="641.0" prefHeight="227.0" prefWidth="245.0" />
+      <Text layoutX="731.0" layoutY="661.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tag:" wrappingWidth="85.13671875">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Text>
+      <TextField fx:id="TagTextfield" layoutX="735.0" layoutY="678.0" prefHeight="25.0" prefWidth="222.0" promptText="Enter Tag" />
+      <Button fx:id="UpdateCaptionButton" layoutX="1267.0" layoutY="641.0" mnemonicParsing="false" style="-fx-background-color: #212121;" text="Update" textFill="WHITE" />
+      <Button fx:id="BackButton" layoutX="406.0" layoutY="277.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="66.0" style="-fx-background-color: #212121;" text="←" textFill="WHITE">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Button>
+      <Button fx:id="FowardButton" layoutX="1314.0" layoutY="277.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="66.0" style="-fx-background-color: #212121;" text="→" textFill="WHITE">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Button>
+      <Text layoutX="480.0" layoutY="626.0" strokeType="OUTSIDE" strokeWidth="0.0" text="List of tags" wrappingWidth="127.3193359375">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Text>
+      <Button fx:id="MoveToButton" layoutX="1099.0" layoutY="550.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="85.0" style="-fx-background-color: #212121;" text="Move To →" textFill="WHITE" />
+      <Button fx:id="CopyToButton" layoutX="1209.0" layoutY="550.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="85.0" style="-fx-background-color: #212121;" text="Copy to →" textFill="WHITE" />
+      <Text layoutX="719.0" layoutY="734.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" Tag Value:" wrappingWidth="127.3193359375">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Text>
+      <TextField fx:id="TagValueTextfield" layoutX="735.0" layoutY="742.0" prefHeight="25.0" prefWidth="222.0" promptText="Enter Tage Value" />
+      <ButtonBar layoutX="719.0" layoutY="815.0" prefHeight="40.0" prefWidth="231.0">
+        <buttons>
+            <Button fx:id="AddTagButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="55.0" style="-fx-background-color: #212121;" text="Add" textFill="WHITE" />
+            <Button fx:id="UpdateTagButton" minWidth="61.0" mnemonicParsing="false" prefHeight="22.0" style="-fx-background-color: #212121;" text="Update" textFill="WHITE" />
+            <Button fx:id="DeleteButton" mnemonicParsing="false" style="-fx-background-color: #212121;" text="Delete" textFill="WHITE" />
+        </buttons>
+      </ButtonBar>
+   </children>
+</AnchorPane>
