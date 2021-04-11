@@ -76,7 +76,7 @@ public class UserController {
 
     }
 
-    public void start( ArrayList<User> users, User user,Album selectedAlbum) {
+    public void start( ArrayList<User> users, User user) {
         this.users = users;
         this.user = user;
         this.selectedAlbum = selectedAlbum;

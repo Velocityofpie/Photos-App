@@ -133,8 +133,8 @@ public class LoginController {
                     user = currentUser;
                 }
             }
-            albums.setItems(FXCollections.observableArrayList(user.getAlbums()));
-            Album selectedAlbum = albums.getSelectionModel().getSelectedItem();
+            //albums.setItems(FXCollections.observableArrayList(user.getAlbums()));
+            //Album selectedAlbum = albums.getSelectionModel().getSelectedItem();
             if (username.equals("admin") || user != null   ) {
                 FXMLLoader loader;
                 Parent parent;
@@ -153,7 +153,7 @@ public class LoginController {
                     UserController controller = loader.<UserController>getController();
                     Scene scene = new Scene(parent);
                     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                    controller.start(users, user,selectedAlbum );
+                    controller.start(users, user );
                     stage.setScene(scene);
                     stage.show();
                 }
