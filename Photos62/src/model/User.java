@@ -28,14 +28,6 @@ public class User implements Serializable {
         return username;
     }
 
-    public String getPassword() {
-        return password;
-
-    }
-    public void changePassword(String password) {
-        this.password = password;
-    }
-
     public ArrayList<Album> getAlbums() {
         return albums;
     }

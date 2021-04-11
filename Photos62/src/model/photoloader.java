@@ -11,7 +11,7 @@ import javafx.scene.text.FontWeight;
 
 public class photoloader  extends ListCell<Photo> {
 
-    AnchorPane anchorPane = new AnchorPane();
+    AnchorPane imageloader = new AnchorPane();
     StackPane stackPane = new StackPane();
     ImageView imageView = new ImageView();
     Label captionLabel = new Label(), captionText = new Label(), nameLabel = new Label(), nameText = new Label();
@@ -48,13 +48,13 @@ public class photoloader  extends ListCell<Photo> {
         AnchorPane.setLeftAnchor(captionText, 105.0);
         AnchorPane.setTopAnchor(captionText, 24.0);
 
-        anchorPane.getChildren().addAll(stackPane, nameLabel, nameText, captionLabel, captionText);
+        imageloader.getChildren().addAll(stackPane, nameLabel, nameText, captionLabel, captionText);
 
-        anchorPane.setPrefHeight(55.0);
+        imageloader.setPrefHeight(55.0);
 
         captionLabel.setMaxWidth(300.0);
 
-        setGraphic(anchorPane);
+        setGraphic(imageloader);
     }
 
 
