@@ -81,10 +81,11 @@ public class AdminController {
             alert.setTitle("Confirmation Dialog");
             alert.setHeaderText("Need Confirmation");
             alert.setContentText("Are you ok with this?");
+            int index = lvUsers.getSelectionModel().getSelectedIndex();
 
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK){
-                delete();
+                delete(index);
             } else {
                 // ... user chose CANCEL or closed the dialog
             }
@@ -127,15 +128,10 @@ public class AdminController {
     private void add(User u) throws IOException {
 
         String name = txtUsername.getText();
-        int n = obsList.size();
-        for (int i = 0; i < n; i++) {
-            User curr = obsList.get(i);
-            String currUsername = curr.getUsername();
-            if (currUsername.equals(name)) {
-                duplicateUserAlert();
-                return;
-            }
 
+        int c = checkDuplicateName(u);
+        if (c <0) {
+            return;
         }
 
         obsList.add(u);
@@ -152,14 +148,19 @@ public class AdminController {
         User editedUser = new User(txtUsername.getText(), "");
         //findspot
         //if it returns -1 then that user already exists
+        int i = checkDuplicateName(editedUser);
+        if (i < 0) {
+            duplicateUserAlert();
+            return;
+        }
 
-        delete();
+        delete(index);
         add(editedUser);
 
     }
 
-    private void delete() throws IOException {
-        int index = lvUsers.getSelectionModel().getSelectedIndex();
+    private void delete(int index) throws IOException {
+
         obsList.remove(index);
         alUser.remove(index);
 
@@ -177,6 +178,19 @@ public class AdminController {
         }
         //store data
         storeUsers(alUser, 1);
+    }
+
+    private int checkDuplicateName(User u) {
+
+        String name = u.getUsername();
+        for (int i = 0; i<obsList.size(); i++) {
+            User ui = obsList.get(i);
+            if (name.equals(ui.getUsername())) {
+                return -1;
+            }
+        }
+
+        return 1;
     }
 
     private void duplicateUserAlert() {
