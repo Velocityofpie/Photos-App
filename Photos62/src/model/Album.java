@@ -57,7 +57,7 @@ public class Album implements Serializable{
     }
 
     public String toString() {
-        String result = "NAME: " + name + "\nPHOTO COUNT: " + photos.size() + "\nDATES: " + getEarliestDate() + " - " + getLatestDate();
+        String result = "Album Name : " + name + "\nNumber of photos: " + photos.size() + "\nDATES: " + getEarliestDate() + " - " + getLatestDate();
         return result;
     }
 }
