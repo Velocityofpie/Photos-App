@@ -28,6 +28,7 @@ import javafx.scene.layout.VBox;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import javafx.scene.control.ScrollPane;
 
 import photos.Listener;
 
@@ -82,7 +83,8 @@ public class UserController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/AlbumSelected.fxml"));
             Parent parent = (Parent) loader.load();
             AlbumviewerController controller = loader.<AlbumviewerController>getController();
-            Scene scene = new Scene(parent);
+            ScrollPane scroll = new ScrollPane(parent);
+            Scene scene = new Scene(scroll);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
             stage.show();

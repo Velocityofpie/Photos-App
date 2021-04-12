@@ -19,7 +19,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.Stage;
 import model.User;
+import javafx.scene.control.ScrollPane;
 
 public class AlbumviewerController {
     @FXML private Button AddphotoButton, DeletePhotoButton,EditphotoButton;
@@ -63,5 +65,35 @@ public class AlbumviewerController {
     @FXML
     private TextField SearchTagTextField;
 
+    public void convertLogOutButton(ActionEvent event) {
 
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Login.fxml"));
+            Parent parent = (Parent) loader.load();
+            LoginController controller = loader.<LoginController>getController();
+            Scene scene = new Scene(parent);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+
+    }
+
+    public void convertBacktoalbumButton(ActionEvent event) {
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/UserInterface.fxml"));
+            Parent parent = (Parent) loader.load();
+            UserController controller = loader.<UserController>getController();
+            Scene scene = new Scene(parent);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+
+    }
 }
