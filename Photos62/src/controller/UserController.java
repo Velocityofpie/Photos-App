@@ -15,7 +15,8 @@ import photos.Listener;
 import javafx.scene.input.MouseEvent;
 import model.photoloader;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
+import java.util.*;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.image.Image;
@@ -27,13 +28,12 @@ import javafx.scene.layout.VBox;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
+
 import photos.Listener;
 
 public class UserController {
     @FXML
-    private Button AddAlbumAlbum, DeleteAlbumButton,EditAlbumButton;
+    private Button AddAlbumButton, DeleteAlbumButton,EditAlbumButton;
 
     @FXML
     private Button AblumButton,LogoutButton, QuitButton;
@@ -97,7 +97,7 @@ public class UserController {
         this.user = user;
 
         AlbumListview.setItems(FXCollections.observableArrayList(user.getAlbums()));
-        Album selectedAlbum = AlbumListview.getSelectionModel().getSelectedItem();
+        selectedAlbum = AlbumListview.getSelectionModel().getSelectedItem();
 
         /*
         photos.setCellFactory(new Callback<ListView<Photo>, ListCell<Photo>>() {
@@ -127,5 +127,42 @@ public class UserController {
     }
 
 
+    public void convert(ActionEvent actionEvent) {
+        Button b = (Button) actionEvent.getSource();
+        if (b == DeleteAlbumButton) {
 
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirmation Dialog");
+            alert.setHeaderText("Need Confirmation");
+            alert.setContentText("Are you ok with this?");
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK){
+                Album deleteThis = AlbumListview.getSelectionModel().getSelectedItem();
+                user.removeAlbum(deleteThis);
+
+                //update listview
+                AlbumListview.setItems(FXCollections.observableArrayList(user.getAlbums()));
+            } else {
+                // ... user chose CANCEL or closed the dialog
+            }
+
+        } else if (b == EditAlbumButton) {
+
+        }
+    }
+
+    public void create(ActionEvent e) {
+        //switch to new album scene
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Newalbum.fxml"));
+            Parent parent = (Parent) loader.load();
+            NewAlbumController controller = loader.<NewAlbumController>getController();
+            Scene scene = new Scene(parent);
+            Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+    }
 }
