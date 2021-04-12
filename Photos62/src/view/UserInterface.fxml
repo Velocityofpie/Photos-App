@@ -24,17 +24,17 @@
                   </Text>
                </children>
             </Pane>
-            <Button fx:id="SelectedPhoto" mnemonicParsing="false" prefHeight="120.0" prefWidth="460.0" style="-fx-background-color: transparent;" text="Add Album" textFill="WHITE">
+            <Button fx:id="AddAlbumButton" mnemonicParsing="false" onAction="#convert" prefHeight="120.0" prefWidth="460.0" style="-fx-background-color: transparent;" text="Add Album" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button fx:id="DeleteAlbumButton" mnemonicParsing="false" prefHeight="120.0" prefWidth="460.0" style="-fx-background-color: transparent;" text="Delete Album" textFill="WHITE">
+            <Button fx:id="DeleteAlbumButton" mnemonicParsing="false" onAction="#convert" prefHeight="120.0" prefWidth="460.0" style="-fx-background-color: transparent;" text="Delete Album" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button fx:id="EditAlbumButton" mnemonicParsing="false" prefHeight="120.0" prefWidth="460.0" style="-fx-background-color: transparent;" text="Edit Album" textFill="WHITE">
+            <Button fx:id="EditAlbumButton" mnemonicParsing="false" onAction="#convert" prefHeight="120.0" prefWidth="460.0" style="-fx-background-color: transparent;" text="Edit Album" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>

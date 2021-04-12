@@ -33,7 +33,7 @@ import photos.Listener;
 
 public class UserController {
     @FXML
-    private Button AddAlbumAlbum, DeleteAlbumButton,EditAlbumButton;
+    private Button AddAlbumButton, DeleteAlbumButton,EditAlbumButton;
 
     @FXML
     private Button AblumButton,LogoutButton, QuitButton;
@@ -81,7 +81,7 @@ public class UserController {
         this.user = user;
 
         AlbumListview.setItems(FXCollections.observableArrayList(user.getAlbums()));
-        Album selectedAlbum = AlbumListview.getSelectionModel().getSelectedItem();
+        selectedAlbum = AlbumListview.getSelectionModel().getSelectedItem();
 
         /*
         photos.setCellFactory(new Callback<ListView<Photo>, ListCell<Photo>>() {
@@ -111,5 +111,18 @@ public class UserController {
     }
 
 
+    public void convert(ActionEvent actionEvent) {
+        Button b = (Button) actionEvent.getSource();
+        if (b == AddAlbumButton) {
 
+
+
+        } else if (b == DeleteAlbumButton) {
+            Album deleteThis = AlbumListview.getSelectionModel().getSelectedItem();
+            user.removeAlbum(deleteThis);
+
+            //update listview
+            AlbumListview.setItems(FXCollections.observableArrayList(user.getAlbums()));
+        }
+    }
 }
