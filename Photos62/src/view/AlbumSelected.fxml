@@ -16,7 +16,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AlbumviewerController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AlbumviewerController">
    <children>
       <VBox layoutX="-8.0" prefHeight="900.0" prefWidth="399.0" style="-fx-background-color: #212121;">
          <children>
@@ -73,7 +73,7 @@
                <children>
                   <ImageView fitHeight="118.0" fitWidth="200.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@" />
+
                      </image>
                   </ImageView>
                   <Text layoutX="14.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Album Name " wrappingWidth="110.13671875" />
@@ -100,7 +100,7 @@
                <children>
                   <ImageView fx:id="AlbumImage" fitHeight="122.0" fitWidth="191.0" layoutX="8.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@" />
+
                      </image>
                   </ImageView>
                </children>
@@ -123,7 +123,7 @@
                <children>
                   <ImageView fx:id="SelectedImage" fitHeight="141.0" fitWidth="210.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@" />
+
                      </image>
                   </ImageView>
                </children>

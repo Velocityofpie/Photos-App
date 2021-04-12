@@ -46,7 +46,8 @@ public class UserController {
     private User user;
     private Album selectedAlbum;
 
-    private ListView<Photo> SelectedPhoto;
+    //@FXML private ListView<Photo> SelectedPhoto;
+
     private Image image;
     private Listener myListener;
     private Label Username;
@@ -66,6 +67,21 @@ public class UserController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Login.fxml"));
             Parent parent = (Parent) loader.load();
             LoginController controller = loader.<LoginController>getController();
+            Scene scene = new Scene(parent);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+
+    }
+    public void convertAlbum(ActionEvent event) {
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/AlbumSelected.fxml"));
+            Parent parent = (Parent) loader.load();
+            AlbumviewerController controller = loader.<AlbumviewerController>getController();
             Scene scene = new Scene(parent);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
