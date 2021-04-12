@@ -159,6 +159,7 @@ public class UserController {
             NewAlbumController controller = loader.<NewAlbumController>getController();
             Scene scene = new Scene(parent);
             Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+            controller.start(user);
             stage.setScene(scene);
             stage.show();
         } catch (Exception exception) {

@@ -47,10 +47,11 @@ public class User implements Serializable {
         albums.get(albumIndex).addPhoto(p);
     }
     public boolean albumNameExists(String albumName) {
-        for (Album a: albums)
-            if (a.getName().toLowerCase().equals(albumName.trim().toLowerCase()))
+        for (Album a: albums) {
+            if (a.getName().equalsIgnoreCase(albumName)) {
                 return true;
-
+            }
+        }
         return false;
     }
 
