@@ -129,11 +129,7 @@ public class UserController {
 
     public void convert(ActionEvent actionEvent) {
         Button b = (Button) actionEvent.getSource();
-        if (b == AddAlbumButton) {
-
-
-
-        } else if (b == DeleteAlbumButton) {
+        if (b == DeleteAlbumButton) {
 
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Confirmation Dialog");
@@ -150,6 +146,23 @@ public class UserController {
                 // ... user chose CANCEL or closed the dialog
             }
 
+        } else if (b == EditAlbumButton) {
+
+        }
+    }
+
+    public void create(ActionEvent e) {
+        //switch to new album scene
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Newalbum.fxml"));
+            Parent parent = (Parent) loader.load();
+            NewAlbumController controller = loader.<NewAlbumController>getController();
+            Scene scene = new Scene(parent);
+            Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception exception) {
+            exception.printStackTrace();
         }
     }
 }
