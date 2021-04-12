@@ -168,6 +168,12 @@ public class LoginController {
                             stockAlbum.addPhoto(p2);
                             stockAlbum.addPhoto(p3);
 
+                            //adding a second album
+                            user.addAlbum("other");
+                            Photo o1 = new Photo("o1", Calendar.getInstance(), "Photos62/data/stockuser/Stock1.png");
+                            Album otherAlbum = user.getAlbumByName("other");
+                            otherAlbum.addPhoto(o1);
+
                         }
                     }
 
