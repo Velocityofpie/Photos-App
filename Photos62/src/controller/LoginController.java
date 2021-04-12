@@ -160,9 +160,13 @@ public class LoginController {
                             System.out.println("added stock");
                             //populate the stock album
                             Photo p1 = new Photo("p1", Calendar.getInstance(), "Photos62/data/stockuser/Stock1.png");
+                            Photo p2 = new Photo("p2", Calendar.getInstance(), "Photos62/data/stockuser/Stock2.jpg");
+                            Photo p3 = new Photo("p3", Calendar.getInstance(), "Photos62/data/stockuser/Stock3.jpg");
                             Album stockAlbum = user.getAlbumByName("stock");
                             //int si = user.getAlbumIndexByAlbum(stockAlbum);
                             stockAlbum.addPhoto(p1);
+                            stockAlbum.addPhoto(p2);
+                            stockAlbum.addPhoto(p3);
 
                         }
                     }
