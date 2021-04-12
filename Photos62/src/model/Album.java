@@ -40,7 +40,7 @@ public class Album implements Serializable{
     }
 
     public String toString() {
-        String result = "NAME: " + name + "\nPHOTO COUNT: " + photos.size();
+        String result = "Album Name : " + name + "\nDate: "+"\nNumber of photos: " + getPhotoCount();
 
         return result;
     }
