@@ -159,11 +159,11 @@ public class UserController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Newalbum.fxml"));
             Parent parent = (Parent) loader.load();
             NewAlbumController controller = loader.<NewAlbumController>getController();
-            Scene scene = new Scene(parent);
-            Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+            Scene scene2 = new Scene(parent);
+            Stage stage2 = (Stage) ((Node) e.getSource()).getScene().getWindow();
             controller.start(user);
-            stage.setScene(scene);
-            stage.show();
+            stage2.setScene(scene2);
+            stage2.show();
         } catch (Exception exception) {
             exception.printStackTrace();
         }

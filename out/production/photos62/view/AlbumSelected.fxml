@@ -45,7 +45,7 @@
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button fx:id="BacktoalbumButton" mnemonicParsing="false" prefHeight="120.0" prefWidth="460.0" style="-fx-background-color: transparent;" text="Back to Albums" textFill="WHITE">
+            <Button fx:id="BacktoalbumButton" mnemonicParsing="false" onAction="#convertBacktoalbumButton" prefHeight="120.0" prefWidth="460.0" style="-fx-background-color: transparent;" text="Back to Albums" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
@@ -55,7 +55,7 @@
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button fx:id="LogoutButton" mnemonicParsing="false" prefHeight="120.0" prefWidth="460.0" style="-fx-background-color: transparent;" text="Logout" textFill="WHITE">
+            <Button fx:id="LogoutButton" mnemonicParsing="false" onAction="#convertLogOutButton" prefHeight="120.0" prefWidth="460.0" style="-fx-background-color: transparent;" text="Logout" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
