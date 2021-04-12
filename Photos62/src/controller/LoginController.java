@@ -1,4 +1,5 @@
 package controller;
+import java.awt.*;
 import java.io.*;
 import java.io.FileInputStream;
 
@@ -7,6 +8,7 @@ import javafx.event.ActionEvent;
 import java.io.ObjectInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,6 +21,8 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.Album;
+import model.ImagesSerial;
+import model.Photo;
 import model.User;
 import javafx.scene.control.ScrollPane;
 
@@ -155,11 +159,14 @@ public class LoginController {
                             user.addAlbum("stock");
                             System.out.println("added stock");
                             //populate the stock album
+                            Photo p1 = new Photo("p1", Calendar.getInstance(), "Photos62/data/stockuser/Stock1.png");
+                            Album stockAlbum = user.getAlbumByName("stock");
+                            //int si = user.getAlbumIndexByAlbum(stockAlbum);
+                            stockAlbum.addPhoto(p1);
+
                         }
                     }
 
-                    //albums.setItems(FXCollections.observableArrayList(user.getAlbums()));
-                    //Album selectedAlbum = albums.getSelectionModel().getSelectedItem();
                     loader = new FXMLLoader(getClass().getResource("/view/UserInterface.fxml"));
                     parent = (Parent) loader.load();
                     UserController controller = loader.<UserController>getController();

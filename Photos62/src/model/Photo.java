@@ -7,28 +7,37 @@ public class Photo implements java.io.Serializable {
 
 
     private static final long serialVersionUID = 1L;
-    private ImagesSerial image;
+    //private Image image;
     private ArrayList<Tag> tags;
     private String name, caption;
     private Calendar date;
+    private String imgsrc;
 
 
-    public Photo(String name, ImagesSerial image, Calendar date) {
+    public Photo(String name, Calendar date, String imgsrc) {
         this.name = name;
         this.caption = "";
-        this.image = image;
+        //this.image = image;
         this.date = date;
         this.tags = new ArrayList<Tag>();
         this.date.set(Calendar.MILLISECOND, 0);
-        image = new ImagesSerial();
+        //image = new ImagesSerial();
+        this.imgsrc = imgsrc;
     }
+    /*
     public ImagesSerial getImagesSerial() {
         return image;
     }
 
 
     public Image getImage() {
-        return image.getImage();
+        return image;
+    }
+
+     */
+
+    public String getImgsrc() {
+        return imgsrc;
     }
 
     public String getName() {

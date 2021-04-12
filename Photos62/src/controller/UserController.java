@@ -83,6 +83,7 @@ public class UserController {
         AlbumListview.setItems(FXCollections.observableArrayList(user.getAlbums()));
         Album selectedAlbum = AlbumListview.getSelectionModel().getSelectedItem();
 
+        /*
         photos.setCellFactory(new Callback<ListView<Photo>, ListCell<Photo>>() {
             @Override
             public ListCell<Photo> call(ListView<Photo> photoList) {
@@ -93,6 +94,8 @@ public class UserController {
         photos.setItems(FXCollections.observableArrayList(selectedAlbum.getPhotos()));
         photos.getSelectionModel().select(0);
 
+
+         */
 
         ArrayList<String> albumnames = new ArrayList<String>();
         albumnames.add(0, " ");
