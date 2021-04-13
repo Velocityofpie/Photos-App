@@ -1,9 +1,11 @@
 package controller;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -20,6 +22,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import model.Photo;
 import model.User;
 import javafx.scene.control.ScrollPane;
 
@@ -64,6 +67,14 @@ public class AlbumviewerController {
 
     @FXML
     private TextField SearchTagTextField;
+
+    private Photo photo;
+    private String album;
+
+    private ObservableList<String> obsTags;
+    private ObservableList<String> obsValues;
+
+
 
     public void convertLogOutButton(ActionEvent event) {
 

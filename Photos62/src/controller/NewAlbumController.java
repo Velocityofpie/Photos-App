@@ -58,7 +58,21 @@ public class NewAlbumController {
 
         }
     }
+    public void convertCancelButton(ActionEvent event) {
 
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/UserInterface.fxml"));
+            Parent parent = (Parent) loader.load();
+            UserController controller = loader.<UserController>getController();
+            Scene scene = new Scene(parent);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+
+    }
     private void duplicateAlbumAlert() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Error");
