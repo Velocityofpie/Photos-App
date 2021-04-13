@@ -49,6 +49,20 @@ public class NewAlbumController {
             return;
         }
 
+        //make sure the person put a name
+        if (name.length() == 0) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Error");
+            alert.setHeaderText(
+                    "The name of the album is blank.");
+
+            String content = "Please input the name of the album";
+
+            alert.setContentText(content);
+            alert.showAndWait();
+            return;
+        }
+
         //reset the name of the new album
         updatedAlbum.setName(name);
         //add the album to the user
@@ -104,15 +118,6 @@ public class NewAlbumController {
         fileChooser.setTitle("Open Resource File");
         File selectedFile = fileChooser.showOpenDialog(stage);
         if (selectedFile == null) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Error");
-            alert.setHeaderText(
-                    "Cannot create an album with no photos.");
-
-            String content = "Please upload a photo or press cancel.";
-
-            alert.setContentText(content);
-            alert.showAndWait();
             return;
         }
         //display the name of the file selected
