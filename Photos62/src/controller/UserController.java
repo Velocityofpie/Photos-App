@@ -174,7 +174,9 @@ public class UserController {
                     if (user.albumNameExists(n)) {
                         dialog.setContentText("Enter name: ");
                         dialog.setHeaderText("That album name is taken");
-
+                    } else if (n.length() == 0) {
+                        dialog.setContentText("Enter name: ");
+                        dialog.setHeaderText("Album name cannot be blank");
                     } else {
                         item.setName(n);
                         obsList.set(index, item);
