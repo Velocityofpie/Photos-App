@@ -1,6 +1,7 @@
 
 package controller;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -42,6 +43,7 @@ public class UserController {
 
     @FXML
     private ListView<Album> AlbumListview;
+    private ObservableList<Album> obsList;
 
     ListView<Photo> photos;
     private ArrayList<User> users;
@@ -100,7 +102,8 @@ public class UserController {
         System.out.println("UserController opened");
         this.user = user;
 
-        AlbumListview.setItems(FXCollections.observableArrayList(user.getAlbums()));
+        obsList = FXCollections.observableArrayList(user.getAlbums());
+        AlbumListview.setItems(obsList);
         selectedAlbum = AlbumListview.getSelectionModel().getSelectedItem();
 
         /*
@@ -151,7 +154,35 @@ public class UserController {
             }
 
         } else if (b == EditAlbumButton) {
+            Album item = AlbumListview.getSelectionModel().getSelectedItem();
+            int index = AlbumListview.getSelectionModel().getSelectedIndex();
+            if (item == null) {
+                return;
+            }
+            //pop up asking for new name
+            TextInputDialog dialog = new TextInputDialog(item.getName());
+            dialog.initOwner((Stage) ((Node) actionEvent.getSource()).getScene().getWindow());
+            dialog.setTitle("Edit selected album");
+            dialog.setHeaderText("Change the name of the album");
+            dialog.setContentText("Enter name: ");
 
+            boolean cont = true;
+            while (cont) {
+                Optional<String> result = dialog.showAndWait();
+                if (result.isPresent()) {
+                    String n = result.get();
+                    if (user.albumNameExists(n)) {
+                        dialog.setContentText("Enter name: ");
+                        dialog.setHeaderText("That album name is taken");
+
+                    } else {
+                        item.setName(n);
+                        obsList.set(index, item);
+                        AlbumListview.setItems(obsList);
+                        cont = false;
+                    }
+                }
+            }
         }
     }
 
