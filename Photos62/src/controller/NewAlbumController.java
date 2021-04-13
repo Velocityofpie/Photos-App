@@ -18,6 +18,7 @@ import model.Photo;
 import model.Tag;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 
@@ -35,9 +36,11 @@ public class NewAlbumController {
     private User user;
     private User updatedUser;
     private Album updatedAlbum;
+    private ArrayList<User> users;
 
-    public void start(User u) {
+    public void start(User u, ArrayList<User> us) {
         user = u;
+        users = us;
         CreateButton.setDisable(true);
     }
 
@@ -77,7 +80,7 @@ public class NewAlbumController {
             UserController controller = loader.<UserController>getController();
             Scene scene = new Scene(parent);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            controller.start(user);
+            controller.start(user, users);
             stage.setScene(scene);
             stage.show();
         } catch (Exception exception) {
@@ -92,7 +95,7 @@ public class NewAlbumController {
             UserController controller = loader.<UserController>getController();
             Scene scene = new Scene(parent);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            controller.start(user);
+            controller.start(user, users);
             stage.setScene(scene);
             stage.show();
         } catch (Exception exception) {

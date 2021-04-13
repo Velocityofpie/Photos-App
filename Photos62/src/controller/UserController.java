@@ -9,13 +9,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.util.Callback;
-import model.Photo;
-import model.Tag;
-import model.User;
-import model.Album;
+import model.*;
 import photos.Listener;
 import javafx.scene.input.MouseEvent;
-import model.photoloader;
+
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -67,6 +64,9 @@ public class UserController {
     }
     public void convertLogOutButton(ActionEvent event) {
 
+        //save the data
+        DataSaving.saveData(users);
+
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Login.fxml"));
             Parent parent = (Parent) loader.load();
@@ -98,9 +98,10 @@ public class UserController {
 
     }
 
-    public void start( User user) {
+    public void start( User user, ArrayList<User> list) {
         System.out.println("UserController opened");
         this.user = user;
+        this.users = list;
 
         obsList = FXCollections.observableArrayList(user.getAlbums());
         AlbumListview.setItems(obsList);
@@ -198,7 +199,7 @@ public class UserController {
             NewAlbumController controller = loader.<NewAlbumController>getController();
             Scene scene2 = new Scene(parent);
             Stage stage2 = (Stage) ((Node) e.getSource()).getScene().getWindow();
-            controller.start(user);
+            controller.start(user, users);
             stage2.setScene(scene2);
             stage2.show();
         } catch (Exception exception) {

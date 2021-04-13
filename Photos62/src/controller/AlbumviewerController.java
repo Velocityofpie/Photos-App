@@ -175,7 +175,7 @@ public class AlbumviewerController {
             UserController controller = loader.<UserController>getController();
             Scene scene = new Scene(parent);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            controller.start(user);
+            controller.start(user, users);
             stage.setScene(scene);
             stage.show();
         } catch (Exception exception) {
