@@ -183,6 +183,8 @@ public class UserController {
                         AlbumListview.setItems(obsList);
                         cont = false;
                     }
+                } else {
+                    cont = false;
                 }
             }
         }
