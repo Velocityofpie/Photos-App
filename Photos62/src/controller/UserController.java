@@ -1,3 +1,4 @@
+
 package controller;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -169,4 +170,5 @@ public class UserController {
             exception.printStackTrace();
         }
     }
+
 }
