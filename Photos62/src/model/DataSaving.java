@@ -9,7 +9,9 @@ public class DataSaving {
         try {
             FileOutputStream fileOutputStream = new FileOutputStream("Photos62/data/data.txt");
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-            objectOutputStream.writeObject(users);
+            for (User curr: users) {
+                objectOutputStream.writeObject(curr);
+            }
             objectOutputStream.close();
             fileOutputStream.close();
         } catch (Exception exception) {

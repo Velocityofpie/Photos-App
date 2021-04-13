@@ -38,16 +38,13 @@ public class LoginController {
 
 
     public void start(Stage stage) {
-/*
+        /*
         try {
             writeUsers(null, 0);
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
- */
-
+         */
     }
 
     private void populate() {
@@ -184,7 +181,7 @@ public class LoginController {
 
                     Scene scene = new Scene(scroll);
                     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                    controller.start(user);
+                    controller.start(user, users);
                     stage.setScene(scene);
                     stage.show();
                 }
