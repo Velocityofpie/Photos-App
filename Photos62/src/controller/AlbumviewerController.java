@@ -1,18 +1,23 @@
 package controller;
+
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
+import model.*;
 import javafx.scene.text.Text;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Optional;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -22,9 +27,9 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import model.Photo;
+import model.Album;
 import model.User;
-import javafx.scene.control.ScrollPane;
+
 
 public class AlbumviewerController {
     @FXML private Button AddphotoButton, DeletePhotoButton,EditphotoButton;
@@ -36,13 +41,7 @@ public class AlbumviewerController {
     private ImageView AlbumImage;
 
     @FXML
-    private Text DateText,NumberofphotoText,NewestphotoText;
-
-    @FXML
-    private Text OldestPhotoText;
-
-    @FXML
-    private Button RenameButton;
+    private Text DateText,NumberofphotoText,NewestphotoText,OldestPhotoText;
 
     @FXML
     private ImageView SelectedImage;
@@ -51,29 +50,33 @@ public class AlbumviewerController {
     private Text PhotodateText;
 
     @FXML
-    private Button MovetoButton;
+    private Button MovetoButton, CopytoButton,RenameButton;
 
     @FXML
-    private Button CopytoButton;
+    private Label CaptionLabel,  TagLabel;
 
     @FXML
-    private Label CaptionLabel;
-
-    @FXML
-    private Label TagLabel;
-
-    @FXML
-    private TextField SearchDateTextField;
-
-    @FXML
-    private TextField SearchTagTextField;
+    private TextField SearchDateTextField, SearchTagTextField;
 
     private Photo photo;
     private String album;
-
+    ArrayList<User> users;
+    ListView<Photo> photos;
     private ObservableList<String> obsTags;
     private ObservableList<String> obsValues;
+    private ListView<Tag> tags;
+   // private Album selectedAlbum;
+    private User user;
 
+
+    public void start(ArrayList<User> users, User user,ListView<Photo> photos,  Album selectedAlbum) {
+        this.users = users;
+        this.photos = photos;
+        this.user = user;
+       // this.selectedAlbum = selectedAlbum;
+        //Photo selectedPhoto = photos.getSelectionModel().getSelectedItem();
+
+    }
 
 
     public void convertLogOutButton(ActionEvent event) {
@@ -93,13 +96,13 @@ public class AlbumviewerController {
     }
 
     public void convertBacktoalbumButton(ActionEvent event) {
-
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/UserInterface.fxml"));
             Parent parent = (Parent) loader.load();
             UserController controller = loader.<UserController>getController();
             Scene scene = new Scene(parent);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            controller.start(user);
             stage.setScene(scene);
             stage.show();
         } catch (Exception exception) {

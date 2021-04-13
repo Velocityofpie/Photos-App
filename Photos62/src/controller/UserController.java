@@ -86,6 +86,7 @@ public class UserController {
             ScrollPane scroll = new ScrollPane(parent);
             Scene scene = new Scene(scroll);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            controller.start(users,user, photos, selectedAlbum);
             stage.setScene(scene);
             stage.show();
         } catch (Exception exception) {

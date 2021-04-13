@@ -13,6 +13,10 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.Album;
 import model.User;
+import model.Album;
+import model.Photo;
+import model.Tag;
+
 
 public class NewAlbumController {
 
@@ -66,6 +70,7 @@ public class NewAlbumController {
             UserController controller = loader.<UserController>getController();
             Scene scene = new Scene(parent);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            controller.start(user);
             stage.setScene(scene);
             stage.show();
         } catch (Exception exception) {

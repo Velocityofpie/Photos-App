@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="580.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.NewAlbumController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="580.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.NewAlbumController">
     <children>
         <ScrollPane fx:id="Listview" hbarPolicy="NEVER" layoutX="35.0" layoutY="108.0" prefHeight="366.0" prefWidth="516.0" vbarPolicy="ALWAYS" />
         <Text layoutX="35.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New Album ">
@@ -24,8 +24,8 @@
         <TextField fx:id="NameTextfield" layoutX="144.0" layoutY="54.0" prefHeight="25.0" prefWidth="280.0" promptText="Enter Name" />
         <ButtonBar layoutX="219.0" layoutY="505.0" prefHeight="36.0" prefWidth="335.0">
             <buttons>
+                <Button fx:id="CancelButton" onAction="#convertCancelButton" mnemonicParsing="false" text="Cancel" />
                 <Button fx:id="UploadButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="114.0" text="Upload Photo" />
-                <Button fx:id="UndoButton" mnemonicParsing="false" text="Undo" />
                 <Button fx:id="CreateButton" onAction="#create" mnemonicParsing="false" text="Create" />
             </buttons>
         </ButtonBar>
