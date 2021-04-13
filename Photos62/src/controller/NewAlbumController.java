@@ -118,6 +118,7 @@ public class NewAlbumController {
 
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Resource File");
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("All Files", "*.*"));
         File selectedFile = fileChooser.showOpenDialog(stage);
         if (selectedFile == null) {
             return;
