@@ -103,6 +103,9 @@ public class UserController {
         this.user = user;
         this.users = list;
 
+        //save the data
+        DataSaving.saveData(users);
+
         obsList = FXCollections.observableArrayList(user.getAlbums());
         AlbumListview.setItems(obsList);
         selectedAlbum = AlbumListview.getSelectionModel().getSelectedItem();
@@ -189,6 +192,8 @@ public class UserController {
                 }
             }
         }
+        //save the data
+        DataSaving.saveData(users);
     }
 
     public void create(ActionEvent e) {
