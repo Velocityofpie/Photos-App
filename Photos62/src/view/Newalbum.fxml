@@ -2,15 +2,19 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="580.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.NewAlbumController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="580.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.NewAlbumController">
     <children>
-        <ScrollPane fx:id="Listview" hbarPolicy="NEVER" layoutX="35.0" layoutY="108.0" prefHeight="366.0" prefWidth="516.0" vbarPolicy="ALWAYS" />
+        <ScrollPane fx:id="Listview" hbarPolicy="NEVER" layoutX="35.0" layoutY="108.0" prefHeight="366.0" prefWidth="516.0" vbarPolicy="ALWAYS">
+         <content>
+            <Label fx:id="lblFiles" alignment="TOP_LEFT" prefHeight="366.0" prefWidth="502.0" text="Selected Files:" />
+         </content></ScrollPane>
         <Text layoutX="35.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New Album ">
             <font>
                 <Font size="20.0" />
@@ -24,9 +28,9 @@
         <TextField fx:id="NameTextfield" layoutX="144.0" layoutY="54.0" prefHeight="25.0" prefWidth="280.0" promptText="Enter Name" />
         <ButtonBar layoutX="219.0" layoutY="505.0" prefHeight="36.0" prefWidth="335.0">
             <buttons>
-                <Button fx:id="CancelButton" onAction="#convertCancelButton" mnemonicParsing="false" text="Cancel" />
-                <Button fx:id="UploadButton" onAction="#convertUploadButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="114.0" text="Upload Photo" />
-                <Button fx:id="CreateButton" onAction="#finish" mnemonicParsing="false" text="Create" />
+                <Button fx:id="CancelButton" mnemonicParsing="false" onAction="#convertCancelButton" text="Cancel" />
+                <Button fx:id="UploadButton" mnemonicParsing="false" onAction="#convertUploadButton" prefHeight="25.0" prefWidth="114.0" text="Upload Photo" />
+                <Button fx:id="CreateButton" mnemonicParsing="false" onAction="#finish" text="Create" />
             </buttons>
         </ButtonBar>
     </children>

@@ -1,15 +1,14 @@
 package controller;
 
+import javafx.collections.ObservableArray;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import model.Album;
@@ -29,6 +28,9 @@ public class NewAlbumController {
 
     @FXML
     private TextField NameTextfield;
+
+    @FXML
+    private Label lblFiles;
 
     private User user;
     private User updatedUser;
@@ -120,12 +122,17 @@ public class NewAlbumController {
         if (selectedFile == null) {
             return;
         }
-        //display the name of the file selected
-        System.out.println(selectedFile.getName());
+
         //create a new album, add the photo to that album
         updatedAlbum = new Album("temp");
         Photo p = new Photo("temp", Calendar.getInstance(), selectedFile.getAbsolutePath());
         updatedAlbum.addPhoto(p);
+
+        //display the name of the file selected
+        String str1 = lblFiles.getText();
+        String str2 = str1 + "\n" + selectedFile.getName();
+        lblFiles.setText(str2);
+        System.out.println(selectedFile.getName());
 
         //enable the create button
         CreateButton.setDisable(false);
