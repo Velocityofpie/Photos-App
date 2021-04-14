@@ -45,7 +45,7 @@ public class AlbumviewerController {
     private Button BacktoalbumButton,LogoutButton;
 
     @FXML
-    private ImageView AlbumImage;
+    private ImageView AlbumImage, CoverPhoto;
 
     @FXML
     private Text DateText,NumberofphotoText,NewestphotoText,OldestPhotoText;
@@ -73,6 +73,7 @@ public class AlbumviewerController {
     private ObservableList<String> obsValues;
     private ListView<Tag> tags;
     private Album selectedAlbum;
+    private Photo selectedPhoto;
     private User user;
 
 
@@ -87,14 +88,30 @@ public class AlbumviewerController {
         this.user = user;
         //InputStream stream = new FileInputStream("Photos62/data/stockuser/Stock1.png");
         System.out.println(selectedAlbum.getNewestPhoto().getImgsrc());
-        InputStream stream = new FileInputStream(selectedAlbum.getNewestPhoto().getImgsrc());
+        selectedPhoto = selectedAlbum.getPhotos().get(0);
+        InputStream stream = new FileInputStream(selectedPhoto.getImgsrc());
         Image image = new Image(stream);
         SelectedImage.setImage(image);
         //Setting the image view parameters
 
         SelectedImage.setFitWidth(210);
         SelectedImage.setPreserveRatio(true);
+        PhotodateText.setText(PhotodateText.getText() + selectedPhoto.getDate());
       //  Photo selectedPhoto = photos.getSelectionModel().getSelectedItem();
+
+        //cover photo for album
+        InputStream stream2 = new FileInputStream(selectedAlbum.getNewestPhoto().getImgsrc());
+        Image cover = new Image(stream2);
+        AlbumImage.setImage(cover);
+        AlbumImage.setFitWidth(210);
+        AlbumImage.setPreserveRatio(true);
+        String recent = NewestphotoText.getText() + selectedAlbum.getLatestDate();
+        NewestphotoText.setText(recent);
+        String oldest = OldestPhotoText.getText() + selectedAlbum.getEarliestDate();
+        OldestPhotoText.setText(oldest);
+        String num = NumberofphotoText.getText() + selectedAlbum.getPhotoCount();
+        NumberofphotoText.setText(num);
+
     }
 
     // in the works need to be converting for photos
