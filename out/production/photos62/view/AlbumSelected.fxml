@@ -8,6 +8,7 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.RowConstraints?>
@@ -68,15 +69,6 @@
          </opaqueInsets>
       </VBox>
       <ButtonBar prefHeight="40.0" prefWidth="200.0" />
-      <ScrollPane fx:id="scroll" hbarPolicy="NEVER" layoutX="397.0" layoutY="284.0" prefHeight="619.0" prefWidth="1003.0" style="-fx-background-color: transparent;" vbarPolicy="ALWAYS">
-         <content>
-            <GridPane fx:id="grid" prefHeight="0.0" prefWidth="0.0">
-               <rowConstraints>
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" />
-               </rowConstraints>
-            </GridPane>
-         </content>
-      </ScrollPane>
       <HBox layoutX="1141.0" layoutY="20.0" prefHeight="40.0" prefWidth="245.0">
          <children>
 
@@ -140,5 +132,6 @@
       </HBox>
       <TextField fx:id="SearchDateTextField" layoutX="472.0" layoutY="28.0" promptText="Search Date " />
       <TextField fx:id="SearchTagTextField" layoutX="669.0" layoutY="28.0" prefHeight="25.0" prefWidth="159.0" promptText="Search Tag" />
+      <ListView fx:id="photolistview" layoutX="393.0" layoutY="301.0" prefHeight="599.0" prefWidth="1006.0" />
    </children>
 </AnchorPane>
