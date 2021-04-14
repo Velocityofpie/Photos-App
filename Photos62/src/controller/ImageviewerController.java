@@ -98,11 +98,14 @@ public class ImageviewerController {
         lblDate.setText("Date: " + selectedPhoto.getDate());
         //update caption
         captionTextArea.setText(selectedPhoto.getCaption());
+        //set tag text fields to be blank, it will be update when the user selects a tag
+        TagTextfield.setText("");
+        TagValueTextfield.setText("");
         //update the listview of tags
         obsListTags = FXCollections.observableArrayList(selectedPhoto.getTags());
         lvTags.setItems(obsListTags);
 
-
+        DataSaving.saveData(users);
     }
 
     /**
@@ -112,12 +115,15 @@ public class ImageviewerController {
 
         //get the song from the obsList
         int index = lvTags.getSelectionModel().getSelectedIndex();
-        Tag s = obsListTags.get(index);
+        Tag s = null;
+        try {
+            s = obsListTags.get(index);
+            //put necessary values in the text field
+            TagTextfield.setText(s.getTagName());
+            TagValueTextfield.setText(s.getTagValue());
+        } catch (Exception e) {
 
-        //put necessary values in the text field
-        TagTextfield.setText(s.getTagName());
-        TagValueTextfield.setText(s.getTagValue());
-
+        }
     }
 
     /**
@@ -420,5 +426,22 @@ public class ImageviewerController {
 
         alert.setContentText(content);
         alert.showAndWait();
+    }
+
+    public void deleteTagFunction(ActionEvent event) {
+        int index = lvTags.getSelectionModel().getSelectedIndex();
+        Tag selectedTag = lvTags.getSelectionModel().getSelectedItem();
+        obsListTags.remove(index);
+        int i = selectedPhoto.getTagIndex(selectedTag);
+        if (i>-1) {
+            selectedPhoto.removeTag(i);
+        }
+        try {
+            update(selectedPhoto.getImgsrc());
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        DataSaving.saveData(users);
+
     }
 }
