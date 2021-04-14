@@ -67,6 +67,6 @@ public class Photo implements java.io.Serializable {
 
 
     public boolean equals(Photo other) {
-        return this.name.equals(other.name);
+        return this.getImgsrc().equalsIgnoreCase(other.getImgsrc());
     }
 }

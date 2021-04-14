@@ -151,7 +151,7 @@ public class AlbumviewerController {
         NumberofphotoText.setText(num);
 
 
-        photolistloader(users, user,  selectedAlbum);
+        //photolistloader(users, user,  selectedAlbum);
 
 
     }
@@ -323,14 +323,6 @@ public class AlbumviewerController {
         DataSaving.saveData(users);
     }
 
-    public void deletePhotoFromAlbum(Photo deleteThisPhoto, Album fromThisAlbum) {
-        ArrayList<Photo> p = fromThisAlbum.getPhotos();
-        int i = fromThisAlbum.getPhotoIndexByPhoto(deleteThisPhoto);
-        p.remove(i);
-        //save data
-        DataSaving.saveData(users);
-    }
-
     public void deletePhotoFromAlbum(ActionEvent event) {
 
         ArrayList<Photo> p = selectedAlbum.getPhotos();
@@ -368,7 +360,7 @@ public class AlbumviewerController {
 
 
 
-        p.remove(i);
+        selectedAlbum.getPhotos().remove(i);
         //select a new photo
         selectedPhoto = p.get(0);
 
@@ -393,6 +385,22 @@ public class AlbumviewerController {
         }
         //create new photo object
         Photo p = new Photo("temp", Calendar.getInstance(),selectedFile.getAbsolutePath());
+        //loop through photos in album to make sure that photo isn't already there
+        ArrayList<Photo> pics = selectedAlbum.getPhotos();
+        for (Photo curr: pics) {
+            if (p.equals(curr)) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Error");
+                alert.setHeaderText(
+                        "That photo source is already in the library.");
+
+                String content = "Please select another photo";
+
+                alert.setContentText(content);
+                alert.showAndWait();
+                return;
+            }
+        }
         selectedAlbum.addPhoto(p);
         selectedPhoto = p;
         try {

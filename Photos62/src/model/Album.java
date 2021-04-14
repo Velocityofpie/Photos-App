@@ -61,7 +61,13 @@ public class Album implements Serializable{
     }
 
     public Photo getNewestPhoto() {
-        return NewestPhoto;
+        Photo res = NewestPhoto;
+        for (Photo curr: photos) {
+            if (curr.getDate().after(NewestPhoto.getDate())) {
+                res = curr;
+            }
+        }
+        return res;
     }
 
     public int getPhotoIndexByPhoto(Photo a) {
