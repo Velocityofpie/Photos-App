@@ -131,7 +131,7 @@
                   </Text>
                   <Text fx:id="PhotodateText" layoutX="27.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
                   <Button fx:id="MovetoButton" layoutX="39.0" layoutY="176.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="85.0" style="-fx-background-color: #212121;" text="Move to →" textFill="WHITE" />
-                  <Button fx:id="CopytoButton" layoutX="150.0" layoutY="176.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="85.0" style="-fx-background-color: #212121;" text="Copy to →" textFill="WHITE" />
+                  <Button fx:id="CopytoButton" onAction="#convertCopyTo" layoutX="150.0" layoutY="176.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="85.0" style="-fx-background-color: #212121;" text="Copy to →" textFill="WHITE" />
                   <Label fx:id="CaptionLabel" layoutX="27.0" layoutY="84.0" prefHeight="37.0" prefWidth="210.0" text="Caption: " />
                   <Label fx:id="TagLabel" layoutX="26.0" layoutY="121.0" prefHeight="37.0" prefWidth="234.0" text="Tags:" />
                </children>

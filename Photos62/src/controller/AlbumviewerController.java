@@ -42,16 +42,17 @@ import model.User;
 
 
 public class AlbumviewerController {
-    @FXML private Button AddphotoButton, DeletePhotoButton,EditphotoButton;
+    @FXML
+    private Button AddphotoButton, DeletePhotoButton, EditphotoButton;
 
     @FXML
-    private Button BacktoalbumButton,LogoutButton;
+    private Button BacktoalbumButton, LogoutButton;
 
     @FXML
     private ImageView AlbumImage, CoverPhoto;
 
     @FXML
-    private Text DateText,NumberofphotoText,NewestphotoText,OldestPhotoText;
+    private Text DateText, NumberofphotoText, NewestphotoText, OldestPhotoText;
 
     @FXML
     private ImageView SelectedImage;
@@ -60,10 +61,10 @@ public class AlbumviewerController {
     private Text PhotodateText;
 
     @FXML
-    private Button MovetoButton, CopytoButton,RenameButton;
+    private Button MovetoButton, CopytoButton, RenameButton;
 
     @FXML
-    private Label CaptionLabel,  TagLabel;
+    private Label CaptionLabel, TagLabel;
 
     @FXML
     private TextField SearchDateTextField, SearchTagTextField;
@@ -81,7 +82,7 @@ public class AlbumviewerController {
     private User user;
 
 
-    public void start(ArrayList<User> users, User user,ListView<Photo> photos,  Album a) throws FileNotFoundException {
+    public void start(ArrayList<User> users, User user, ListView<Photo> photos, Album a) throws FileNotFoundException {
         this.users = users;
         this.photos = photos;
         this.user = user;
@@ -100,10 +101,10 @@ public class AlbumviewerController {
         CaptionLabel.setText(CaptionLabel.getText() + selectedPhoto.getCaption());
         ArrayList<Tag> selectedTags = selectedPhoto.getTags();
         String t = TagLabel.getText();
-        for (Tag curr: selectedTags) {
+        for (Tag curr : selectedTags) {
             t = t + " " + curr.getTag();
         }
-      //  Photo selectedPhoto = photos.getSelectionModel().getSelectedItem();
+        //  Photo selectedPhoto = photos.getSelectionModel().getSelectedItem();
 
         //cover photo for album
         InputStream stream2 = new FileInputStream(selectedAlbum.getNewestPhoto().getImgsrc());
@@ -231,5 +232,39 @@ public class AlbumviewerController {
             exception.printStackTrace();
         }
 
+    }
+
+    public void convertCopyTo(ActionEvent event) {
+
+        //pop up asking for new name
+        TextInputDialog dialog = new TextInputDialog();
+        dialog.initOwner((Stage) ((Node) event.getSource()).getScene().getWindow());
+        dialog.setTitle("Copy Photo");
+        dialog.setHeaderText("Copy the photo to an existing album");
+        dialog.setContentText("Enter album: ");
+
+        boolean cont = true;
+        while (cont) {
+            Optional<String> result = dialog.showAndWait();
+            if (result.isPresent()) {
+                String n = result.get();
+                if (!(user.albumNameExists(n))) {
+                    dialog.setContentText("Enter name: ");
+                    dialog.setHeaderText("That album does not exist");
+                } else if (n.equals(selectedAlbum.getName())) {
+                    dialog.setContentText("Enter name: ");
+                    dialog.setHeaderText("This photo is already in that album");
+                } else {
+                    //add selected photo to the album they listed
+                    Album addToThisAlbum = user.getAlbumByName(n);
+                    addToThisAlbum.addPhoto(selectedPhoto);
+                    cont = false;
+                }
+            } else {
+                cont = false;
+            }
+        }
+        //save data
+        DataSaving.saveData(users);
     }
 }
