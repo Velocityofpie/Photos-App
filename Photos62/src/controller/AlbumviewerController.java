@@ -200,8 +200,9 @@ public class AlbumviewerController {
     }
 
     /**
-     * Updates the album for any changes
-     * @param i
+     * Adds all photos on to list to be viewed
+     *@throws IOException
+     *
      */
 
     public void populatePhotogridPane() throws IOException {
@@ -222,7 +223,7 @@ public class AlbumviewerController {
                 col = 0;
                 row++;
             }
-            System.out.println(selectedAlbum.getPhotos().get(i).getImgsrc());
+            //System.out.println(selectedAlbum.getPhotos().get(i).getImgsrc());
             InputStream stream = new FileInputStream(selectedAlbum.getPhotos().get(i).getImgsrc());
             Image image = new Image(stream);
             ImageView imageView = new ImageView();
@@ -281,6 +282,12 @@ public class AlbumviewerController {
     }
 
 
+    /**
+     * Called when users presses "LogOut" Button
+     * Switches the scene back to the login screen
+     * @param event
+     */
+
     public void convertLogOutButton(ActionEvent event) {
 
         try {
@@ -297,6 +304,13 @@ public class AlbumviewerController {
 
     }
 
+    /**
+     * Called when users presses "back to album" Button
+     * Switches the scene back to the User controller
+     * @param event
+     */
+
+
     public void convertBacktoalbumButton(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/UserInterface.fxml"));
@@ -312,6 +326,12 @@ public class AlbumviewerController {
         }
 
     }
+
+    /**
+     * Called when users presses "copy to" Button
+     * Calls a dialog that will prompt the user to enter the new location of the photo
+     * @param event
+     */
 
     public void convertCopyTo(ActionEvent event) {
 
@@ -346,6 +366,12 @@ public class AlbumviewerController {
         //save data
         DataSaving.saveData(users);
     }
+
+    /**
+     * Called when users presses "Delete Photo" Button
+     * Delete the photo fromt the album data.txt
+     * @param event
+     */
 
     public void deletePhotoFromAlbum(ActionEvent event) {
 
@@ -397,6 +423,12 @@ public class AlbumviewerController {
         }
     }
 
+    /**
+     * Called when users presses "edit photo" button
+     * Switches the scene to ImagesviewerController
+     * @param event
+     */
+
     public void EditPhotoFunction(ActionEvent event) {
         openImageViewer(event);
     }
@@ -418,6 +450,11 @@ public class AlbumviewerController {
         }
     }
 
+    /**
+     * Called when users presses "add photo" button
+     * adds photo in the album
+     * @param event
+     */
 
     public void addPhotoFunction(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
