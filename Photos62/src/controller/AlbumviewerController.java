@@ -55,7 +55,7 @@ public class AlbumviewerController {
     private ImageView AlbumImage, CoverPhoto;
 
     @FXML
-    private Text DateText, NumberofphotoText, NewestphotoText, OldestPhotoText;
+    private Text DateText, NumberofphotoText, NewestphotoText, OldestPhotoText, AlbumNameText, UsernameText;
 
     @FXML
     private ImageView SelectedImage;
@@ -98,6 +98,9 @@ public class AlbumviewerController {
     }
 
     public void update(int i) throws FileNotFoundException {
+
+        AlbumNameText.setText(selectedAlbum.getName());
+        UsernameText.setText(user.getUsername());
 
         if (i == 0) {
             selectedPhoto = selectedAlbum.getPhotos().get(i);
@@ -410,5 +413,9 @@ public class AlbumviewerController {
         }
 
         DataSaving.saveData(users);
+    }
+
+    public void EditPhotoFunction(ActionEvent event) {
+
     }
 }

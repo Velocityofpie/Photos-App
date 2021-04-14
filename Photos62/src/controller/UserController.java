@@ -106,9 +106,9 @@ public class UserController {
     }
 
     public void start( User user, ArrayList<User> list) {
-        System.out.println("UserController opened");
         this.user = user;
         this.users = list;
+
 
         //save the data
         DataSaving.saveData(users);
