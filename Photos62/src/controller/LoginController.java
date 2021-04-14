@@ -48,7 +48,7 @@ public class LoginController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-         */
+        */
     }
 
     private void populate() {
@@ -156,6 +156,17 @@ public class LoginController {
                 }else {
 
                     if (username.equals("stock")) {
+                        boolean exist = false;
+                        for (User u: users) {
+                            if (u.getUsername().equals("stock")) {
+                                exist = true;
+                            }
+                        }
+                        if (!(exist)) {
+                            //make user
+                            user = new User("stock","stock");
+                            users.add(user);
+                        }
                         if (!(user.albumNameExists("stock"))) {
                             user.addAlbum("stock");
                             System.out.println("added stock");
