@@ -1,9 +1,7 @@
 package controller;
-import java.awt.*;
 import java.io.*;
 import java.io.FileInputStream;
 
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import java.io.ObjectInputStream;
 import java.io.IOException;
@@ -21,7 +19,6 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.Album;
-import model.ImagesSerial;
 import model.Photo;
 import model.User;
 import javafx.scene.control.ScrollPane;
