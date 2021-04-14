@@ -1,6 +1,8 @@
 package model;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
+
 import javafx.scene.image.Image;
 
 public class Photo implements java.io.Serializable {
@@ -55,8 +57,8 @@ public class Photo implements java.io.Serializable {
     }
 
 
-    public Calendar getDate() {
-        return date;
+    public Date getDate() {
+        return date.getTime();
     }
 
     public void setCaption(String caption) {

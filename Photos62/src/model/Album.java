@@ -16,18 +16,18 @@ public class Album implements Serializable{
     }
 
     public Date getEarliestDate() {
-        Calendar date = photos.get(0).getDate();
+        Date date = photos.get(0).getDate();
         for (int i = 1; i < photos.size(); i++) {
             Photo p = photos.get(i);
             if (p.getDate().before(date)) {
                 date = p.getDate();
             }
         }
-        return date.getTime();
+        return date;
     }
 
     public Date getLatestDate() {
-        return NewestPhoto.getDate().getTime();
+        return NewestPhoto.getDate();
     }
 
 
