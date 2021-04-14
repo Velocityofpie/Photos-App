@@ -92,8 +92,9 @@ public class AlbumviewerController {
         this.selectedAlbum = a;
         //InputStream stream = new FileInputStream("Photos62/data/stockuser/Stock1.png");
         //System.out.println(selectedAlbum.getNewestPhoto().getImgsrc());
+        //photolistloader(users, user,  selectedAlbum);
+        update( 0);
 
-        update(0);
 
     }
 
@@ -154,12 +155,13 @@ public class AlbumviewerController {
         NumberofphotoText.setText(num);
 
 
-        //photolistloader(users, user,  selectedAlbum);
+
 
 
     }
 
     public void photolistloader(ArrayList<User> users, User user, Album selectedAlbum) {
+
         photos.setCellFactory(new Callback<ListView<Photo>, ListCell<Photo>>() {
             @Override
             public ListCell<Photo> call(ListView<Photo> photoList) {
@@ -179,86 +181,6 @@ public class AlbumviewerController {
 
     }
 
-//    private TilePane createPhotoPane(ArrayList<Photo> photos) {
-//        // Base TilePane
-//        TilePane tp = new TilePane();
-//        tp.setPrefWidth(480);
-//
-//        photoSquares.clear();
-//
-//        // TilePane --> AnchorPane
-//        for (Photo p : photos) {
-//            AnchorPane ap = createNewPhotoSquare(p.getCaption(), p.getURL());
-//            tp.getChildren().add(ap);
-//            photoSquares.add(ap);
-//            ap.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
-//                @Override
-//                public void handle(MouseEvent mouseEvent) {
-//                    selectPhoto(ap);
-//                }
-//            });
-//            TilePane.setMargin(ap, new Insets(5, 5, 5, 5));
-//        }
-//
-//        return tp;
-//    }
-
-    // in the works need to be converting for photos
-    public void convert(ActionEvent actionEvent) {
-//        Button b = (Button) actionEvent.getSource();
-//        if (b == DeletePhotoButton) {
-//
-//            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-//            alert.setTitle("Confirmation Dialog");
-//            alert.setHeaderText("Need Confirmation");
-//            alert.setContentText("Are you ok with this?");
-//            Optional<ButtonType> result = alert.showAndWait();
-//            if (result.get() == ButtonType.OK){
-//                Album deleteThis = AlbumListview.getSelectionModel().getSelectedItem();
-//                user.removeAlbum(deleteThis);
-//
-//                //update listview
-//                AlbumListview.setItems(FXCollections.observableArrayList(user.getAlbums()));
-//            } else {
-//                // ... user chose CANCEL or closed the dialog
-//            }
-//
-//        } else if (b == EditphotoButton) {
-//            Album item = AlbumListview.getSelectionModel().getSelectedItem();
-//            int index = AlbumListview.getSelectionModel().getSelectedIndex();
-//            if (item == null) {
-//                return;
-//            }
-//            //pop up asking for new name
-//            TextInputDialog dialog = new TextInputDialog(item.getName());
-//            dialog.initOwner((Stage) ((Node) actionEvent.getSource()).getScene().getWindow());
-//            dialog.setTitle("Edit selected album");
-//            dialog.setHeaderText("Change the name of the album");
-//            dialog.setContentText("Enter name: ");
-//
-//            boolean cont = true;
-//            while (cont) {
-//                Optional<String> result = dialog.showAndWait();
-//                if (result.isPresent()) {
-//                    String n = result.get();
-//                    if (user.albumNameExists(n)) {
-//                        dialog.setContentText("Enter name: ");
-//                        dialog.setHeaderText("That album name is taken");
-//                    } else if (n.length() == 0) {
-//                        dialog.setContentText("Enter name: ");
-//                        dialog.setHeaderText("Album name cannot be blank");
-//                    } else {
-//                        item.setName(n);
-//                        obsList.set(index, item);
-//                        AlbumListview.setItems(obsList);
-//                        cont = false;
-//                    }
-//                } else {
-//                    cont = false;
-//                }
-//            }
-//        }
-    }
 
     public void convertLogOutButton(ActionEvent event) {
 
