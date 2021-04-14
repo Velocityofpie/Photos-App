@@ -168,8 +168,8 @@ public class ImageviewerController {
     }
 
     /**
-     * Called when users presses "LogOut" Button
-     * Switches the scene back to the login screen
+     * Called when users presses "the right arrrow" Button
+     * Switches to the next photo
      * @param event
      * @throws FileNotFoundException
      */
@@ -188,8 +188,8 @@ public class ImageviewerController {
     }
 
     /**
-     * Called when users presses "LogOut" Button
-     * Switches the scene back to the login screen
+     * Called when users presses "the left arrrow" Button
+     * Switches to the pervious
      * @param event
      * @throws FileNotFoundException
      */
@@ -208,6 +208,13 @@ public class ImageviewerController {
         selectedPhoto = photos.get(index);
         update(selectedPhoto.getImgsrc());
     }
+
+    /**
+     * Called when users presses "add photo" Button
+     * adds a new photo to the album
+     * @param event
+     *
+     */
 
     public void addPhotoFunction(ActionEvent event) {
     }
@@ -261,9 +268,21 @@ public class ImageviewerController {
         }
     }
 
+    /**
+     * Called when users presses "edit photo" Button
+     * changes the name of the photo
+     * @param event
+     *
+     */
     public void EditPhotoFunction(ActionEvent event) {
     }
 
+    /**
+     * Called when users presses "copy to" Button
+     * Copies the photo select to be copied into the new selected album
+     * @param event
+     *
+     */
     public void copyToFunction(ActionEvent event) {
         //pop up asking for new name
         TextInputDialog dialog = new TextInputDialog();
@@ -297,6 +316,12 @@ public class ImageviewerController {
         DataSaving.saveData(users);
     }
 
+    /**
+     * Called when users presses "move to" Button
+     * moves the photo select to be copied into the new selected album and remove it from the old album
+     * @param event
+     *
+     */
     public void moveToFunction(ActionEvent event) {
         //same code as copyToFunction, but also deletes photo
         //pop up asking for new name
@@ -332,12 +357,23 @@ public class ImageviewerController {
         //save data
         DataSaving.saveData(users);
     }
+    /**
+     * Called when users presses "update" Button
+     * Updates the caption
+     * @param event
+     *
+     */
 
     public void updateCaptionFunction(ActionEvent event) {
         selectedPhoto.setCaption(captionTextArea.getText());
         DataSaving.saveData(users);
     }
-
+    /**
+     * Called when users presses "add" Button
+     * Addes a tag and it value to be stored under its respected user
+     * @param event
+     *
+     */
     public void addTagFunction(ActionEvent event) {
         String tName = TagTextfield.getText();
         String tValue = TagValueTextfield.getText();
@@ -391,6 +427,13 @@ public class ImageviewerController {
         alert.setContentText(content);
         alert.showAndWait();
     }
+
+    /**
+     * Called when users presses "delete" Button
+     * deletes a tag and it value to be stored under its respected user
+     * @param event
+     *
+     */
 
     public void deleteTagFunction(ActionEvent event) {
         int index = lvTags.getSelectionModel().getSelectedIndex();
