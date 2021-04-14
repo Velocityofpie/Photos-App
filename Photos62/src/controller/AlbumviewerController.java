@@ -49,7 +49,12 @@ import model.User;
  * @author John Lavin
  */
 
-
+/**
+ *
+ * @param u list of users
+ * @param i integer representing a particular state
+ * @throws IOException
+ */
 public class AlbumviewerController {
     @FXML
     private GridPane gridPane;
@@ -99,6 +104,10 @@ public class AlbumviewerController {
     private Photo selectedPhoto;
     private User user;
 
+    /**
+     * start Gets the user corresponding photos and album data to display it
+     * @param users , user,photos,a
+     */
 
     public void start(ArrayList<User> users, User user, ListView<Photo> photos, Album a) throws FileNotFoundException {
         this.users = users;
@@ -119,6 +128,11 @@ public class AlbumviewerController {
 
 
     }
+
+    /**
+     * Updates the album for any changes
+     * @param i
+     */
 
     public void update(int i) throws FileNotFoundException {
 
@@ -184,6 +198,11 @@ public class AlbumviewerController {
 
 
     }
+
+    /**
+     * Updates the album for any changes
+     * @param i
+     */
 
     public void populatePhotogridPane() throws IOException {
         int col = 0, row = 0;
@@ -397,6 +416,7 @@ public class AlbumviewerController {
             exception.printStackTrace();
         }
     }
+
 
     public void addPhotoFunction(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
