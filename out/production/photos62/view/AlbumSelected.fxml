@@ -30,7 +30,7 @@
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button fx:id="EditphotoButton" mnemonicParsing="false" prefHeight="120.0" prefWidth="460.0" style="-fx-background-color: transparent;" text="Edit Photo" textFill="WHITE">
+            <Button fx:id="EditphotoButton" onAction="#EditPhotoFunction" mnemonicParsing="false" prefHeight="120.0" prefWidth="460.0" style="-fx-background-color: transparent;" text="Edit Photo" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
@@ -59,7 +59,7 @@
       <HBox layoutX="1141.0" layoutY="20.0" prefHeight="40.0" prefWidth="245.0">
          <children>
 
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Username" wrappingWidth="140.13671875">
+            <Text fx:id="UsernameText" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" wrappingWidth="140.13671875">
                <font>
                   <Font size="28.0" />
                </font>
@@ -79,7 +79,7 @@
             </AnchorPane>
             <AnchorPane prefHeight="214.0" prefWidth="281.0">
                <children>
-                  <Text layoutX="22.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Album Name " wrappingWidth="263.13671875">
+                  <Text fx:id="AlbumNameText" layoutX="22.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Album Name " wrappingWidth="263.13671875">
                      <font>
                         <Font size="32.0" />
                      </font>

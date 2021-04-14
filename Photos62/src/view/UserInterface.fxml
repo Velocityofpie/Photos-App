@@ -57,7 +57,7 @@
       <HBox layoutX="1141.0" layoutY="20.0" prefHeight="40.0" prefWidth="245.0">
          <children>
 
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Username" wrappingWidth="140.13671875">
+            <Text fx:id="UsernameText" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" wrappingWidth="140.13671875">
                <font>
                   <Font size="28.0" />
                </font>
