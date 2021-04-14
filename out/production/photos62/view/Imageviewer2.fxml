@@ -1,18 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ButtonBar?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ImageviewerController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ImageviewerController">
    <children>
       <VBox layoutX="-8.0" prefHeight="900.0" prefWidth="399.0" style="-fx-background-color: #212121;">
          <children>
@@ -77,9 +71,35 @@
             <Font size="32.0" />
          </font>
       </Text>
-      <ImageView fx:id="imgView" fitHeight="423.0" fitWidth="748.0" layoutX="511.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true" />
-      <Button fx:id="btnBack" onAction="#nextPhotoFunction" layoutX="426.0" layoutY="309.0" mnemonicParsing="false" text="&lt;--" />
-      <Button fx:id="btnNext" onAction="#previousPhotoFunction" layoutX="1312.0" layoutY="309.0" mnemonicParsing="false" text="--&gt;" />
-      <Label fx:id="lblDate" layoutX="511.0" layoutY="575.0" prefHeight="18.0" prefWidth="147.0" text="Date: " />
+      <ImageView fx:id="imgView" fitHeight="426.0" fitWidth="780.0" layoutX="511.0" layoutY="110.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" />
+      <Button fx:id="btnBack" layoutX="428.0" layoutY="284.0" mnemonicParsing="false" onAction="#nextPhotoFunction" prefHeight="50.0" prefWidth="66.0" style="-fx-background-color: #212121;" text="←" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font></Button>
+      <Button fx:id="btnNext" layoutX="1309.0" layoutY="284.0" mnemonicParsing="false" onAction="#previousPhotoFunction" prefHeight="50.0" prefWidth="66.0" style="-fx-background-color: #212121;" text="→" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font></Button>
+      <Label fx:id="lblDate" layoutX="511.0" layoutY="550.0" prefHeight="18.0" prefWidth="147.0" text="Date: ">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <TextArea layoutX="511.0" layoutY="631.0" prefHeight="255.0" prefWidth="236.0" />
+      <Slider layoutX="-165.0" layoutY="134.0" orientation="VERTICAL" prefHeight="155.0" prefWidth="14.0" />
+      <ListView layoutX="1055.0" layoutY="631.0" prefHeight="255.0" prefWidth="236.0" />
+      <ButtonBar layoutX="1091.0" layoutY="544.0" prefHeight="40.0" prefWidth="200.0">
+        <buttons>
+          <Button mnemonicParsing="false" style="-fx-background-color: #212121;" text="Move To →" textFill="WHITE" />
+            <Button mnemonicParsing="false" style="-fx-background-color: #212121;" text="Copy to →" textFill="WHITE" />
+        </buttons>
+      </ButtonBar>
+      <Button layoutX="1309.0" layoutY="840.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="66.0" style="-fx-background-color: #212121;" text="Update" textFill="WHITE" />
+      <ButtonBar layoutX="757.0" layoutY="833.0" prefHeight="40.0" prefWidth="255.0">
+        <buttons>
+            <Button mnemonicParsing="false" style="-fx-background-color: #212121;" text="Add" textFill="WHITE" />
+            <Button mnemonicParsing="false" style="-fx-background-color: #212121;" text="Update" textFill="WHITE" />
+          <Button mnemonicParsing="false" style="-fx-background-color: #212121;" text="Delete" textFill="WHITE" />
+        </buttons>
+      </ButtonBar>
    </children>
 </AnchorPane>

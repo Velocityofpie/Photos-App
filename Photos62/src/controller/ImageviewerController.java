@@ -3,9 +3,12 @@ package controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import model.Album;
 import model.Photo;
@@ -31,6 +34,7 @@ public class ImageviewerController {
     private Album selectedAlbum;
     private Photo selectedPhoto;
     private ArrayList<Photo> photos;
+    ListView<Photo> photos2;
 
     public void start(User u, ArrayList<User> us, Album album, Photo p) throws FileNotFoundException {
         users = us;
@@ -47,11 +51,22 @@ public class ImageviewerController {
         InputStream stream = new FileInputStream(s);
         Image image = new Image(stream);
         imgView.setImage(image);
-
         lblDate.setText("Date: " + selectedPhoto.getDate());
     }
 
     public void convertBacktoalbumButton(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/AlbumSelected.fxml"));
+            Parent parent = (Parent) loader.load();
+            AlbumviewerController controller = loader.<AlbumviewerController>getController();
+            Scene scene = new Scene(parent);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            controller.start(users,user, photos2, selectedAlbum);
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
     }
 
     public void convertLogOutButton(ActionEvent event) {

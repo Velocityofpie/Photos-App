@@ -184,14 +184,15 @@ public class AlbumviewerController {
     public void populatePhotogridPane() throws IOException {
         int col = 0, row = 0;
 
-        gridPane.setMinWidth(Region.USE_COMPUTED_SIZE);
-        gridPane.setPrefWidth(Region.USE_COMPUTED_SIZE);
-        gridPane.setMaxWidth(Region.USE_PREF_SIZE);
+        gridPane.setMinWidth(60.0);
+        gridPane.setPrefWidth(60.0);
+        gridPane.setMaxWidth(60.0);
 
         //set grid height
-        gridPane.setMinHeight(Region.USE_COMPUTED_SIZE);
-        gridPane.setPrefHeight(Region.USE_COMPUTED_SIZE);
-        gridPane.setMaxHeight(Region.USE_PREF_SIZE);
+        gridPane.setMinHeight(60.0);
+        gridPane.setPrefHeight(60.0);
+        gridPane.setMaxHeight(60.0);
+
 
         for (int i = 0; i < selectedAlbum.getPhotoCount(); i++) {
             if (col == 2) {

@@ -79,10 +79,8 @@
       </HBox>
       <HBox layoutX="493.0" layoutY="91.0" prefHeight="471.0" prefWidth="813.0">
          <children>
-            <ImageView fitHeight="429.0" fitWidth="808.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@" />
-               </image>
+            <ImageView fx:id="imgView"  fitHeight="429.0" fitWidth="808.0" pickOnBounds="true" preserveRatio="true">
+
             </ImageView>
          </children>
       </HBox>
