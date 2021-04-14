@@ -4,21 +4,19 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import model.Album;
+import model.DataSaving;
 import model.Photo;
 import model.User;
 import javafx.scene.*;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 
@@ -28,6 +26,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class ImageviewerController {
 
@@ -132,9 +131,123 @@ public class ImageviewerController {
     }
 
     public void deletePhotoFromAlbum(ActionEvent event) {
+        ArrayList<Photo> p = selectedAlbum.getPhotos();
+        int i = selectedAlbum.getPhotoIndexByPhoto(selectedPhoto);
+
+        //check if album only has one photo, if it does let them know it will delete the whole album
+        if (selectedAlbum.getPhotoCount() == 1) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirmation Dialog");
+            alert.setHeaderText("If you delete this photo, it will delete the album");
+            alert.setContentText("Are you ok with this?");
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK){
+                //remove album from user
+                user.removeAlbum(selectedAlbum);
+                DataSaving.saveData(users);
+                //switch back to user controller
+                try {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/UserInterface.fxml"));
+                    Parent parent = (Parent) loader.load();
+                    UserController controller = loader.<UserController>getController();
+                    Scene scene = new Scene(parent);
+                    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    controller.start(user, users);
+                    stage.setScene(scene);
+                    stage.show();
+                } catch (Exception exception) {
+                    exception.printStackTrace();
+                }
+            } else {
+                // ... user chose CANCEL or closed the dialog
+            }
+            return;
+        }
+
+
+
+        selectedAlbum.getPhotos().remove(i);
+        //select a new photo
+        selectedPhoto = p.get(0);
+
+        //save data
+        DataSaving.saveData(users);
+        try {
+            update(selectedPhoto.getImgsrc());
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     public void EditPhotoFunction(ActionEvent event) {
     }
 
+    public void copyToFunction(ActionEvent event) {
+        //pop up asking for new name
+        TextInputDialog dialog = new TextInputDialog();
+        dialog.initOwner((Stage) ((Node) event.getSource()).getScene().getWindow());
+        dialog.setTitle("Copy Photo");
+        dialog.setHeaderText("Copy the photo to an existing album");
+        dialog.setContentText("Enter album: ");
+
+        boolean cont = true;
+        while (cont) {
+            Optional<String> result = dialog.showAndWait();
+            if (result.isPresent()) {
+                String n = result.get();
+                if (!(user.albumNameExists(n))) {
+                    dialog.setContentText("Enter name: ");
+                    dialog.setHeaderText("That album does not exist");
+                } else if (n.equals(selectedAlbum.getName())) {
+                    dialog.setContentText("Enter name: ");
+                    dialog.setHeaderText("This photo is already in that album");
+                } else {
+                    //add selected photo to the album they listed
+                    Album addToThisAlbum = user.getAlbumByName(n);
+                    addToThisAlbum.addPhoto(selectedPhoto);
+                    cont = false;
+                }
+            } else {
+                cont = false;
+            }
+        }
+        //save data
+        DataSaving.saveData(users);
+    }
+
+    public void moveToFunction(ActionEvent event) {
+        //same code as copyToFunction, but also deletes photo
+        //pop up asking for new name
+        TextInputDialog dialog = new TextInputDialog();
+        dialog.initOwner((Stage) ((Node) event.getSource()).getScene().getWindow());
+        dialog.setTitle("Copy Photo");
+        dialog.setHeaderText("Copy the photo to an existing album");
+        dialog.setContentText("Enter album: ");
+
+        boolean cont = true;
+        while (cont) {
+            Optional<String> result = dialog.showAndWait();
+            if (result.isPresent()) {
+                String n = result.get();
+                if (!(user.albumNameExists(n))) {
+                    dialog.setContentText("Enter name: ");
+                    dialog.setHeaderText("That album does not exist");
+                } else if (n.equals(selectedAlbum.getName())) {
+                    dialog.setContentText("Enter name: ");
+                    dialog.setHeaderText("This photo is already in that album");
+                } else {
+                    //add selected photo to the album they listed
+                    Album addToThisAlbum = user.getAlbumByName(n);
+                    addToThisAlbum.addPhoto(selectedPhoto);
+                    cont = false;
+                }
+            } else {
+                return;
+            }
+        }
+        deletePhotoFromAlbum(event);
+
+        //save data
+        DataSaving.saveData(users);
+    }
 }
