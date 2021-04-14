@@ -115,12 +115,15 @@ public class ImageviewerController {
 
         //get the song from the obsList
         int index = lvTags.getSelectionModel().getSelectedIndex();
-        Tag s = obsListTags.get(index);
+        Tag s = null;
+        try {
+            s = obsListTags.get(index);
+            //put necessary values in the text field
+            TagTextfield.setText(s.getTagName());
+            TagValueTextfield.setText(s.getTagValue());
+        } catch (Exception e) {
 
-        //put necessary values in the text field
-        TagTextfield.setText(s.getTagName());
-        TagValueTextfield.setText(s.getTagValue());
-
+        }
     }
 
     /**
