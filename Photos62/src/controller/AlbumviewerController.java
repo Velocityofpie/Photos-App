@@ -267,4 +267,22 @@ public class AlbumviewerController {
         //save data
         DataSaving.saveData(users);
     }
+
+    public void deletePhotoFromAlbum(Photo deleteThisPhoto, Album fromThisAlbum) {
+        ArrayList<Photo> p = fromThisAlbum.getPhotos();
+        int i = fromThisAlbum.getPhotoIndexByPhoto(deleteThisPhoto);
+        p.remove(i);
+        //save data
+        DataSaving.saveData(users);
+    }
+
+    public void deletePhotoFromAlbum(ActionEvent event) {
+        ArrayList<Photo> p = selectedAlbum.getPhotos();
+        int i = selectedAlbum.getPhotoIndexByPhoto(selectedPhoto);
+        p.remove(i);
+        //select a new photo
+
+        //save data
+        DataSaving.saveData(users);
+    }
 }

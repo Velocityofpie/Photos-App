@@ -63,4 +63,11 @@ public class Album implements Serializable{
     public Photo getNewestPhoto() {
         return NewestPhoto;
     }
+
+    public int getPhotoIndexByPhoto(Photo a) {
+        for (int i = 0; i < photos.size(); i++)
+            if (photos.get(i).getImgsrc().equals(a.getImgsrc()))
+                return i;
+        return -1;
+    }
 }

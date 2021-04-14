@@ -37,7 +37,7 @@
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button fx:id="DeletePhotoButton" mnemonicParsing="false" prefHeight="120.0" prefWidth="460.0" style="-fx-background-color: transparent;" text="Delete Photo" textFill="WHITE">
+            <Button fx:id="DeletePhotoButton" onAction="#deletePhotoFromAlbum" mnemonicParsing="false" prefHeight="120.0" prefWidth="460.0" style="-fx-background-color: transparent;" text="Delete Photo" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
