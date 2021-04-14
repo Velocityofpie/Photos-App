@@ -146,7 +146,7 @@ public class NewAlbumController {
 
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Resource File");
-        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("All Files", "*.png*", "*.jpg", "*.jpeg", "*.gif", "*.bmp"));
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("All Files", "*.png", "*.jpg", "*.jpeg", "*.gif", "*.bmp"));
         File selectedFile = fileChooser.showOpenDialog(stage);
         if (selectedFile == null) {
             return;
@@ -154,7 +154,7 @@ public class NewAlbumController {
 
         //create a new album, add the photo to that album
         updatedAlbum = new Album("temp");
-        Photo p = new Photo("temp", Calendar.getInstance(), selectedFile.getAbsolutePath());
+        Photo p = new Photo(selectedFile.getName(), Calendar.getInstance(), selectedFile.getAbsolutePath());
         updatedAlbum.addPhoto(p);
 
         //display the name of the file selected
