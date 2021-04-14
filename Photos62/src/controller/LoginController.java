@@ -26,6 +26,10 @@ import model.Photo;
 import model.User;
 import javafx.scene.control.ScrollPane;
 
+/**
+ * @author Joshua Hernandez
+ * @author John Lavin
+ */
 
 public class LoginController {
 

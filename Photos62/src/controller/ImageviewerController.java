@@ -28,6 +28,11 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Optional;
 
+/**
+ * @author Joshua Hernandez
+ * @author John Lavin
+ */
+
 public class ImageviewerController {
 
     @FXML

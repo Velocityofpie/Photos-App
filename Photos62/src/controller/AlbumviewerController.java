@@ -44,6 +44,10 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import model.Album;
 import model.User;
+/**
+ * @author Joshua Hernandez
+ * @author John Lavin
+ */
 
 
 public class AlbumviewerController {

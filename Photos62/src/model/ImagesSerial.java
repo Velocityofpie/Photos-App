@@ -5,6 +5,11 @@ import javafx.scene.image.PixelReader;
 import javafx.scene.image.PixelWriter;
 import javafx.scene.image.WritableImage;
 
+/**
+ * @author Joshua Hernandez
+ * @author John Lavin
+ */
+
 public class ImagesSerial {
     private static final long serialVersionUID = 1L;
     private int width, height;

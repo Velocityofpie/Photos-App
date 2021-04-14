@@ -1,5 +1,10 @@
 package model;
 
+/**
+ * @author Joshua Hernandez
+ * @author John Lavin
+ */
+
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
