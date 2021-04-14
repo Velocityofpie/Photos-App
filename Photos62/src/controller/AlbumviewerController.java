@@ -12,6 +12,8 @@ import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.TilePane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -46,6 +48,9 @@ import model.User;
 
 public class AlbumviewerController {
     @FXML
+    private GridPane gridPane;
+
+    @FXML
     private Button AddphotoButton, DeletePhotoButton, EditphotoButton;
 
     @FXML
@@ -74,7 +79,10 @@ public class AlbumviewerController {
     private ArrayList<AnchorPane> photoSquares = new ArrayList<AnchorPane>();
 
     @FXML
-    private ListView<Photo> photoListView;
+    private ListView<String> photolistview;
+    private ObservableList<String> names;
+
+    private ObservableList<Photo> obsList;
 
     private Photo photo;
     private String album;
@@ -95,13 +103,23 @@ public class AlbumviewerController {
         this.selectedAlbum = a;
         //InputStream stream = new FileInputStream("Photos62/data/stockuser/Stock1.png");
         //System.out.println(selectedAlbum.getNewestPhoto().getImgsrc());
-        //photolistloader(users, user,  selectedAlbum);
+
+
+        try {
+            populatePhotogridPane();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         update( 0);
 
 
     }
 
     public void update(int i) throws FileNotFoundException {
+
+        //populate list view of photos
+        //populatePhotosListView();
 
         AlbumNameText.setText(selectedAlbum.getName());
         UsernameText.setText(user.getUsername());
@@ -163,17 +181,71 @@ public class AlbumviewerController {
 
     }
 
+    public void populatePhotogridPane() throws IOException {
+        int col = 0, row = 0;
+
+        gridPane.setMinWidth(Region.USE_COMPUTED_SIZE);
+        gridPane.setPrefWidth(Region.USE_COMPUTED_SIZE);
+        gridPane.setMaxWidth(Region.USE_PREF_SIZE);
+
+        //set grid height
+        gridPane.setMinHeight(Region.USE_COMPUTED_SIZE);
+        gridPane.setPrefHeight(Region.USE_COMPUTED_SIZE);
+        gridPane.setMaxHeight(Region.USE_PREF_SIZE);
+
+        for (int i = 0; i < selectedAlbum.getPhotoCount(); i++) {
+            if (col == 2) {
+                col = 0;
+                row++;
+            }
+            System.out.println(selectedAlbum.getPhotos().get(i).getImgsrc());
+            InputStream stream = new FileInputStream(selectedAlbum.getPhotos().get(i).getImgsrc());
+            Image image = new Image(stream);
+            ImageView imageView = new ImageView();
+            imageView.setImage(image);
+            gridPane.getChildren().add(imageView);
+            col++;
+
+        }
+
+
+
+
+    }
+
     public void photolistloader(ArrayList<User> users, User user, Album selectedAlbum) {
 
-        photoListView.setCellFactory(new Callback<ListView<Photo>, ListCell<Photo>>() {
+        //create a list of photo names
+        ArrayList<Photo> l = selectedAlbum.getPhotos();
+        ArrayList<String> temp = new ArrayList<>();
+        ArrayList<Image> im = new ArrayList<Image>();
+        for (Photo curr: l) {
+            temp.add(curr.getImgsrc());
+        }
+
+        photolistview.setItems(FXCollections.observableArrayList(temp));
+        photolistview.getSelectionModel().select(0);
+
+        photolistview.setCellFactory(param -> new ListCell<String>() {
+            private ImageView imageView = new ImageView();
             @Override
-            public ListCell<Photo> call(ListView<Photo> photoList) {
-                return new Imageloader();
+            public void updateItem(String name, boolean empty) {
+                super.updateItem(name, empty);
+                if (empty) {
+                    setText(null);
+                    setGraphic(null);
+                } else {
+                    for (String curr: temp) {
+                        imageView.setImage(new Image(curr));
+                    }
+
+                    setText(name);
+                    setGraphic(imageView);
+                }
             }
         });
 
-        photoListView.setItems(FXCollections.observableArrayList(selectedAlbum.getPhotos()));
-        photoListView.getSelectionModel().select(0);
+
 
         ArrayList<String> albumnames = new ArrayList<String>();
         albumnames.add(0, " ");
@@ -341,6 +413,10 @@ public class AlbumviewerController {
     }
 
     public void EditPhotoFunction(ActionEvent event) {
+
+    }
+
+    public void openImageViewer(ActionEvent event) {
 
     }
 }
