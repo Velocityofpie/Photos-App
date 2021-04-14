@@ -107,7 +107,7 @@ public class AlbumviewerController {
     /**
      * start Gets the user corresponding photos and album data to display it
      * @param users , user,photos,a
-     * @throws
+     * @throws FileNotFoundException
      */
 
     public void start(ArrayList<User> users, User user, ListView<Photo> photos, Album a) throws FileNotFoundException {
@@ -133,6 +133,7 @@ public class AlbumviewerController {
     /**
      * Updates the album for any changes
      * @param i
+     * @throws FileNotFoundException
      */
 
     public void update(int i) throws FileNotFoundException {
@@ -426,13 +427,19 @@ public class AlbumviewerController {
 
     /**
      * Called when users presses "edit photo" button
-     * Switches the scene to ImagesviewerController
+     * Changes the name of the photo
      * @param event
      */
 
     public void EditPhotoFunction(ActionEvent event) {
         openImageViewer(event);
     }
+
+    /**
+     * loads the Fxml file for imageviewer
+     *
+     * @param event
+     */
 
     public void openImageViewer(ActionEvent event) {
 
