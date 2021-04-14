@@ -82,10 +82,6 @@ public class AlbumviewerController {
         this.photos = photos;
         this.user = user;
         this.selectedAlbum = a;
-        //Photo selectedPhoto = photos.getSelectionModel().getSelectedItem();
-        this.users = users;
-        this.photos = photos;
-        this.user = user;
         //InputStream stream = new FileInputStream("Photos62/data/stockuser/Stock1.png");
         System.out.println(selectedAlbum.getNewestPhoto().getImgsrc());
         selectedPhoto = selectedAlbum.getPhotos().get(0);
@@ -97,6 +93,12 @@ public class AlbumviewerController {
         SelectedImage.setFitWidth(210);
         SelectedImage.setPreserveRatio(true);
         PhotodateText.setText(PhotodateText.getText() + selectedPhoto.getDate());
+        CaptionLabel.setText(CaptionLabel.getText() + selectedPhoto.getCaption());
+        ArrayList<Tag> selectedTags = selectedPhoto.getTags();
+        String t = TagLabel.getText();
+        for (Tag curr: selectedTags) {
+            t = t + " " + curr.getTag();
+        }
       //  Photo selectedPhoto = photos.getSelectionModel().getSelectedItem();
 
         //cover photo for album
