@@ -428,6 +428,13 @@ public class ImageviewerController {
         alert.showAndWait();
     }
 
+    /**
+     * Called when users presses "delete" Button
+     * deletes a tag and it value to be stored under its respected user
+     * @param event
+     *
+     */
+
     public void deleteTagFunction(ActionEvent event) {
         int index = lvTags.getSelectionModel().getSelectedIndex();
         Tag selectedTag = lvTags.getSelectionModel().getSelectedItem();
