@@ -373,6 +373,26 @@ public class AlbumviewerController {
         }
     }
 
+    public void EditPhotoFunction(ActionEvent event) {
+        openImageViewer(event);
+    }
+
+    public void openImageViewer(ActionEvent event) {
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Imageviewer2.fxml"));
+            Parent parent = (Parent) loader.load();
+            ImageviewerController controller = loader.<ImageviewerController>getController();
+            Scene scene = new Scene(parent);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            controller.start(user, users, selectedAlbum, selectedPhoto);
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+    }
+
     public void addPhotoFunction(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
@@ -410,25 +430,5 @@ public class AlbumviewerController {
         }
 
         DataSaving.saveData(users);
-    }
-
-    public void EditPhotoFunction(ActionEvent event) {
-        openImageViewer(event);
-    }
-
-    public void openImageViewer(ActionEvent event) {
-
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Imageviewer2.fxml"));
-            Parent parent = (Parent) loader.load();
-            ImageviewerController controller = loader.<ImageviewerController>getController();
-            Scene scene = new Scene(parent);
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            controller.start(user, users, selectedAlbum, selectedPhoto);
-            stage.setScene(scene);
-            stage.show();
-        } catch (Exception exception) {
-            exception.printStackTrace();
-        }
     }
 }

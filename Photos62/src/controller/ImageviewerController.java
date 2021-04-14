@@ -2,11 +2,14 @@ package controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import model.Album;
 import model.Photo;
 import model.User;
+import javafx.scene.*;
+
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -17,6 +20,9 @@ public class ImageviewerController {
 
     @FXML
     private ImageView imgView;
+
+    @FXML
+    private Label lblDate;
 
     private ArrayList<User> users;
     private User user;
@@ -31,10 +37,16 @@ public class ImageviewerController {
         selectedPhoto = p;
         photos = album.getPhotos();
 
-        InputStream stream = new FileInputStream(selectedPhoto.getImgsrc());
+        update(selectedPhoto.getImgsrc());
+
+    }
+
+    public void update(String s) throws FileNotFoundException {
+        InputStream stream = new FileInputStream(s);
         Image image = new Image(stream);
         imgView.setImage(image);
 
+        lblDate.setText("Date: " + selectedPhoto.getDate());
     }
 
     public void convertBacktoalbumButton(ActionEvent event) {
@@ -53,9 +65,7 @@ public class ImageviewerController {
             index++;
         }
         selectedPhoto = photos.get(index);
-        InputStream stream = new FileInputStream(selectedPhoto.getImgsrc());
-        Image image = new Image(stream);
-        imgView.setImage(image);
+        update(selectedPhoto.getImgsrc());
     }
 
     public void previousPhotoFunction(ActionEvent event) throws FileNotFoundException {
@@ -68,8 +78,15 @@ public class ImageviewerController {
             index--;
         }
         selectedPhoto = photos.get(index);
-        InputStream stream = new FileInputStream(selectedPhoto.getImgsrc());
-        Image image = new Image(stream);
-        imgView.setImage(image);
+        update(selectedPhoto.getImgsrc());
+    }
+
+    public void addPhotoFunction(ActionEvent event) {
+    }
+
+    public void deletePhotoFromAlbum(ActionEvent event) {
+    }
+
+    public void EditPhotoFunction(ActionEvent event) {
     }
 }

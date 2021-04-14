@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -25,17 +26,17 @@
                   </Text>
                </children>
             </Pane>
-            <Button fx:id="AddphotoButton" mnemonicParsing="false" prefHeight="120.0" prefWidth="460.0" style="-fx-background-color: transparent;" text="Add Photo" textFill="WHITE">
+            <Button fx:id="AddphotoButton" mnemonicParsing="false" onAction="#addPhotoFunction" prefHeight="120.0" prefWidth="460.0" style="-fx-background-color: transparent;" text="Add Photo" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button fx:id="DeletePhotoButton" mnemonicParsing="false" prefHeight="120.0" prefWidth="460.0" style="-fx-background-color: transparent;" text="Delete Photo" textFill="WHITE">
+            <Button fx:id="DeletePhotoButton" mnemonicParsing="false" onAction="#deletePhotoFromAlbum" prefHeight="120.0" prefWidth="460.0" style="-fx-background-color: transparent;" text="Delete Photo" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button fx:id="EditphotoButton" mnemonicParsing="false" prefHeight="120.0" prefWidth="460.0" style="-fx-background-color: transparent;" text="Edit Photo" textFill="WHITE">
+            <Button fx:id="EditphotoButton" mnemonicParsing="false" onAction="#EditPhotoFunction" prefHeight="120.0" prefWidth="460.0" style="-fx-background-color: transparent;" text="Edit Photo" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
@@ -77,7 +78,8 @@
          </font>
       </Text>
       <ImageView fx:id="imgView" fitHeight="423.0" fitWidth="748.0" layoutX="511.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true" />
-      <Button fx:id="btnBack" layoutX="426.0" onAction="#previousPhotoFunction" layoutY="309.0" mnemonicParsing="false" text="&lt;--" />
-      <Button fx:id="btnNext" layoutX="1312.0" onAction="#nextPhotoFunction" layoutY="309.0" mnemonicParsing="false" text="--&gt;" />
+      <Button fx:id="btnBack" onAction="#nextPhotoFunction" layoutX="426.0" layoutY="309.0" mnemonicParsing="false" text="&lt;--" />
+      <Button fx:id="btnNext" onAction="#previousPhotoFunction" layoutX="1312.0" layoutY="309.0" mnemonicParsing="false" text="--&gt;" />
+      <Label fx:id="lblDate" layoutX="511.0" layoutY="575.0" prefHeight="18.0" prefWidth="147.0" text="Date: " />
    </children>
 </AnchorPane>
