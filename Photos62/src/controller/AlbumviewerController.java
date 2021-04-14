@@ -76,17 +76,18 @@ public class AlbumviewerController {
     private User user;
 
 
-    public void start(ArrayList<User> users, User user,ListView<Photo> photos,  Album selectedAlbum) throws FileNotFoundException {
+    public void start(ArrayList<User> users, User user,ListView<Photo> photos,  Album a) throws FileNotFoundException {
         this.users = users;
         this.photos = photos;
         this.user = user;
-        this.selectedAlbum = selectedAlbum;
+        this.selectedAlbum = a;
         //Photo selectedPhoto = photos.getSelectionModel().getSelectedItem();
         this.users = users;
         this.photos = photos;
         this.user = user;
         //InputStream stream = new FileInputStream("Photos62/data/stockuser/Stock1.png");
-        InputStream stream = new FileInputStream(selectedAlbum.getPhotos().get(0).getImgsrc());
+        System.out.println(selectedAlbum.getNewestPhoto().getImgsrc());
+        InputStream stream = new FileInputStream(selectedAlbum.getNewestPhoto().getImgsrc());
         Image image = new Image(stream);
         SelectedImage.setImage(image);
         //Setting the image view parameters

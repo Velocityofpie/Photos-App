@@ -83,9 +83,9 @@ public class UserController {
     public void convertAlbum(ActionEvent event) {
 
         //get selected album
-        Album selectedItem = AlbumListview.getSelectionModel().getSelectedItem();
+        selectedAlbum = AlbumListview.getSelectionModel().getSelectedItem();
         int index = AlbumListview.getSelectionModel().getSelectedIndex();
-        if (selectedItem == null) {
+        if (selectedAlbum == null) {
             return;
         }
 
