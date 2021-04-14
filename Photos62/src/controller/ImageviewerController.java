@@ -23,6 +23,7 @@ import javafx.scene.text.Text;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Optional;
@@ -31,6 +32,8 @@ import java.util.Optional;
  * @author Joshua Hernandez
  * @author John Lavin
  */
+
+
 
 public class ImageviewerController {
 
@@ -61,6 +64,12 @@ public class ImageviewerController {
     ListView<Photo> photos2;
     private ObservableList<Tag> obsListTags;
 
+    /**
+     * start the call and the images to display them in the list
+     * @param u , us, album, p
+     * @throws IOException
+     */
+
     public void start(User u, ArrayList<User> us, Album album, Photo p) throws FileNotFoundException {
         users = us;
         user = u;
@@ -74,6 +83,12 @@ public class ImageviewerController {
         update(selectedPhoto.getImgsrc());
 
     }
+
+    /**
+     * Called to get the lastest information on the photo and the lastest sets of photo
+     *
+     * @throws FileNotFoundException
+     */
 
     public void update(String s) throws FileNotFoundException {
         InputStream stream = new FileInputStream(s);
@@ -108,6 +123,12 @@ public class ImageviewerController {
 
     }
 
+    /**
+     * Called when users presses "back to album" Button
+     * Switches the scene back to the AlbumViewer controller
+     * @param event
+     */
+
     public void convertBacktoalbumButton(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/AlbumSelected.fxml"));
@@ -123,6 +144,12 @@ public class ImageviewerController {
         }
     }
 
+    /**
+     * Called when users presses "LogOut" Button
+     * Switches the scene back to the login screen
+     * @param event
+     */
+
     public void convertLogOutButton(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Login.fxml"));
@@ -137,6 +164,13 @@ public class ImageviewerController {
         }
     }
 
+    /**
+     * Called when users presses "LogOut" Button
+     * Switches the scene back to the login screen
+     * @param event
+     * @throws FileNotFoundException
+     */
+
     public void nextPhotoFunction(ActionEvent event) throws FileNotFoundException {
 
         //get index of the selected photo
@@ -149,6 +183,14 @@ public class ImageviewerController {
         selectedPhoto = photos.get(index);
         update(selectedPhoto.getImgsrc());
     }
+
+    /**
+     * Called when users presses "LogOut" Button
+     * Switches the scene back to the login screen
+     * @param event
+     * @throws FileNotFoundException
+     */
+
 
     public void previousPhotoFunction(ActionEvent event) throws FileNotFoundException {
 
