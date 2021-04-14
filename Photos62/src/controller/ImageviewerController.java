@@ -14,6 +14,14 @@ import model.Album;
 import model.Photo;
 import model.User;
 import javafx.scene.*;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.text.Text;
+
 
 
 import java.io.FileInputStream;
@@ -28,11 +36,22 @@ public class ImageviewerController {
 
     @FXML
     private Label lblDate;
+    @FXML
+    private ListView<?> ListoftagsListview;
+    @FXML
+    private TextField TagTextfield;
+
+    @FXML
+    private TextField TagValueTextfield;
+
+    @FXML
+    private Label lblDate1;
 
     private ArrayList<User> users;
     private User user;
     private Album selectedAlbum;
     private Photo selectedPhoto;
+     //list of users
     private ArrayList<Photo> photos;
     ListView<Photo> photos2;
 
@@ -117,4 +136,5 @@ public class ImageviewerController {
 
     public void EditPhotoFunction(ActionEvent event) {
     }
+
 }

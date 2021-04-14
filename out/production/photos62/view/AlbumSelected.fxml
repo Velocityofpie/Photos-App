@@ -23,7 +23,6 @@
          <children>
             <Pane prefHeight="200.0" prefWidth="200.0">
                <children>
-
                   <Text fill="WHITE" layoutX="164.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Photos">
                      <font>
                         <Font size="38.0" />
