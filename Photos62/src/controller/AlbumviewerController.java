@@ -107,6 +107,7 @@ public class AlbumviewerController {
     /**
      * start Gets the user corresponding photos and album data to display it
      * @param users , user,photos,a
+     * @throws
      */
 
     public void start(ArrayList<User> users, User user, ListView<Photo> photos, Album a) throws FileNotFoundException {
