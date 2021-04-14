@@ -451,4 +451,33 @@ public class ImageviewerController {
         DataSaving.saveData(users);
 
     }
+
+    public void updateTagFunction(ActionEvent event) {
+        String tName = TagTextfield.getText();
+        String tValue = TagValueTextfield.getText();
+        if (tName.equals("") || tValue.equals("")) {
+            missingInfoAlert();
+            return;
+        }
+
+        Tag tag = new Tag(tName,tValue);
+        if (selectedPhoto.tagExists(tag)) {
+            duplicateTagAlert();
+            return;
+        }
+        //delete
+        int index = lvTags.getSelectionModel().getSelectedIndex();
+        Tag selectedTag = lvTags.getSelectionModel().getSelectedItem();
+
+        int i = selectedPhoto.getTagIndex(selectedTag);
+        selectedPhoto.removeTag(i);
+
+        selectedPhoto.addTag(tag);
+        try {
+            update(selectedPhoto.getImgsrc());
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+    }
 }
