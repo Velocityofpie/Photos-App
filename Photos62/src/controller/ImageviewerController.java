@@ -2,9 +2,11 @@ package controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 import model.Album;
 import model.Photo;
 import model.User;
@@ -53,6 +55,17 @@ public class ImageviewerController {
     }
 
     public void convertLogOutButton(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Login.fxml"));
+            Parent parent = (Parent) loader.load();
+            LoginController controller = loader.<LoginController>getController();
+            Scene scene = new Scene(parent);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
     }
 
     public void nextPhotoFunction(ActionEvent event) throws FileNotFoundException {
