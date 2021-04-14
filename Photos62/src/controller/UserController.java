@@ -82,6 +82,13 @@ public class UserController {
     }
     public void convertAlbum(ActionEvent event) {
 
+        //get selected album
+        Album selectedItem = AlbumListview.getSelectionModel().getSelectedItem();
+        int index = AlbumListview.getSelectionModel().getSelectedIndex();
+        if (selectedItem == null) {
+            return;
+        }
+
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/AlbumSelected.fxml"));
             Parent parent = (Parent) loader.load();
