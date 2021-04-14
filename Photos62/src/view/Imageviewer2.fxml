@@ -107,7 +107,7 @@
       <ButtonBar layoutX="757.0" layoutY="833.0" prefHeight="40.0" prefWidth="255.0">
          <buttons>
             <Button fx:id="AddTagButton" onAction="#addTagFunction" mnemonicParsing="false" style="-fx-background-color: #212121;" text="Add" textFill="WHITE" />
-            <Button fx:id="UpdateTagButtton" mnemonicParsing="false" style="-fx-background-color: #212121;" text="Update" textFill="WHITE" />
+            <Button fx:id="UpdateTagButtton" onAction="#updateTagFunction" mnemonicParsing="false" style="-fx-background-color: #212121;" text="Update" textFill="WHITE" />
             <Button fx:id="DeleteTagButton" onAction="#deleteTagFunction" mnemonicParsing="false" style="-fx-background-color: #212121;" text="Delete" textFill="WHITE" />
          </buttons>
       </ButtonBar>
