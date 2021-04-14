@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?> <!-- Names: Joshua Hernandez-jih31 & 	John Lavin-jvl50 -->
+<?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
@@ -88,16 +88,16 @@
       <ListView layoutX="1055.0" layoutY="631.0" prefHeight="255.0" prefWidth="236.0" />
       <ButtonBar layoutX="1091.0" layoutY="544.0" prefHeight="40.0" prefWidth="200.0">
          <buttons>
-            <Button fx:id="MovetoButton" mnemonicParsing="false" style="-fx-background-color: #212121;" text="Move To →" textFill="WHITE" />
-            <Button fx:id="CopytoButton" mnemonicParsing="false" style="-fx-background-color: #212121;" text="Copy to →" textFill="WHITE" />
+            <Button fx:id="MovetoButton" onAction="#moveToFunction" mnemonicParsing="false" style="-fx-background-color: #212121;" text="Move To →" textFill="WHITE" />
+            <Button fx:id="CopytoButton" onAction="#copyToFunction" mnemonicParsing="false" style="-fx-background-color: #212121;" text="Copy to →" textFill="WHITE" />
          </buttons>
       </ButtonBar>
       <Button fx:id="UpdateCaptionButton" layoutX="1309.0" layoutY="840.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="66.0" style="-fx-background-color: #212121;" text="Update" textFill="WHITE" />
       <ButtonBar layoutX="757.0" layoutY="833.0" prefHeight="40.0" prefWidth="255.0">
          <buttons>
-            <Button fx:id="AddButton" mnemonicParsing="false" style="-fx-background-color: #212121;" text="Add" textFill="WHITE" />
-            <Button fx:id="UpdatTagButtton" mnemonicParsing="false" style="-fx-background-color: #212121;" text="Update" textFill="WHITE" />
-            <Button fx:id="DeletButton" mnemonicParsing="false" style="-fx-background-color: #212121;" text="Delete" textFill="WHITE" />
+            <Button fx:id="AddTagButton" mnemonicParsing="false" style="-fx-background-color: #212121;" text="Add" textFill="WHITE" />
+            <Button fx:id="UpdateTagButtton" mnemonicParsing="false" style="-fx-background-color: #212121;" text="Update" textFill="WHITE" />
+            <Button fx:id="DeleteTagButton" mnemonicParsing="false" style="-fx-background-color: #212121;" text="Delete" textFill="WHITE" />
          </buttons>
       </ButtonBar>
       <Text layoutX="511.0" layoutY="617.0" strokeType="OUTSIDE" strokeWidth="0.0" text="List of tags" wrappingWidth="127.3193359375">
