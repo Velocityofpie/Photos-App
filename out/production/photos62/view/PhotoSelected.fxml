@@ -1,21 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ButtonBar?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ImageviewerController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ImageviewerController">
    <children>
       <VBox layoutX="-8.0" prefHeight="900.0" prefWidth="399.0" style="-fx-background-color: #212121;">
          <children>
@@ -65,7 +56,6 @@
          </opaqueInsets>
       </VBox>
       <ButtonBar prefHeight="40.0" prefWidth="200.0" />
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="569.0" layoutY="427.0" pickOnBounds="true" preserveRatio="true" />
       <HBox layoutX="1141.0" layoutY="20.0" prefHeight="40.0" prefWidth="245.0">
          <children>
 
@@ -79,7 +69,7 @@
       </HBox>
       <HBox layoutX="493.0" layoutY="91.0" prefHeight="471.0" prefWidth="813.0">
          <children>
-            <ImageView fx:id="imgView"  fitHeight="429.0" fitWidth="808.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imgView" fitHeight="471.0" fitWidth="808.0" pickOnBounds="true" preserveRatio="true">
 
             </ImageView>
          </children>
@@ -90,12 +80,12 @@
          </font>
       </Text>
       <TextArea fx:id="CaptionTextArea" layoutX="994.0" layoutY="641.0" prefHeight="227.0" prefWidth="255.0" />
-      <Text fx:id="DateText" layoutX="492.0" layoutY="569.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date: April 2, 2021" wrappingWidth="153.3193359375">
+      <Text fx:id="DateText" layoutX="473.0" layoutY="593.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date: April 2, 2021" wrappingWidth="236.3193359375">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Text fx:id="TimeText" layoutX="679.0" layoutY="569.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time: 1:00 Pm" wrappingWidth="127.3193359375">
+      <Text fx:id="TimeText" layoutX="719.0" layoutY="593.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time: 1:00 Pm" wrappingWidth="127.3193359375">
          <font>
             <Font size="18.0" />
          </font>
@@ -128,8 +118,8 @@
             <Font size="21.0" />
          </font>
       </Text>
-      <Button fx:id="MoveToButton" layoutX="1099.0" layoutY="550.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="85.0" style="-fx-background-color: #212121;" text="Move To →" textFill="WHITE" />
-      <Button fx:id="CopyToButton" layoutX="1209.0" layoutY="550.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="85.0" style="-fx-background-color: #212121;" text="Copy to →" textFill="WHITE" />
+      <Button fx:id="MoveToButton" layoutX="1108.0" layoutY="574.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="85.0" style="-fx-background-color: #212121;" text="Move To →" textFill="WHITE" />
+      <Button fx:id="CopyToButton" layoutX="1221.0" layoutY="574.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="85.0" style="-fx-background-color: #212121;" text="Copy to →" textFill="WHITE" />
       <Text layoutX="719.0" layoutY="734.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" Tag Value:" wrappingWidth="127.3193359375">
          <font>
             <Font size="21.0" />

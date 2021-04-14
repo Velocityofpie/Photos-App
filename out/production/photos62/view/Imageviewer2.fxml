@@ -80,26 +80,48 @@
          <font>
             <Font size="24.0" />
          </font></Button>
-      <Label fx:id="lblDate" layoutX="511.0" layoutY="550.0" prefHeight="18.0" prefWidth="147.0" text="Date: ">
+      <Label fx:id="lblDate" layoutX="511.0" layoutY="550.0" prefHeight="27.0" prefWidth="488.0" text="Date/time: ">
          <font>
             <Font size="18.0" />
          </font></Label>
-      <TextArea layoutX="511.0" layoutY="631.0" prefHeight="255.0" prefWidth="236.0" />
       <Slider layoutX="-165.0" layoutY="134.0" orientation="VERTICAL" prefHeight="155.0" prefWidth="14.0" />
       <ListView layoutX="1055.0" layoutY="631.0" prefHeight="255.0" prefWidth="236.0" />
       <ButtonBar layoutX="1091.0" layoutY="544.0" prefHeight="40.0" prefWidth="200.0">
-        <buttons>
-          <Button mnemonicParsing="false" style="-fx-background-color: #212121;" text="Move To →" textFill="WHITE" />
+         <buttons>
+            <Button mnemonicParsing="false" style="-fx-background-color: #212121;" text="Move To →" textFill="WHITE" />
             <Button mnemonicParsing="false" style="-fx-background-color: #212121;" text="Copy to →" textFill="WHITE" />
-        </buttons>
+         </buttons>
       </ButtonBar>
       <Button layoutX="1309.0" layoutY="840.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="66.0" style="-fx-background-color: #212121;" text="Update" textFill="WHITE" />
       <ButtonBar layoutX="757.0" layoutY="833.0" prefHeight="40.0" prefWidth="255.0">
-        <buttons>
+         <buttons>
             <Button mnemonicParsing="false" style="-fx-background-color: #212121;" text="Add" textFill="WHITE" />
             <Button mnemonicParsing="false" style="-fx-background-color: #212121;" text="Update" textFill="WHITE" />
-          <Button mnemonicParsing="false" style="-fx-background-color: #212121;" text="Delete" textFill="WHITE" />
-        </buttons>
+            <Button mnemonicParsing="false" style="-fx-background-color: #212121;" text="Delete" textFill="WHITE" />
+         </buttons>
       </ButtonBar>
+      <Text layoutX="511.0" layoutY="617.0" strokeType="OUTSIDE" strokeWidth="0.0" text="List of tags" wrappingWidth="127.3193359375">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Text>
+      <Text layoutX="1055.0" layoutY="618.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Caption" wrappingWidth="93.85714340209961">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Text>
+      <ListView fx:id="ListoftagsListview" layoutX="511.0" layoutY="631.0" prefHeight="255.0" prefWidth="236.0" />
+      <Text layoutX="777.0" layoutY="661.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tag:" wrappingWidth="85.13671875">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Text>
+      <TextField fx:id="TagTextfield" layoutX="779.0" layoutY="680.0" prefHeight="25.0" prefWidth="222.0" promptText="Enter Tag" />
+      <Text layoutX="779.0" layoutY="744.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tag Value:" wrappingWidth="127.3193359375">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Text>
+      <TextField fx:id="TagValueTextfield" layoutX="779.0" layoutY="769.0" prefHeight="25.0" prefWidth="222.0" promptText="Enter Tage Value" />
    </children>
 </AnchorPane>
