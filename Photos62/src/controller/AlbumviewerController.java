@@ -2,6 +2,7 @@ package controller;
 
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -10,6 +11,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.TilePane;
 import javafx.stage.Stage;
 import model.*;
 
@@ -64,6 +67,7 @@ public class AlbumviewerController {
 
     @FXML
     private TextField SearchDateTextField, SearchTagTextField;
+    private ArrayList<AnchorPane> photoSquares = new ArrayList<AnchorPane>();
 
     private Photo photo;
     private String album;
@@ -115,6 +119,30 @@ public class AlbumviewerController {
         NumberofphotoText.setText(num);
 
     }
+
+//    private TilePane createPhotoPane(ArrayList<Photo> photos) {
+//        // Base TilePane
+//        TilePane tp = new TilePane();
+//        tp.setPrefWidth(480);
+//
+//        photoSquares.clear();
+//
+//        // TilePane --> AnchorPane
+//        for (Photo p : photos) {
+//            AnchorPane ap = createNewPhotoSquare(p.getCaption(), p.getURL());
+//            tp.getChildren().add(ap);
+//            photoSquares.add(ap);
+//            ap.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
+//                @Override
+//                public void handle(MouseEvent mouseEvent) {
+//                    selectPhoto(ap);
+//                }
+//            });
+//            TilePane.setMargin(ap, new Insets(5, 5, 5, 5));
+//        }
+//
+//        return tp;
+//    }
 
     // in the works need to be converting for photos
     public void convert(ActionEvent actionEvent) {
