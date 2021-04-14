@@ -304,10 +304,45 @@ public class AlbumviewerController {
     }
 
     public void deletePhotoFromAlbum(ActionEvent event) {
+
         ArrayList<Photo> p = selectedAlbum.getPhotos();
         int i = selectedAlbum.getPhotoIndexByPhoto(selectedPhoto);
+
+        //check if album only has one photo, if it does let them know it will delete the whole album
+        if (selectedAlbum.getPhotoCount() == 1) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirmation Dialog");
+            alert.setHeaderText("If you delete this photo, it will delete the album");
+            alert.setContentText("Are you ok with this?");
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK){
+                //remove album from user
+                user.removeAlbum(selectedAlbum);
+                DataSaving.saveData(users);
+                //switch back to user controller
+                try {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/UserInterface.fxml"));
+                    Parent parent = (Parent) loader.load();
+                    UserController controller = loader.<UserController>getController();
+                    Scene scene = new Scene(parent);
+                    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    controller.start(user, users);
+                    stage.setScene(scene);
+                    stage.show();
+                } catch (Exception exception) {
+                    exception.printStackTrace();
+                }
+            } else {
+                // ... user chose CANCEL or closed the dialog
+            }
+            return;
+        }
+
+
+
         p.remove(i);
         //select a new photo
+
 
         //save data
         DataSaving.saveData(users);
@@ -326,7 +361,6 @@ public class AlbumviewerController {
         //create new photo object
         Photo p = new Photo("temp", Calendar.getInstance(),selectedFile.getAbsolutePath());
         selectedAlbum.addPhoto(p);
-        System.out.println("photo added");
 
         DataSaving.saveData(users);
     }
