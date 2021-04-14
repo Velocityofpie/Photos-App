@@ -13,6 +13,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.TilePane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import model.*;
 
@@ -27,6 +28,7 @@ import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Optional;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -283,6 +285,24 @@ public class AlbumviewerController {
         //select a new photo
 
         //save data
+        DataSaving.saveData(users);
+    }
+
+    public void addPhotoFunction(ActionEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open Resource File");
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("All Files", "*.png*", "*.jpg", "*.jpeg", "*.gif", "*.bmp"));
+        File selectedFile = fileChooser.showOpenDialog(stage);
+        if (selectedFile == null) {
+            return;
+        }
+        //create new photo object
+        Photo p = new Photo("temp", Calendar.getInstance(),selectedFile.getAbsolutePath());
+        selectedAlbum.addPhoto(p);
+        System.out.println("photo added");
+
         DataSaving.saveData(users);
     }
 }

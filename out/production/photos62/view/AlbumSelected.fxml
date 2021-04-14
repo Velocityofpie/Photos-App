@@ -32,7 +32,7 @@
                   </Text>
                </children>
             </Pane>
-            <Button fx:id="AddphotoButton" mnemonicParsing="false" prefHeight="120.0" prefWidth="460.0" style="-fx-background-color: transparent;" text="Add Photo" textFill="WHITE">
+            <Button fx:id="AddphotoButton" onAction="#addPhotoFunction" mnemonicParsing="false" prefHeight="120.0" prefWidth="460.0" style="-fx-background-color: transparent;" text="Add Photo" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
