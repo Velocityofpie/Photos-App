@@ -118,29 +118,29 @@ public class AlbumviewerController {
 
     }
 
-    private TilePane createPhotoPane(ArrayList<Photo> photos) {
-        // Base TilePane
-        TilePane tp = new TilePane();
-        tp.setPrefWidth(480);
-
-        photoSquares.clear();
-
-        // TilePane --> AnchorPane
-        for (Photo p : photos) {
-            AnchorPane ap = createNewPhotoSquare(p.getCaption(), p.getURL());
-            tp.getChildren().add(ap);
-            photoSquares.add(ap);
-            ap.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent mouseEvent) {
-                    selectPhoto(ap);
-                }
-            });
-            TilePane.setMargin(ap, new Insets(5, 5, 5, 5));
-        }
-
-        return tp;
-    }
+//    private TilePane createPhotoPane(ArrayList<Photo> photos) {
+//        // Base TilePane
+//        TilePane tp = new TilePane();
+//        tp.setPrefWidth(480);
+//
+//        photoSquares.clear();
+//
+//        // TilePane --> AnchorPane
+//        for (Photo p : photos) {
+//            AnchorPane ap = createNewPhotoSquare(p.getCaption(), p.getURL());
+//            tp.getChildren().add(ap);
+//            photoSquares.add(ap);
+//            ap.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
+//                @Override
+//                public void handle(MouseEvent mouseEvent) {
+//                    selectPhoto(ap);
+//                }
+//            });
+//            TilePane.setMargin(ap, new Insets(5, 5, 5, 5));
+//        }
+//
+//        return tp;
+//    }
 
     // in the works need to be converting for photos
     public void convert(ActionEvent actionEvent) {
