@@ -128,6 +128,7 @@ public class ImageviewerController {
         } else {
             index--;
         }
+
         selectedPhoto = photos.get(index);
         update(selectedPhoto.getImgsrc());
     }
