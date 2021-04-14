@@ -48,8 +48,9 @@ public class ImageviewerController {
     @FXML
     private TextField TagValueTextfield;
 
+
     @FXML
-    private Label lblDate1;
+    private TextArea captionTextArea;
 
     private ArrayList<User> users;
     private User user;
@@ -74,7 +75,11 @@ public class ImageviewerController {
         InputStream stream = new FileInputStream(s);
         Image image = new Image(stream);
         imgView.setImage(image);
+        //update date
         lblDate.setText("Date: " + selectedPhoto.getDate());
+        //update caption
+        captionTextArea.setText(selectedPhoto.getCaption());
+
     }
 
     public void convertBacktoalbumButton(ActionEvent event) {
@@ -254,6 +259,11 @@ public class ImageviewerController {
         deletePhotoFromAlbum(event);
 
         //save data
+        DataSaving.saveData(users);
+    }
+
+    public void updateCaptionFunction(ActionEvent event) {
+        selectedPhoto.setCaption(captionTextArea.getText());
         DataSaving.saveData(users);
     }
 }
