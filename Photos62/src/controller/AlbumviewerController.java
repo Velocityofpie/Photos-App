@@ -413,7 +413,7 @@ public class AlbumviewerController {
     }
 
     public void EditPhotoFunction(ActionEvent event) {
-
+        openImageViewer(event);
     }
 
     public void openImageViewer(ActionEvent event) {
