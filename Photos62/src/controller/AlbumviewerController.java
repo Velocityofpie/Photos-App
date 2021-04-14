@@ -15,6 +15,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.TilePane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import model.*;
 
 import java.io.*;
@@ -120,6 +121,30 @@ public class AlbumviewerController {
         OldestPhotoText.setText(oldest);
         String num = NumberofphotoText.getText() + selectedAlbum.getPhotoCount();
         NumberofphotoText.setText(num);
+
+
+        photolistloader(users, user,  selectedAlbum);
+
+
+    }
+
+    public void photolistloader(ArrayList<User> users, User user, Album selectedAlbum) {
+        photos.setCellFactory(new Callback<ListView<Photo>, ListCell<Photo>>() {
+            @Override
+            public ListCell<Photo> call(ListView<Photo> photoList) {
+                return new Imageloader();
+            }
+        });
+
+        photos.setItems(FXCollections.observableArrayList(selectedAlbum.getPhotos()));
+        photos.getSelectionModel().select(0);
+
+        ArrayList<String> albumnames = new ArrayList<String>();
+        albumnames.add(0, " ");
+        ArrayList<Album> allalbums = user.getAlbums();
+        for (Album curralbum : allalbums) {
+            albumnames.add(curralbum.getName());
+        }
 
     }
 
