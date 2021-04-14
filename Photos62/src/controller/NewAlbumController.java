@@ -21,7 +21,10 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-
+/**
+ * @author Joshua Hernandez
+ * @author John Lavin
+ */
 public class NewAlbumController {
 
     @FXML
@@ -38,12 +41,21 @@ public class NewAlbumController {
     private Album updatedAlbum;
     private ArrayList<User> users;
 
+    /**
+     * Method called when switched to this scene's controller
+     * @param u user currently logged in
+     * @param us list of all users
+     */
     public void start(User u, ArrayList<User> us) {
         user = u;
         users = us;
         CreateButton.setDisable(true);
     }
 
+    /**
+     * Method to add a new album to the logged in user
+     * @param event
+     */
     public void finish(ActionEvent event) {
         //check if the album name exists
         String name = NameTextfield.getText();
@@ -87,6 +99,11 @@ public class NewAlbumController {
             exception.printStackTrace();
         }
     }
+
+    /**
+     * Method to switch back to UserController when user hits cancel button
+     * @param event
+     */
     public void convertCancelButton(ActionEvent event) {
 
         try {
@@ -103,6 +120,10 @@ public class NewAlbumController {
         }
 
     }
+
+    /**
+     * Helper method to display an alert box
+     */
     private void duplicateAlbumAlert() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Error");
@@ -115,6 +136,10 @@ public class NewAlbumController {
         alert.showAndWait();
     }
 
+    /**
+     * Method to open file explorer and select a photo file when the user clicks the upload button
+     * @param event
+     */
     public void convertUploadButton(ActionEvent event) {
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

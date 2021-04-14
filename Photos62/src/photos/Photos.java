@@ -14,9 +14,16 @@ import javafx.stage.Stage;
 import javafx.scene.control.ScrollBar;
 import javafx.scene.layout.AnchorPane;
 
-
+/**
+ * @author Joshua Hernandez
+ * @author John Lavin
+ */
 public class Photos extends Application {
 
+    /**
+     * start function to set the stage and scene for the application to run
+     * @param primaryStage
+     */
     @Override
     public void start(Stage primaryStage) {
         try {
@@ -41,6 +48,10 @@ public class Photos extends Application {
 
     }
 
+    /**
+     * Main method to launch the application
+     * @param args
+     */
     public static void main(String[] args) {
         launch(args);
     }

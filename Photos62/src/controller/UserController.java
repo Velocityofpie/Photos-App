@@ -31,6 +31,10 @@ import javafx.scene.control.ScrollPane;
 
 import photos.Listener;
 
+/**
+ * @author Joshua Hernandez
+ * @author John Lavin
+ */
 public class UserController {
     @FXML
     private Button AddAlbumButton, DeleteAlbumButton,EditAlbumButton;
@@ -59,9 +63,14 @@ public class UserController {
         Listener.onClickListener();
     }
 
-        public void setData(Album photo, Listener Listener) {
+    public void setData(Album photo, Listener Listener) {
 
     }
+
+    /**
+     * Method to switch scene back to login screen when logout button is pressed
+     * @param event
+     */
     public void convertLogOutButton(ActionEvent event) {
 
         //save the data
@@ -80,6 +89,11 @@ public class UserController {
         }
 
     }
+
+    /**
+     * Method to open a selected album in a new scene
+     * @param event
+     */
     public void convertAlbum(ActionEvent event) {
 
         //get selected album
@@ -105,6 +119,11 @@ public class UserController {
 
     }
 
+    /**
+     * Method called when user is switched to this scene's controller
+     * @param user currently selected
+     * @param list arraylist of all users
+     */
     public void start( User user, ArrayList<User> list) {
         this.user = user;
         this.users = list;
@@ -144,7 +163,10 @@ public class UserController {
 
     }
 
-
+    /**
+     * Method to delete or edit an album when the delete/edit album button is pressed
+     * @param actionEvent
+     */
     public void convert(ActionEvent actionEvent) {
         Button b = (Button) actionEvent.getSource();
         if (b == DeleteAlbumButton) {
@@ -203,6 +225,10 @@ public class UserController {
         DataSaving.saveData(users);
     }
 
+    /**
+     * Method to switch scene when the user clicks the add album button
+     * @param e
+     */
     public void create(ActionEvent e) {
         //switch to new album scene
         try {
