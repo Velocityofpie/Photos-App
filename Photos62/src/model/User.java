@@ -5,6 +5,12 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
+
+/**
+ * @author Joshua Hernandez
+ * @author John Lavin
+ */
+
 public class User implements Serializable {
 
 

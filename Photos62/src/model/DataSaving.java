@@ -3,6 +3,10 @@ import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
+/**
+ * @author Joshua Hernandez
+ * @author John Lavin
+ */
 
 public class DataSaving {
     public static void saveData(ArrayList<User> users) {

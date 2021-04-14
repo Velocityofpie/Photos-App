@@ -29,6 +29,11 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
+/**
+ * @author Joshua Hernandez
+ * @author John Lavin
+ */
+
 public class ImageviewerController {
 
     @FXML

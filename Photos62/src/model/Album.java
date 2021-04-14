@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
+/**
+ * @author Joshua Hernandez
+ * @author John Lavin
+ */
+
 public class Album implements Serializable{
    private static final long serialVersionUID = 1L;
     private String name;

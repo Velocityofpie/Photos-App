@@ -1,6 +1,11 @@
 package model;
 import java.io.Serializable;
 
+/**
+ * @author Joshua Hernandez
+ * @author John Lavin
+ */
+
 public class Tag implements Serializable {
     private String tagName;
 

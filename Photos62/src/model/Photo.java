@@ -5,6 +5,11 @@ import java.util.Date;
 
 import javafx.scene.image.Image;
 
+/**
+ * @author Joshua Hernandez
+ * @author John Lavin
+ */
+
 public class Photo implements java.io.Serializable {
 
 
