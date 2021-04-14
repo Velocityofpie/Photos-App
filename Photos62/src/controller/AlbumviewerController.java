@@ -73,6 +73,9 @@ public class AlbumviewerController {
     private TextField SearchDateTextField, SearchTagTextField;
     private ArrayList<AnchorPane> photoSquares = new ArrayList<AnchorPane>();
 
+    @FXML
+    private ListView<Photo> photoListView;
+
     private Photo photo;
     private String album;
     ArrayList<User> users;
@@ -162,15 +165,15 @@ public class AlbumviewerController {
 
     public void photolistloader(ArrayList<User> users, User user, Album selectedAlbum) {
 
-        photos.setCellFactory(new Callback<ListView<Photo>, ListCell<Photo>>() {
+        photoListView.setCellFactory(new Callback<ListView<Photo>, ListCell<Photo>>() {
             @Override
             public ListCell<Photo> call(ListView<Photo> photoList) {
                 return new Imageloader();
             }
         });
 
-        photos.setItems(FXCollections.observableArrayList(selectedAlbum.getPhotos()));
-        photos.getSelectionModel().select(0);
+        photoListView.setItems(FXCollections.observableArrayList(selectedAlbum.getPhotos()));
+        photoListView.getSelectionModel().select(0);
 
         ArrayList<String> albumnames = new ArrayList<String>();
         albumnames.add(0, " ");
