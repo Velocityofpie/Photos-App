@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?> <!-- Names: Joshua Hernandez-jih31 & 	John Lavin-jvl50 -->
+<?xml version="1.0" encoding="UTF-8"?>
 
 <!-- Names: Joshua Hernandez-jih31 & 	John Lavin-jvl50 -->
 
@@ -108,7 +108,7 @@
          <buttons>
             <Button fx:id="AddTagButton" onAction="#addTagFunction" mnemonicParsing="false" style="-fx-background-color: #212121;" text="Add" textFill="WHITE" />
             <Button fx:id="UpdateTagButtton" mnemonicParsing="false" style="-fx-background-color: #212121;" text="Update" textFill="WHITE" />
-            <Button fx:id="DeleteTagButton" mnemonicParsing="false" style="-fx-background-color: #212121;" text="Delete" textFill="WHITE" />
+            <Button fx:id="DeleteTagButton" onAction="#deleteTagFunction" mnemonicParsing="false" style="-fx-background-color: #212121;" text="Delete" textFill="WHITE" />
          </buttons>
       </ButtonBar>
       <Text layoutX="511.0" layoutY="617.0" strokeType="OUTSIDE" strokeWidth="0.0" text="List of tags" wrappingWidth="127.3193359375">

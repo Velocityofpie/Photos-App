@@ -87,6 +87,20 @@ public class Photo implements java.io.Serializable {
         return false;
     }
 
+    public int getTagIndex(Tag tag) {
+        for (int i = 0; i < tags.size(); i++) {
+            if (tag.equals(tags.get(i))) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public void removeTag(int index) {
+        tags.remove(index);
+        return;
+    }
+
     public boolean equals(Photo other) {
         return this.getImgsrc().equalsIgnoreCase(other.getImgsrc());
     }
