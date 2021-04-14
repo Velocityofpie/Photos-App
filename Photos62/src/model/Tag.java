@@ -44,4 +44,15 @@ public class Tag implements Serializable {
 
         this.tagValue = tagValue;
     }
+
+    public boolean equals(Tag other) {
+        if ((other.getTagName().equals(tagName)) && (other.getTagValue().equals(tagValue))) {
+            return true;
+        }
+        return false;
+    }
+
+    public String toString() {
+        return getTag();
+    }
 }

@@ -1,5 +1,7 @@
 package controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,10 +11,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import model.Album;
-import model.DataSaving;
-import model.Photo;
-import model.User;
+import model.*;
 import javafx.scene.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -40,14 +39,15 @@ public class ImageviewerController {
 
     @FXML
     private Label lblDate;
-    @FXML
-    private ListView<?> ListoftagsListview;
+
     @FXML
     private TextField TagTextfield;
 
     @FXML
     private TextField TagValueTextfield;
 
+    @FXML
+    private ListView<Tag> lvTags;
 
     @FXML
     private TextArea captionTextArea;
@@ -59,6 +59,7 @@ public class ImageviewerController {
      //list of users
     private ArrayList<Photo> photos;
     ListView<Photo> photos2;
+    private ObservableList<Tag> obsListTags;
 
     public void start(User u, ArrayList<User> us, Album album, Photo p) throws FileNotFoundException {
         users = us;
@@ -66,6 +67,9 @@ public class ImageviewerController {
         selectedAlbum = album;
         selectedPhoto = p;
         photos = album.getPhotos();
+        lvTags.setItems(FXCollections.observableArrayList(selectedPhoto.getTags()));
+        // set listener for the items
+        lvTags.getSelectionModel().selectedIndexProperty().addListener((obsList, oldVal, newVal) -> showItem());
 
         update(selectedPhoto.getImgsrc());
 
@@ -79,6 +83,25 @@ public class ImageviewerController {
         lblDate.setText("Date: " + selectedPhoto.getDate());
         //update caption
         captionTextArea.setText(selectedPhoto.getCaption());
+        //update the listview of tags
+        obsListTags = FXCollections.observableArrayList(selectedPhoto.getTags());
+        lvTags.setItems(obsListTags);
+
+
+    }
+
+    /**
+     * Method to put the values of the selected item into the textfields
+     */
+    private void showItem() {
+
+        //get the song from the obsList
+        int index = lvTags.getSelectionModel().getSelectedIndex();
+        Tag s = obsListTags.get(index);
+
+        //put necessary values in the text field
+        TagTextfield.setText(s.getTagName());
+        TagValueTextfield.setText(s.getTagValue());
 
     }
 
@@ -265,5 +288,59 @@ public class ImageviewerController {
     public void updateCaptionFunction(ActionEvent event) {
         selectedPhoto.setCaption(captionTextArea.getText());
         DataSaving.saveData(users);
+    }
+
+    public void addTagFunction(ActionEvent event) {
+        String tName = TagTextfield.getText();
+        String tValue = TagValueTextfield.getText();
+        if (tName.equals("") || tValue.equals("")) {
+            missingInfoAlert();
+            return;
+        }
+
+        Tag tag = new Tag(tName,tValue);
+        if (selectedPhoto.tagExists(tag)) {
+            duplicateTagAlert();
+            return;
+        } else {
+            selectedPhoto.addTag(tag);
+        }
+
+        try {
+            update(selectedPhoto.getImgsrc());
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        DataSaving.saveData(users);
+    }
+
+    /**
+     * helper method to create an information alert box
+     */
+    private void duplicateTagAlert() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Error");
+        alert.setHeaderText(
+                "That tag is already in the library.");
+
+        String content = "Please change the name or value of the tag";
+
+        alert.setContentText(content);
+        alert.showAndWait();
+    }
+
+    /**
+     * helper method to create an information alert box
+     */
+    private void missingInfoAlert() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Error");
+        alert.setHeaderText(
+                "Missing tag name or value.");
+
+        String content = "Please input tag name or value";
+
+        alert.setContentText(content);
+        alert.showAndWait();
     }
 }
