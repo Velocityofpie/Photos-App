@@ -76,7 +76,12 @@ public class ImageviewerController {
         selectedAlbum = album;
         selectedPhoto = p;
         photos = album.getPhotos();
-        lvTags.setItems(FXCollections.observableArrayList(selectedPhoto.getTags()));
+        try {
+            lvTags.setItems(FXCollections.observableArrayList(selectedPhoto.getTags()));
+        } catch (Exception e) {
+
+        }
+
         // set listener for the items
         lvTags.getSelectionModel().selectedIndexProperty().addListener((obsList, oldVal, newVal) -> showItem());
 
