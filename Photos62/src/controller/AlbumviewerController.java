@@ -72,7 +72,7 @@ public class AlbumviewerController {
     private ObservableList<String> obsTags;
     private ObservableList<String> obsValues;
     private ListView<Tag> tags;
-   // private Album selectedAlbum;
+    private Album selectedAlbum;
     private User user;
 
 
@@ -80,12 +80,13 @@ public class AlbumviewerController {
         this.users = users;
         this.photos = photos;
         this.user = user;
-       // this.selectedAlbum = selectedAlbum;
+        this.selectedAlbum = selectedAlbum;
         //Photo selectedPhoto = photos.getSelectionModel().getSelectedItem();
         this.users = users;
         this.photos = photos;
         this.user = user;
-        InputStream stream = new FileInputStream("Photos62/data/stockuser/Stock1.png");
+        //InputStream stream = new FileInputStream("Photos62/data/stockuser/Stock1.png");
+        InputStream stream = new FileInputStream(selectedAlbum.getPhotos().get(0).getImgsrc());
         Image image = new Image(stream);
         SelectedImage.setImage(image);
         //Setting the image view parameters

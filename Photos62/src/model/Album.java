@@ -10,7 +10,6 @@ public class Album implements Serializable{
     private ArrayList<Photo> photos;
     private Photo NewestPhoto;
 
-
     public Album(String name) {
         this.name = name;
         photos = new ArrayList<Photo>();
@@ -59,5 +58,9 @@ public class Album implements Serializable{
     public String toString() {
         String result = "Album Name : " + name + "\nNumber of photos: " + photos.size() + "\nDATES: " + getEarliestDate() + " - " + getLatestDate();
         return result;
+    }
+
+    public Photo getNewestPhoto() {
+        return NewestPhoto;
     }
 }
