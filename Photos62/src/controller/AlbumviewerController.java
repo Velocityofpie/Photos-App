@@ -48,13 +48,6 @@ import model.User;
  * @author Joshua Hernandez
  * @author John Lavin
  */
-
-/**
- *
- * @param u list of users
- * @param i integer representing a particular state
- * @throws IOException
- */
 public class AlbumviewerController {
     @FXML
     private GridPane gridPane;
@@ -91,6 +84,10 @@ public class AlbumviewerController {
     private ListView<String> photolistview;
     private ObservableList<String> names;
 
+    @FXML
+    private ListView<Photo> lvPhotos;
+    private ObservableList<Photo> obsListPhotos;
+
     private ObservableList<Photo> obsList;
 
     private Photo photo;
@@ -118,16 +115,37 @@ public class AlbumviewerController {
         //InputStream stream = new FileInputStream("Photos62/data/stockuser/Stock1.png");
         //System.out.println(selectedAlbum.getNewestPhoto().getImgsrc());
 
+        lvPhotos.setItems(FXCollections.observableArrayList(selectedAlbum.getPhotos()));
+        // set listener for the items
+        lvPhotos.getSelectionModel().selectedIndexProperty().addListener((obsList, oldVal, newVal) -> showItem());
 
+        /*
         try {
             populatePhotogridPane();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        */
         update( 0);
 
 
+    }
+
+    /**
+     * Method to put the names of the photos in the listview
+     */
+    private void showItem() {
+
+        //get the song from the obsList
+        int index = lvPhotos.getSelectionModel().getSelectedIndex();
+        selectedPhoto = lvPhotos.getSelectionModel().getSelectedItem();
+
+        //update
+        try {
+            update(1);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -208,34 +226,6 @@ public class AlbumviewerController {
      */
 
     public void populatePhotogridPane() throws IOException {
-        int col = 0, row = 0;
-
-        gridPane.setMinWidth(60.0);
-        gridPane.setPrefWidth(60.0);
-        gridPane.setMaxWidth(60.0);
-
-        //set grid height
-        gridPane.setMinHeight(60.0);
-        gridPane.setPrefHeight(60.0);
-        gridPane.setMaxHeight(60.0);
-
-
-        for (int i = 0; i < selectedAlbum.getPhotoCount(); i++) {
-            if (col == 2) {
-                col = 0;
-                row++;
-            }
-            //System.out.println(selectedAlbum.getPhotos().get(i).getImgsrc());
-            InputStream stream = new FileInputStream(selectedAlbum.getPhotos().get(i).getImgsrc());
-            Image image = new Image(stream);
-            ImageView imageView = new ImageView();
-            imageView.setImage(image);
-            gridPane.getChildren().add(imageView);
-            col++;
-
-        }
-
-
 
 
     }
