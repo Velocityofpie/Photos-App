@@ -171,14 +171,18 @@ public class LoginController {
                             user.addAlbum("stock");
                             System.out.println("added stock");
                             //populate the stock album
-                            Photo p1 = new Photo("p1", Calendar.getInstance(), "Photos62/data/stockuser/Stock1.png");
-                            Photo p2 = new Photo("p2", Calendar.getInstance(), "Photos62/data/stockuser/Stock2.jpg");
-                            Photo p3 = new Photo("p3", Calendar.getInstance(), "Photos62/data/stockuser/Stock3.jpg");
+                            Photo p1 = new Photo("Stock1", Calendar.getInstance(), "Photos62/data/stockuser/Stock1.png");
+                            Photo p2 = new Photo("Stock2", Calendar.getInstance(), "Photos62/data/stockuser/Stock2.jpg");
+                            Photo p3 = new Photo("Stock3", Calendar.getInstance(), "Photos62/data/stockuser/Stock3.jpg");
+                            Photo p4 = new Photo("Stock4", Calendar.getInstance(), "Photos62/data/stockuser/Stock4.png");
+                            Photo p5 = new Photo("Stock5", Calendar.getInstance(), "Photos62/data/stockuser/Stock5.png");
                             Album stockAlbum = user.getAlbumByName("stock");
                             //int si = user.getAlbumIndexByAlbum(stockAlbum);
                             stockAlbum.addPhoto(p1);
                             stockAlbum.addPhoto(p2);
                             stockAlbum.addPhoto(p3);
+                            stockAlbum.addPhoto(p4);
+                            stockAlbum.addPhoto(p5);
 
                             //adding a second album
                             user.addAlbum("other");
