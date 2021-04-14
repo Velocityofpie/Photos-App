@@ -90,8 +90,17 @@ public class AlbumviewerController {
         this.user = user;
         this.selectedAlbum = a;
         //InputStream stream = new FileInputStream("Photos62/data/stockuser/Stock1.png");
-        System.out.println(selectedAlbum.getNewestPhoto().getImgsrc());
-        selectedPhoto = selectedAlbum.getPhotos().get(0);
+        //System.out.println(selectedAlbum.getNewestPhoto().getImgsrc());
+
+        update(0);
+
+    }
+
+    public void update(int i) throws FileNotFoundException {
+
+        if (i == 0) {
+            selectedPhoto = selectedAlbum.getPhotos().get(i);
+        }
         InputStream stream = new FileInputStream(selectedPhoto.getImgsrc());
         Image image = new Image(stream);
         SelectedImage.setImage(image);
@@ -99,13 +108,24 @@ public class AlbumviewerController {
 
         SelectedImage.setFitWidth(210);
         SelectedImage.setPreserveRatio(true);
-        PhotodateText.setText(PhotodateText.getText() + selectedPhoto.getDate());
-        CaptionLabel.setText(CaptionLabel.getText() + selectedPhoto.getCaption());
-        ArrayList<Tag> selectedTags = selectedPhoto.getTags();
-        String t = TagLabel.getText();
-        for (Tag curr : selectedTags) {
-            t = t + " " + curr.getTag();
+        if (i == 0) {
+            PhotodateText.setText(PhotodateText.getText() + selectedPhoto.getDate());
+            CaptionLabel.setText(CaptionLabel.getText() + selectedPhoto.getCaption());
+            ArrayList<Tag> selectedTags = selectedPhoto.getTags();
+            String t = TagLabel.getText();
+            for (Tag curr : selectedTags) {
+                t = t + " " + curr.getTag();
+            }
+        } else {
+            PhotodateText.setText("" + selectedPhoto.getDate());
+            CaptionLabel.setText("Caption: " + selectedPhoto.getCaption());
+            ArrayList<Tag> selectedTags = selectedPhoto.getTags();
+            String t = "Tags:";
+            for (Tag curr : selectedTags) {
+                t = t + " " + curr.getTag();
+            }
         }
+
         //  Photo selectedPhoto = photos.getSelectionModel().getSelectedItem();
 
         //cover photo for album
@@ -114,11 +134,19 @@ public class AlbumviewerController {
         AlbumImage.setImage(cover);
         AlbumImage.setFitWidth(210);
         AlbumImage.setPreserveRatio(true);
-        String recent = NewestphotoText.getText() + selectedAlbum.getLatestDate();
-        NewestphotoText.setText(recent);
-        String oldest = OldestPhotoText.getText() + selectedAlbum.getEarliestDate();
-        OldestPhotoText.setText(oldest);
-        String num = NumberofphotoText.getText() + selectedAlbum.getPhotoCount();
+
+        if (i == 0) {
+            String recent = NewestphotoText.getText() + selectedAlbum.getLatestDate();
+            NewestphotoText.setText(recent);
+            String oldest = OldestPhotoText.getText() + selectedAlbum.getEarliestDate();
+            OldestPhotoText.setText(oldest);
+        } else {
+            String recent = "Newest Photo: " + selectedAlbum.getLatestDate();
+            NewestphotoText.setText(recent);
+            String oldest = "Oldest Photo: " + selectedAlbum.getEarliestDate();
+            OldestPhotoText.setText(oldest);
+        }
+        String num = "Number of photos: " + selectedAlbum.getPhotoCount();
         NumberofphotoText.setText(num);
 
     }
@@ -317,10 +345,15 @@ public class AlbumviewerController {
 
         p.remove(i);
         //select a new photo
-
+        selectedPhoto = p.get(0);
 
         //save data
         DataSaving.saveData(users);
+        try {
+            update(1);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     public void addPhotoFunction(ActionEvent event) {
@@ -336,6 +369,12 @@ public class AlbumviewerController {
         //create new photo object
         Photo p = new Photo("temp", Calendar.getInstance(),selectedFile.getAbsolutePath());
         selectedAlbum.addPhoto(p);
+        selectedPhoto = p;
+        try {
+            update(1);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
 
         DataSaving.saveData(users);
     }
