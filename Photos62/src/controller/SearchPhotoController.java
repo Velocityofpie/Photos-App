@@ -8,9 +8,14 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import model.*;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -23,6 +28,9 @@ import java.util.Optional;
  * @author John Lavin
  */
 public class SearchPhotoController {
+
+    @FXML
+    private ImageView imgView;
 
     @FXML
     private Button SearchButton1;
@@ -78,6 +86,35 @@ public class SearchPhotoController {
         for (Tag curr: tags) {
             dropdownTag.getItems().add(curr.getTagName());
         }
+
+        // set listener for the items
+        lvPhotos.getSelectionModel().selectedIndexProperty().addListener((obsList, oldVal, newVal) -> {
+            try {
+                showItem();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        });
+    }
+
+    /**
+     * Method to put the names of the photos in the listview
+     */
+    private void showItem() throws FileNotFoundException {
+
+        Photo selectedPhoto = (Photo) lvPhotos.getSelectionModel().getSelectedItem();
+
+        if (selectedPhoto != null) {
+            InputStream stream = new FileInputStream(selectedPhoto.getImgsrc());
+            Image image = new Image(stream);
+            imgView.setImage(image);
+            //Setting the image view parameters
+
+            imgView.setFitWidth(210);
+            imgView.setPreserveRatio(true);
+        }
+
+
     }
 
     /**
@@ -145,6 +182,7 @@ public class SearchPhotoController {
      * @param event
      */
     public void searchDate(ActionEvent event) {
+
         //reset in range
         inRange.clear();
 
@@ -247,6 +285,10 @@ public class SearchPhotoController {
      * @param event
      */
     public void searchTag(ActionEvent event) {
+
+        //clear other textfields
+        StartDate.setValue(null);
+        EndDate.setValue(null);
         //clear in range
         inRange.clear();
 

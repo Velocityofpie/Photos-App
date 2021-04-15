@@ -89,7 +89,7 @@
                   <Text fx:id="PhotodateText" layoutX="27.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="" />
                </children>
             </AnchorPane>
-            <ImageView fitHeight="251.0" fitWidth="322.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="imgView" fitHeight="251.0" fitWidth="322.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </HBox>
       <TextField fx:id="SearchTagTextField" layoutX="771.0" layoutY="-45.0" prefHeight="25.0" prefWidth="127.0" promptText="Search Tag" />
