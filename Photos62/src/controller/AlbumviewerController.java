@@ -499,4 +499,21 @@ public class AlbumviewerController {
 
         DataSaving.saveData(users);
     }
+
+    public void switchtoSearch(ActionEvent event) {
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/SearchedPhotos.fxml"));
+            Parent parent = (Parent) loader.load();
+            SearchPhotoController controller = loader.<SearchPhotoController>getController();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            ScrollPane scroll = new ScrollPane(parent);
+            Scene scene = new Scene(scroll);
+            controller.start(users, user, photos, selectedAlbum);
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+    }
 }

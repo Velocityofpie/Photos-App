@@ -36,7 +36,7 @@
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="120.0" prefWidth="460.0" style="-fx-background-color: transparent;" text="Search" textFill="WHITE">
+            <Button fx:id="SearchButton" onAction="#switchtoSearch" mnemonicParsing="false" prefHeight="120.0" prefWidth="460.0" style="-fx-background-color: transparent;" text="Search" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>

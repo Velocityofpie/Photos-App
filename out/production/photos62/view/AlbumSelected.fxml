@@ -36,12 +36,12 @@
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button fx:id="BacktoalbumButton" mnemonicParsing="false" onAction="#convertBacktoalbumButton" prefHeight="120.0" prefWidth="460.0" style="-fx-background-color: transparent;" text="Back to Albums" textFill="WHITE">
+            <Button fx:id="SearchButton" onAction="#switchtoSearch" mnemonicParsing="false" prefHeight="120.0" prefWidth="460.0" style="-fx-background-color: transparent;" text="Search" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="120.0" prefWidth="460.0" style="-fx-background-color: transparent;" textFill="WHITE">
+            <Button fx:id="BacktoalbumButton" mnemonicParsing="false" onAction="#convertBacktoalbumButton" prefHeight="120.0" prefWidth="460.0" style="-fx-background-color: transparent;" text="Back to Albums" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
@@ -57,10 +57,10 @@
          </opaqueInsets>
       </VBox>
       <ButtonBar prefHeight="40.0" prefWidth="200.0" />
-      <HBox layoutX="1217.0" layoutY="20.0" prefHeight="40.0" prefWidth="159.0">
+      <HBox layoutX="1084.0" layoutY="20.0" prefHeight="40.0" prefWidth="159.0">
          <children>
 
-            <Text fx:id="UsernameText" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" wrappingWidth="152.13671875">
+            <Text fx:id="UsernameText" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" wrappingWidth="270.13671875">
                <font>
                   <Font size="28.0" />
                </font>
@@ -120,10 +120,5 @@
       <TextField fx:id="SearchTagTextField" layoutX="771.0" layoutY="-45.0" prefHeight="25.0" prefWidth="127.0" promptText="Search Tag" />
       <Button fx:id="btnOpenImage" layoutX="1116.0" layoutY="284.0" mnemonicParsing="false" onAction="#openImageViewer" prefHeight="25.0" prefWidth="85.0" style="-fx-background-color: #212121;" text="Open Image" textFill="WHITE" />
       <ListView fx:id="lvPhotos" layoutX="391.0" layoutY="338.0" prefHeight="563.0" prefWidth="1008.0" />
-      <Button fx:id="SearchButton" layoutX="1100.0" layoutY="28.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="59.0" style="-fx-background-color: #212121;" text="Search" textFill="WHITE" />
-      <DatePicker fx:id="StartDate" layoutX="414.0" layoutY="28.0" prefHeight="25.0" prefWidth="127.0" promptText="Start Date" />
-      <DatePicker fx:id="EndDate" layoutX="557.0" layoutY="28.0" prefHeight="25.0" prefWidth="127.0" promptText="End Date" />
-      <ChoiceBox layoutX="911.0" layoutY="28.0" prefWidth="150.0" />
-      <ChoiceBox layoutX="748.0" layoutY="28.0" prefWidth="150.0" />
    </children>
 </AnchorPane>
