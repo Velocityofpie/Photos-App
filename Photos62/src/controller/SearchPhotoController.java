@@ -18,6 +18,10 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Optional;
 
+/**
+ * @author Joshua Hernandez
+ * @author John Lavin
+ */
 public class SearchPhotoController {
 
     @FXML
@@ -45,6 +49,13 @@ public class SearchPhotoController {
     private ArrayList<Photo> inRange = new ArrayList<>();
     private ArrayList<Tag> tags = new ArrayList<Tag>();
 
+    /**
+     * Start method called to launch this scene
+     * @param users arraylist of users
+     * @param user user currently logged in
+     * @param photos listview of photo objects from the album
+     * @param a the currently selected album
+     */
     public void start(ArrayList<User> users, User user, ListView<Photo> photos, Album a) {
         this.users = users;
         this.user = user;
@@ -69,15 +80,31 @@ public class SearchPhotoController {
         }
     }
 
+    /**
+     * Method called when addPhotoButton is pressed
+     * @param event
+     */
     public void addPhotoFunction(ActionEvent event) {
     }
 
+    /**
+     * method called when deletePhotoButton is called
+     * @param event
+     */
     public void deletePhotoFromAlbum(ActionEvent event) {
     }
 
+    /**
+     * Method called when editphotobutton is called
+     * @param event
+     */
     public void EditPhotoFunction(ActionEvent event) {
     }
 
+    /**
+     * Method to switch scene back to albumviewer
+     * @param event
+     */
     public void convertBacktoalbumButton(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/AlbumSelected.fxml"));
@@ -94,6 +121,10 @@ public class SearchPhotoController {
         }
     }
 
+    /**
+     * Method to switch scene back to the login
+     * @param event
+     */
     public void convertLogOutButton(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Login.fxml"));
@@ -109,6 +140,10 @@ public class SearchPhotoController {
         DataSaving.saveData(users);
     }
 
+    /**
+     * Method to search for photos in a specified date range
+     * @param event
+     */
     public void searchDate(ActionEvent event) {
         //reset in range
         inRange.clear();
@@ -141,6 +176,10 @@ public class SearchPhotoController {
 
     }
 
+    /**
+     * Method to create a new album from the photos in the listview
+     * @param event
+     */
     public void createNewAlbumFunction(ActionEvent event) {
 
         if (inRange.size() == 0) {
@@ -203,6 +242,10 @@ public class SearchPhotoController {
 
     }
 
+    /**
+     * Method to find photos with the satisfying tag name and values
+     * @param event
+     */
     public void searchTag(ActionEvent event) {
         //clear in range
         inRange.clear();
