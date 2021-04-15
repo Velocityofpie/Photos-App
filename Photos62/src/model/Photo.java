@@ -15,6 +15,7 @@ import javafx.scene.image.Image;
 public class Photo implements java.io.Serializable {
 
 
+
     private static final long serialVersionUID = 1L;
     //private Image image;
     private ArrayList<Tag> tags;
@@ -22,6 +23,11 @@ public class Photo implements java.io.Serializable {
     private Calendar date;
     private String imgsrc;
 
+    /**
+     * Constructor
+     * @param name the name of the photo
+     * @param date the last modified date
+     */
 
     public Photo(String name, Calendar date, String imgsrc) {
         this.name = name;
@@ -33,52 +39,76 @@ public class Photo implements java.io.Serializable {
         //image = new ImagesSerial();
         this.imgsrc = imgsrc;
     }
-    /*
-    public ImagesSerial getImagesSerial() {
-        return image;
+
+    /**
+     * @return the Caption of this photo
+     */
+
+    public String getCaption() {
+        return caption;
     }
 
+    /**
+     * @return the tag of this photo
+     */
 
-    public Image getImage() {
-        return image;
+    public ArrayList<Tag> getTags() {
+        return tags;
     }
 
+    /**
+     * @return the directory of this photo
      */
 
     public String getImgsrc() {
         return imgsrc;
     }
 
+    /**
+     * @return the name of this photo
+     */
+
     public String getName() {
         return name;
     }
 
-
-    public String getCaption() {
-        return caption;
-    }
-
-
-    public ArrayList<Tag> getTags() {
-        return tags;
-    }
-
+    /**
+     * @return the date/time of this photo
+     */
 
     public Date getDate() {
         return date.getTime();
     }
 
+    /**
+     * @return the changes the caption or sets it of this photo
+     */
+
     public void setCaption(String caption) {
         this.caption = caption;
     }
+
+    /**
+     * @return the name of this photo
+     */
 
     public String toString() {
         return name;
     }
 
+    /**
+     *
+     * @return the tag of this photo
+     */
+
     public void addTag(Tag tag) {
         tags.add(tag);
     }
+
+    /**
+     *@param tag takes in tag and checks if it exits
+     * @return if the tag of this photo exist
+     */
 
     public boolean tagExists(Tag tag) {
         for (Tag t : tags) {
@@ -89,6 +119,11 @@ public class Photo implements java.io.Serializable {
         return false;
     }
 
+    /**
+     *@param tag takes in tag and checks if it exits
+     * @return the index of the tag
+     */
+
     public int getTagIndex(Tag tag) {
         for (int i = 0; i < tags.size(); i++) {
             if (tag.equals(tags.get(i))) {
@@ -98,10 +133,20 @@ public class Photo implements java.io.Serializable {
         return -1;
     }
 
+    /**
+     *@param index of the tag
+     * removes tag
+     */
+
     public void removeTag(int index) {
         tags.remove(index);
         return;
     }
+
+    /**
+     *
+     * @return the date in the formate of yyyy-MM-dd
+     */
 
     public LocalDate getLocalDate() {
         Date date = getDate();
@@ -112,6 +157,13 @@ public class Photo implements java.io.Serializable {
         LocalDate result = LocalDate.parse(inactiveDate);
         return result;
     }
+
+    /**
+     * Compares this photo to another
+     *
+     * @return true or false depending if it does equals
+     * @param other the photo to be compared to
+     */
 
     public boolean equals(Photo other) {
         return this.getImgsrc().equalsIgnoreCase(other.getImgsrc());

@@ -108,7 +108,7 @@ public class SearchPhotoController {
             lvPhotos.setItems(FXCollections.observableArrayList(inRange));
         } else {
             lvPhotos.setItems(null);
-            System.out.println("no matching results");
+            //System.out.println("no matching results");
         }
 
     }

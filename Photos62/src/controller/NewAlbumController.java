@@ -59,7 +59,7 @@ public class NewAlbumController {
     public void finish(ActionEvent event) {
         //check if the album name exists
         String name = NameTextfield.getText();
-        System.out.println(name);
+        //System.out.println(name);
         Boolean exist = user.albumNameExists(name);
         if (exist) {
             duplicateAlbumAlert();
@@ -161,7 +161,7 @@ public class NewAlbumController {
         String str1 = lblFiles.getText();
         String str2 = str1 + "\n" + selectedFile.getName();
         lblFiles.setText(str2);
-        System.out.println(selectedFile.getName());
+        //System.out.println(selectedFile.getName());
 
         //enable the create button
         CreateButton.setDisable(false);

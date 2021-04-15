@@ -123,7 +123,7 @@ public class LoginController {
             e.printStackTrace();
         }
         for (User curr: users) {
-            System.out.println(curr);
+            //System.out.println(curr);
         }
 
 
@@ -166,7 +166,7 @@ public class LoginController {
                         }
                         if (!(user.albumNameExists("stock"))) {
                             user.addAlbum("stock");
-                            System.out.println("added stock");
+                            //stem.out.println("added stock");
                             //populate the stock album
                             Photo p1 = new Photo("Stock1", Calendar.getInstance(), "Photos62/data/stockuser/Stock1.png");
                             Photo p2 = new Photo("Stock2", Calendar.getInstance(), "Photos62/data/stockuser/Stock2.jpg");
