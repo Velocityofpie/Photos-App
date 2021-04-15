@@ -37,7 +37,10 @@ public class LoginController {
     ArrayList<User> users;
     Boolean validUser = false;
 
-
+    /**
+     * Method called upon the start of the program when a user attempts to login
+     * @param stage
+     */
     public void start(Stage stage) {
 /*
         try {
@@ -48,6 +51,9 @@ public class LoginController {
         //*/
     }
 
+    /**
+     * Helper method to populate the users array with users
+     */
     private void populate() {
         User a = new User("admin", "admin");
         User b = new User("stock", "stock");
@@ -60,6 +66,12 @@ public class LoginController {
 
     }
 
+    /**
+     * Method to write users into a storage file
+     * @param u Users list
+     * @param i state variable
+     * @throws IOException
+     */
     public void writeUsers (ArrayList<User> u, int i) throws IOException {
         FileOutputStream file = new FileOutputStream("Photos62/data/data.txt");
         ObjectOutputStream output = new ObjectOutputStream(file);
@@ -79,6 +91,12 @@ public class LoginController {
         file.close();
     }
 
+    /**
+     * Method to read the users from a data file
+     * @return a list of users
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     public ArrayList<User> readUsers() throws IOException, ClassNotFoundException {
 
         ArrayList<User> out = new ArrayList<User>();
@@ -107,7 +125,11 @@ public class LoginController {
         return out;
     }
 
-
+    /**
+     * Method called when user presses login
+     * @param event
+     * @throws IOException
+     */
     public void handleLoginButton (ActionEvent event) throws IOException {
 //        testing inputs
 //        System.out.println(loginButton.getText());

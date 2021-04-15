@@ -224,6 +224,11 @@ public class ImageviewerController {
     public void addPhotoFunction(ActionEvent event) {
     }
 
+    /**
+     * Called when a user presses delete photo button
+     * deletes the photo from the album
+     * @param event
+     */
     public void deletePhotoFromAlbum(ActionEvent event) {
         ArrayList<Photo> p = selectedAlbum.getPhotos();
         int i = selectedAlbum.getPhotoIndexByPhoto(selectedPhoto);
@@ -457,6 +462,10 @@ public class ImageviewerController {
 
     }
 
+    /**
+     * Method to update the tags for a selected photo
+     * @param event
+     */
     public void updateTagFunction(ActionEvent event) {
         String tName = TagTextfield.getText();
         String tValue = TagValueTextfield.getText();
