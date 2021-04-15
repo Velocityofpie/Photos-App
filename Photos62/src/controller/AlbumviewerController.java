@@ -226,61 +226,6 @@ public class AlbumviewerController {
     }
 
     /**
-     * Adds all photos on to list to be viewed
-     *@throws IOException
-     *
-     */
-
-    public void populatePhotogridPane() throws IOException {
-
-
-    }
-
-    public void photolistloader(ArrayList<User> users, User user, Album selectedAlbum) {
-
-        //create a list of photo names
-        ArrayList<Photo> l = selectedAlbum.getPhotos();
-        ArrayList<String> temp = new ArrayList<>();
-        ArrayList<Image> im = new ArrayList<Image>();
-        for (Photo curr: l) {
-            temp.add(curr.getImgsrc());
-        }
-
-        photolistview.setItems(FXCollections.observableArrayList(temp));
-        photolistview.getSelectionModel().select(0);
-
-        photolistview.setCellFactory(param -> new ListCell<String>() {
-            private ImageView imageView = new ImageView();
-            @Override
-            public void updateItem(String name, boolean empty) {
-                super.updateItem(name, empty);
-                if (empty) {
-                    setText(null);
-                    setGraphic(null);
-                } else {
-                    for (String curr: temp) {
-                        imageView.setImage(new Image(curr));
-                    }
-
-                    setText(name);
-                    setGraphic(imageView);
-                }
-            }
-        });
-
-
-
-        ArrayList<String> albumnames = new ArrayList<String>();
-        albumnames.add(0, " ");
-        ArrayList<Album> allalbums = user.getAlbums();
-        for (Album curralbum : allalbums) {
-            albumnames.add(curralbum.getName());
-        }
-
-    }
-
-
-    /**
      * Called when users presses "LogOut" Button
      * Switches the scene back to the login screen
      * @param event
