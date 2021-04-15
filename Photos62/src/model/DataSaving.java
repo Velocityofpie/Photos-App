@@ -9,7 +9,14 @@ import java.util.ArrayList;
  * Saves the newest changes when called
  */
 
+
 public class DataSaving {
+
+    /**
+     * Saves the user data when called on
+     * @param users
+     */
+
     public static void saveData(ArrayList<User> users) {
         try {
             FileOutputStream fileOutputStream = new FileOutputStream("Photos62/data/data.txt");
