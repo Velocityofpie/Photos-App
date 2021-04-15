@@ -1,4 +1,6 @@
 package model;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -99,6 +101,16 @@ public class Photo implements java.io.Serializable {
     public void removeTag(int index) {
         tags.remove(index);
         return;
+    }
+
+    public LocalDate getLocalDate() {
+        Date date = getDate();
+        SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
+        String inactiveDate = null;
+        inactiveDate = format1.format(date);
+
+        LocalDate result = LocalDate.parse(inactiveDate);
+        return result;
     }
 
     public boolean equals(Photo other) {

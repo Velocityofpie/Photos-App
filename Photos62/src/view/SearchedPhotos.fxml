@@ -17,7 +17,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SearchPhotoController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SearchPhotoController">
    <children>
       <VBox layoutX="-8.0" prefHeight="900.0" prefWidth="399.0" style="-fx-background-color: #212121;">
          <children>
@@ -35,7 +35,7 @@
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button fx:id="DeletePhotoButton" mnemonicParsing="false" onAction="#deletePhotoFromAlbum" prefHeight="120.0" prefWidth="460.0" style="-fx-background-color: transparent;" text="Back to Albums" textFill="WHITE">
+            <Button fx:id="btnBackToAlbum" mnemonicParsing="false" onAction="#convertBacktoalbumButton" prefHeight="120.0" prefWidth="460.0" style="-fx-background-color: transparent;" text="Back to Albums" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
@@ -45,7 +45,7 @@
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button fx:id="BacktoalbumButton" mnemonicParsing="false" onAction="#convertBacktoalbumButton" prefHeight="120.0" prefWidth="460.0" style="-fx-background-color: transparent;" textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#convertBacktoalbumButton" prefHeight="120.0" prefWidth="460.0" style="-fx-background-color: transparent;" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
@@ -94,7 +94,7 @@
       </HBox>
       <TextField fx:id="SearchTagTextField" layoutX="771.0" layoutY="-45.0" prefHeight="25.0" prefWidth="127.0" promptText="Search Tag" />
       <ListView fx:id="lvPhotos" layoutX="391.0" layoutY="438.0" prefHeight="463.0" prefWidth="1008.0" />
-      <Button fx:id="SearchButton" layoutX="1100.0" layoutY="28.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="59.0" style="-fx-background-color: #212121;" text="Search" textFill="WHITE" />
+      <Button fx:id="SearchButton" layoutX="1100.0" layoutY="28.0" mnemonicParsing="false" onAction="#searchDate" prefHeight="25.0" prefWidth="59.0" style="-fx-background-color: #212121;" text="Search" textFill="WHITE" />
       <DatePicker fx:id="StartDate" layoutX="414.0" layoutY="28.0" prefHeight="25.0" prefWidth="127.0" promptText="Start Date" />
       <DatePicker fx:id="EndDate" layoutX="557.0" layoutY="28.0" prefHeight="25.0" prefWidth="127.0" promptText="End Date" />
       <ChoiceBox layoutX="911.0" layoutY="28.0" prefWidth="150.0" />
