@@ -164,6 +164,12 @@ public class AlbumviewerController {
 
         if (i == 0) {
             selectedPhoto = selectedAlbum.getPhotos().get(i);
+        } else {
+            try {
+                lvPhotos.setItems(FXCollections.observableArrayList(selectedAlbum.getPhotos()));
+            } catch (Exception e) {
+
+            }
         }
         InputStream stream = new FileInputStream(selectedPhoto.getImgsrc());
         Image image = new Image(stream);
@@ -465,7 +471,7 @@ public class AlbumviewerController {
             return;
         }
         //create new photo object
-        Photo p = new Photo("temp", Calendar.getInstance(),selectedFile.getAbsolutePath());
+        Photo p = new Photo(selectedFile.getName(), Calendar.getInstance(),selectedFile.getAbsolutePath());
         //loop through photos in album to make sure that photo isn't already there
         ArrayList<Photo> pics = selectedAlbum.getPhotos();
         for (Photo curr: pics) {
@@ -484,6 +490,7 @@ public class AlbumviewerController {
         }
         selectedAlbum.addPhoto(p);
         selectedPhoto = p;
+
         try {
             update(1);
         } catch (FileNotFoundException e) {
