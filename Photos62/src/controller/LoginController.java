@@ -39,13 +39,13 @@ public class LoginController {
 
 
     public void start(Stage stage) {
-        /*
+/*
         try {
             writeUsers(null, 0);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        */
+        //*/
     }
 
     private void populate() {

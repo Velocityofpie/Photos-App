@@ -8,9 +8,14 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import model.*;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -18,7 +23,14 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Optional;
 
+/**
+ * @author Joshua Hernandez
+ * @author John Lavin
+ */
 public class SearchPhotoController {
+
+    @FXML
+    private ImageView imgView;
 
     @FXML
     private Button SearchButton1;
@@ -45,6 +57,13 @@ public class SearchPhotoController {
     private ArrayList<Photo> inRange = new ArrayList<>();
     private ArrayList<Tag> tags = new ArrayList<Tag>();
 
+    /**
+     * Start method called to launch this scene
+     * @param users arraylist of users
+     * @param user user currently logged in
+     * @param photos listview of photo objects from the album
+     * @param a the currently selected album
+     */
     public void start(ArrayList<User> users, User user, ListView<Photo> photos, Album a) {
         this.users = users;
         this.user = user;
@@ -67,17 +86,62 @@ public class SearchPhotoController {
         for (Tag curr: tags) {
             dropdownTag.getItems().add(curr.getTagName());
         }
+
+        // set listener for the items
+        lvPhotos.getSelectionModel().selectedIndexProperty().addListener((obsList, oldVal, newVal) -> {
+            try {
+                showItem();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        });
     }
 
+    /**
+     * Method to put the names of the photos in the listview
+     */
+    private void showItem() throws FileNotFoundException {
+
+        Photo selectedPhoto = (Photo) lvPhotos.getSelectionModel().getSelectedItem();
+
+        if (selectedPhoto != null) {
+            InputStream stream = new FileInputStream(selectedPhoto.getImgsrc());
+            Image image = new Image(stream);
+            imgView.setImage(image);
+            //Setting the image view parameters
+
+            imgView.setFitWidth(210);
+            imgView.setPreserveRatio(true);
+        }
+
+
+    }
+
+    /**
+     * Method called when addPhotoButton is pressed
+     * @param event
+     */
     public void addPhotoFunction(ActionEvent event) {
     }
 
+    /**
+     * method called when deletePhotoButton is called
+     * @param event
+     */
     public void deletePhotoFromAlbum(ActionEvent event) {
     }
 
+    /**
+     * Method called when editphotobutton is called
+     * @param event
+     */
     public void EditPhotoFunction(ActionEvent event) {
     }
 
+    /**
+     * Method to switch scene back to albumviewer
+     * @param event
+     */
     public void convertBacktoalbumButton(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/AlbumSelected.fxml"));
@@ -94,6 +158,10 @@ public class SearchPhotoController {
         }
     }
 
+    /**
+     * Method to switch scene back to the login
+     * @param event
+     */
     public void convertLogOutButton(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Login.fxml"));
@@ -109,7 +177,12 @@ public class SearchPhotoController {
         DataSaving.saveData(users);
     }
 
+    /**
+     * Method to search for photos in a specified date range
+     * @param event
+     */
     public void searchDate(ActionEvent event) {
+
         //reset in range
         inRange.clear();
 
@@ -141,6 +214,10 @@ public class SearchPhotoController {
 
     }
 
+    /**
+     * Method to create a new album from the photos in the listview
+     * @param event
+     */
     public void createNewAlbumFunction(ActionEvent event) {
 
         if (inRange.size() == 0) {
@@ -203,7 +280,15 @@ public class SearchPhotoController {
 
     }
 
+    /**
+     * Method to find photos with the satisfying tag name and values
+     * @param event
+     */
     public void searchTag(ActionEvent event) {
+
+        //clear other textfields
+        StartDate.setValue(null);
+        EndDate.setValue(null);
         //clear in range
         inRange.clear();
 
