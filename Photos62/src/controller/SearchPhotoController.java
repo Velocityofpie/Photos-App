@@ -9,10 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import model.Album;
-import model.DataSaving;
-import model.Photo;
-import model.User;
+import model.*;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -23,6 +20,12 @@ import java.util.Optional;
 
 public class SearchPhotoController {
 
+    @FXML
+    private Button SearchButton1;
+    @FXML
+    private TextField txtValue;
+    @FXML
+    private ChoiceBox dropdownTag;
     @FXML
     private Button createNewAlbumButton;
     @FXML
@@ -40,6 +43,7 @@ public class SearchPhotoController {
     private Album selectedAlbum;
 
     private ArrayList<Photo> inRange = new ArrayList<>();
+    private ArrayList<Tag> tags = new ArrayList<Tag>();
 
     public void start(ArrayList<User> users, User user, ListView<Photo> photos, Album a) {
         this.users = users;
@@ -47,6 +51,22 @@ public class SearchPhotoController {
         this.selectedAlbum = a;
         this.photoListView = photos;
 
+        //make a list of all unique tags and add them to the dropdown
+        //populate the tags list
+        for (Photo curr: selectedAlbum.getPhotos()) {
+            ArrayList<Tag> t = curr.getTags();
+            for (int i = 0; i < t.size(); i++) {
+                if (tags.contains(t.get(i))) {
+                    continue;
+                } else {
+                    tags.add(t.get(i));
+                }
+            }
+        }
+        //add them to the drop down
+        for (Tag curr: tags) {
+            dropdownTag.getItems().add(curr.getTagName());
+        }
     }
 
     public void addPhotoFunction(ActionEvent event) {
@@ -96,6 +116,10 @@ public class SearchPhotoController {
         //get beginning date and ending date
         LocalDate begRange = StartDate.getValue();
         LocalDate endRange = EndDate.getValue();
+
+        if (begRange == null || endRange == null) {
+            return;
+        }
 
         inRange = new ArrayList<>();
         //loop through all photos in the album and add photos that are in the range
@@ -176,6 +200,39 @@ public class SearchPhotoController {
             }
         }
 
+
+    }
+
+    public void searchTag(ActionEvent event) {
+        //clear in range
+        inRange.clear();
+
+        String str = (String) dropdownTag.getValue();
+        String targetVal = txtValue.getText();
+
+        if (str.equals("") || targetVal.equals("")) {
+            return;
+        }
+
+        //loop through all the photos in the album and see if tag values match
+        ArrayList<Photo> pho = selectedAlbum.getPhotos();
+        for (Photo curr: pho) {
+            ArrayList<Tag> tgs = curr.getTags();
+            for (Tag t: tgs) {
+                if (t.getTagName().equals(str) && t.getTagValue().equals(targetVal)) {
+                    inRange.add(curr);
+                    break;
+                }
+            }
+        }
+
+        if (inRange.size() > 0) {
+            //update the list view
+            lvPhotos.setItems(FXCollections.observableArrayList(inRange));
+        } else {
+            lvPhotos.setItems(null);
+            //System.out.println("no matching results");
+        }
 
     }
 }
