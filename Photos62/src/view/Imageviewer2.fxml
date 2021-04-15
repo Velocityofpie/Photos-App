@@ -2,23 +2,13 @@
 
 <!-- Names: Joshua Hernandez-jih31 & 	John Lavin-jvl50 -->
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ButtonBar?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.Slider?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ImageviewerController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ImageviewerController">
    <children>
       <VBox layoutX="-8.0" prefHeight="900.0" prefWidth="399.0" style="-fx-background-color: #212121;">
          <children>
@@ -38,11 +28,6 @@
                </font>
             </Button>
             <Button fx:id="DeletePhotoButton" mnemonicParsing="false" onAction="#deletePhotoFromAlbum" prefHeight="120.0" prefWidth="460.0" style="-fx-background-color: transparent;" text="Delete Photo" textFill="WHITE">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Button>
-            <Button fx:id="EditphotoButton" mnemonicParsing="false" onAction="#EditPhotoFunction" prefHeight="120.0" prefWidth="460.0" style="-fx-background-color: transparent;" text="Edit Photo" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
@@ -103,12 +88,12 @@
             <Button fx:id="CopytoButton" mnemonicParsing="false" onAction="#copyToFunction" style="-fx-background-color: #212121;" text="Copy to →" textFill="WHITE" />
          </buttons>
       </ButtonBar>
-      <Button fx:id="UpdateCaptionButton" onAction="#updateCaptionFunction" layoutX="1309.0" layoutY="840.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="66.0" style="-fx-background-color: #212121;" text="Update" textFill="WHITE" />
+      <Button fx:id="UpdateCaptionButton" layoutX="1309.0" layoutY="840.0" mnemonicParsing="false" onAction="#updateCaptionFunction" prefHeight="27.0" prefWidth="66.0" style="-fx-background-color: #212121;" text="Update" textFill="WHITE" />
       <ButtonBar layoutX="757.0" layoutY="833.0" prefHeight="40.0" prefWidth="255.0">
          <buttons>
-            <Button fx:id="AddTagButton" onAction="#addTagFunction" mnemonicParsing="false" style="-fx-background-color: #212121;" text="Add" textFill="WHITE" />
-            <Button fx:id="UpdateTagButtton" onAction="#updateTagFunction" mnemonicParsing="false" style="-fx-background-color: #212121;" text="Update" textFill="WHITE" />
-            <Button fx:id="DeleteTagButton" onAction="#deleteTagFunction" mnemonicParsing="false" style="-fx-background-color: #212121;" text="Delete" textFill="WHITE" />
+            <Button fx:id="AddTagButton" mnemonicParsing="false" onAction="#addTagFunction" style="-fx-background-color: #212121;" text="Add" textFill="WHITE" />
+            <Button fx:id="UpdateTagButtton" mnemonicParsing="false" onAction="#updateTagFunction" style="-fx-background-color: #212121;" text="Update" textFill="WHITE" />
+            <Button fx:id="DeleteTagButton" mnemonicParsing="false" onAction="#deleteTagFunction" style="-fx-background-color: #212121;" text="Delete" textFill="WHITE" />
          </buttons>
       </ButtonBar>
       <Text layoutX="511.0" layoutY="617.0" strokeType="OUTSIDE" strokeWidth="0.0" text="List of tags" wrappingWidth="127.3193359375">
