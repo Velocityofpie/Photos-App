@@ -445,6 +445,10 @@ public class AlbumviewerController {
         DataSaving.saveData(users);
     }
 
+    /**
+     * Method to switch the scene to search through photos in the album
+     * @param event
+     */
     public void switchtoSearch(ActionEvent event) {
 
         try {
